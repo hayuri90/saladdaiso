@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+/* css 초기화 코드 적용 */
+@import "reset.css";
+
+/* 폰트 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 하유리: 전체(23.07.29.) */
+.footer_wrapper {
+	width: 1319.2px;							/* 하유리: 창 축소 시 요소 안 밀리게 너비 지정(23.07.29.) */
+	padding: 20px 0px;
+    margin: 0 auto;
+    background-color: #128853;
+    justify-content: space-between;
+    display: flex;
+	/* display: block;						footer 하단고정(23.07.26.) */
+}
+
+/* 하유리: 로고(23.07.29.) */
+.footer_logo {
+	float: left;
+}
+
+/* 하유리: 회사 정보 부분(23.07.29.) */
+.footer_info, .footer_menu {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	font-weight: 300;
+	color: #fff;
+	line-height: 1.2;						/* 줄간격(23.07.26.) */
+	letter-spacing: 0.8;
+	float: left;
+    text-align: left;
+    /* margin: 0 180px; */
+}
+
+/* 하유리: 첫줄(23.07.29.) */
+.company_info {
+	padding: 10px 0;
+}
+
+/* 하유리: '사이트맵' 아래 메뉴 부분(23.07.29.) */
+.siteMap {
+	padding-top: 10px;
+	line-height: 1.37;
+}
+
+/* 하유리: 돋보기 이미지(23.07.29.) */
+.company_info a img {
+	margin-top: -5px;					/* 이미지 위 여백 삭제 */
+}
+
+/* 하유리: 첫줄 '이용약관, 개인정보처리방침' 텍스트(23.07.29.) */
+.company_terms li {
+	display: inline-block;				/* <li> 한줄로 배열 */
+}
+
+/* 하유리: 마지막줄 회사명(23.07.29.) */
+.footer_info b, .footer_menu b {
+	font-weight: 500;
+}
+
+.footer_info a, .footer_menu a {
+	text-decoration: none;
+	color: #fff;
+}
+
+
+
+/* 하유리: 가운데 직선(23.07.29.) */
+/* .footer_info {
+    padding: 0 107px;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+} */
+
+/* 하유리: SNS 로고 부분(23.07.29.) */
+.footer_sns ul li {
+	float: left;
+	margin-left: 8px;
+}
+
+/* 하유리: SNS로고 부분(23.07.29.) */
+.footer_sns ul a {
+	display: inline-flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+}
+

@@ -1,0 +1,269 @@
+@charset "UTF-8";
+
+/* css 초기화 코드 적용 */
+@import "reset.css";
+
+/* 하유리: 전체<div> (23.07.29.) */
+.content1 {
+	/* width: 1260px; */					/* 하유리: 창 크기 줄여도 요소가 밀리지 않게 너비 지정 */
+													/* 주석처리(23.08.11.) */
+	margin: 0 auto;
+	margin-bottom: 100px;				/* 하유리: 페이지 하단 여백 지정 */
+}
+
+/* 하유리: 제목(23.07.29.) */
+.content1 .menu_content {
+	padding: 178px 0 24px 0;			/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+													/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	margin: 50px 0;							/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+}
+
+.menu-h1 {
+ 	/* 하유리: 아래 내용 추가(23.07.29.) */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;		
+    letter-spacing: -1px;
+}
+
+/* 김동혁 - css 임시 추가(23.07.13.) */
+/* 김동혁 css 수정 (23.07.18) */
+
+.listBox {
+    display: inline-block;
+}
+
+/* 메뉴담기 텍스트 */
+/* 하유리: 주석 처리(23.07.29.) */
+/* .menu-h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+} */
+
+/* 채소, 육류 텍스트 */
+.menu-h2, .menu-h3 {
+	/* 하유리: 기존 코드 주석처리(23.07.27.) */
+/*     font-size: 32px;
+    margin-top: 40px; */
+    
+/*     display: inline;
+    margin: 0 520px;
+    padding: 7px 15px;
+    line-height: 26px; */
+/*     border-radius: 16px;
+    font-size: 18px;
+    background-color: #333A44;
+    color: #fff; */
+    
+    background-color: #333;
+    font-family: 'Noto Sans KR', sans-serif;		/* 하유리: 폰트 굵기 변경(23.08.01.) */
+    color: #fff;
+    font-size: 18px;											/* 하유리: 폰트 크기 변경(23.08.01.) */
+    font-weight: 700;										/* 하유리: 폰트 굵기 변경(23.08.01.) */
+    padding: 1px 0 3px 0;								/* 하유리: 폰트 여백 수정(23.08.01.) */
+	margin: 0 auto;											/* 수정(23.08.11.) */
+	width: 60px;												/* 추가(23.08.11.) */
+    border-radius: 10px;
+}
+
+/* 하유리: #채소 텍스트(23.07.29.) */
+.menu-h2 {
+	margin-top: -40px;					/* 제목-채소 사이 여백 지정 */
+	margin-bottom: -2px;
+}
+
+/* 하유리: #육류 텍스트(23.07.29.) */
+.menu-h3 {
+ 	margin-top: 395px;					/* 육류 위치 및 높이 지정 */
+    margin-bottom: -3px;
+}
+
+.prodBox {
+    display: flex;
+    float: left;
+    height: 100px;
+    width: 320px;								/* 수정(23.08.11.) */
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin: 15px;							/* 수정(23.08.11.) */
+    justify-content: left;
+    align-items: center;
+}
+
+.prodBox:hover {
+    cursor: pointer;
+}
+
+.prodP {
+    display: flex;
+    transition: all 50ms linear;
+}
+
+.prodP_imgBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+}
+
+/* !! 이미지 수정 부분 !! */
+.prodP_img {
+    width: 95px;
+    height: 95px;
+}
+
+.prodTextBox {
+    margin-left: 10px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Noto Sans KR', sans-serif;			/* 하유리: 폰트 적용(23.08.01.) */
+}
+
+.prodModalBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20px;
+}
+
+.prodListBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.prodPText {
+    margin-top: 9px;							/* 하유리: 재료-가격 간격 수정(23.08.01.) */
+    margin-bottom: 9px;						/* 하유리: 재료-가격 간격 수정(23.08.01.) */
+}
+
+.prodP:hover {
+    transform: scale(1.03);
+}		
+
+/* 하유리: 모달창 전체(23.07.27.) */
+.modal-content {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 15px;
+	color: #333;
+}
+
+/* 하유리: 모달창 내 header(23.07.27.) */
+.modal-header {
+	border-bottom: none;
+	display: block;					/* 가운데 정렬 */
+    padding-top: 35px;
+}
+
+/* 하유리: 모달창 내 header 텍스트(23.07.27.) */
+.modal-title {
+    margin-bottom: 0;
+    font-size: 20px;
+}
+
+/* 하유리: 메뉴 담기 모달창(23.07.27.) */
+.table {
+	width: 100%;
+	color: #212529;
+	border-top: 1px solid #e2e2e2;
+	border-collapse: collapse;
+	margin-bottom: 0;					/* 테이블 하단 여백 제거 */
+}        
+    
+/* 하유리: 테이블 선(23.07.27.) */
+.table th, td {
+  	border-bottom: 1px solid #e2e2e2;
+  	border-left: 1px solid #e2e2e2;
+  	padding: 10px;
+  	/* width: 50%; */		/* 열 너비 동일하게 지정 */
+}
+
+.table th:first-child, td:first-child {
+  	border-left: none;	/* 왼쪽 테두리 삭제 */
+}
+
+/* 하유리: 테이블 첫번째 열(23.07.27.) */
+.table td:first-child {
+	font-weight: 400;
+}
+
+/* 하유리: 테이블 제목행(23.07.27.) */
+.table th {
+	border-bottom: none;	
+	/* background-color: #128853; */			/* 원래 쓰는 색상 */
+	background-color: #168050;
+	font-weight: 300;
+	color: #fff;
+	font-size: 16px;
+    font-weight: 500;
+}
+
+/* 하유리: 테이블 행(23.07.27.) */
+.table td {
+   	font-weight: 300;
+}
+
+/* 하유리: modal-body(23.07.27.) */
+.modal-body {
+	padding: 0 20px;		/* 테이블 주변 여백 */
+}    
+    
+/* 하유리: 모달창 하단 footer(23.07.27.) */
+.modal-footer {
+/* 	display: flex;
+	align-items: center;
+	border-radius: 5px; */
+	border-top: none;		/* 테이블 하단 선 삭제 */
+	padding-bottom: 30px;
+}
+
+/* 하유리: 모달창 하단 셀렉트박스(23.07.27.) */
+.modal-footer select {
+  	border-radius: 5px;
+	padding: 3px;
+   	width: 122px;			/* 하유리: 셀렉트박스 길이가 약간 잘려있어서 너비 지정(23.07.27.) */
+}
+
+/* 광고(23.08.11.) */
+.ad {
+    position: fixed;
+    width: 95px;
+    top: 237px;
+    right: 51.5px;
+}
+
+@media screen and (max-width: 1360px) {		/* 특정 창크기에서 특정요소 숨기기(23.08.12.) */
+  .ad {
+    display: none;
+  }
+} 
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+    background-color: #fff;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
+}

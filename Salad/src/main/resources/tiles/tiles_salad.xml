@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+   <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/common/side.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+
+
+
+   <!-- 타일즈 jsp 연결 / 김동혁 수정 (23.07.14) -->
+   <definition name="/main" extends="baseLayout">
+      <put-attribute name="title" value="메인페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/main.jsp" />
+   </definition>
+   <definition name="/menu" extends="baseLayout">
+      <put-attribute name="title" value="메뉴페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/menu/menu.jsp" />
+   </definition>
+   
+
+	<definition name="/cart" extends="baseLayout">
+      <put-attribute name="title" value="메뉴페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/cart/cart.jsp" />
+   </definition>
+
+
+   <definition name="/order" extends="baseLayout">
+      <put-attribute name="title" value="주문페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/order/order.jsp" />
+   </definition>
+
+<definition name="/payment" extends="baseLayout">
+      <put-attribute name="title" value="주문페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/order/payment.jsp" />
+   </definition>
+   
+   <!--하유리: 이용약관(23.07.29.)  -->
+    <definition name="/common/terms" extends="baseLayout">
+      <put-attribute name="title" value="이용약관" />
+      <put-attribute name="body" value="/WEB-INF/views/common/terms.jsp" />
+   </definition>
+   
+   <!-- 하유리: 개인정보 처리방침(23.07.29.)  -->
+   	<definition name="/common/policy" extends="baseLayout">
+      <put-attribute name="title" value="개인정보 처리방침" />
+      <put-attribute name="body" value="/WEB-INF/views/common/policy.jsp" />
+   </definition>
+
+</tiles-definitions>

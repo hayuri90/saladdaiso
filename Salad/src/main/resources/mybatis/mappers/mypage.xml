@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+      <mapper namespace="mapper.mypage"> <!-- DAOImpl에 매퍼 가져올때 사용할 고유이름 -->
+  	    	 
+  	 <!-- 제품 주문 Map 정의 -->
+  	 <!-- 반환값 Map(shop_order, order_menu을 Join 한 데이터) 지정 -->
+	<resultMap id="orderGoodsResult" type="mypageVO">
+    	<result property="orderNum" column="orderNum" />
+    	<result property="fakeOrderNum" column="fakeOrderNum" />
+		<result property="userId" column="userId" />
+		<result property="orderStatus" column="orderStatus" />
+		<result property="orderCreateTimestamp" column="orderCreateTimestamp" />
+		<result property="orderUpdateTimestamp" column="orderUpdateTimestamp" />
+		
+		<result property="ordererName" column="ordererName" />
+		<result property="ordererPhone" column="ordererPhone" />
+		<result property="ordererEmail" column="ordererEmail" />
+		<result property="destName" column="destName" />
+		<result property="destPhone" column="destPhone" />
+		<result property="destLoc1" column="destLoc1" />
+		<result property="destLoc2" column="destLoc2" />
+		
+		<result property="totalPrice" column="totalPrice" />
+		<result property="prodDeliveryDate" column="prodDeliveryDate" />
+	
+		<!-- 주문메뉴 -->
+		<result property="orderMenuNum" column="orderMenuNum" />
+		<result property="menuName" column="menuName" />
+		<result property="menuCount" column="menuCount" />
+	
+	</resultMap>
+	
+  	   <!-- 주문내역 리스트 -->
+  	   <select id="selectMyOrderHistoryList" resultMap="orderGoodsResult"   parameterType="java.util.Map"  >
+	    <![CDATA[
+		  select * from shop_order
+          where userId=#{userId}
+          and  to_char(orderCreateTimestamp,'yyyy-mm-dd')  between #{beginDate} and #{endDate}
+          order by orderCreateTimestamp desc
+    	]]>
+	</select>	
+	
+  	   <!-- 주문취소 표시 -->
+  	   <update id="updateMyOrderCancel" parameterType="int">
+	   		update shop_order
+	 	  	set orderStatus='취소완료'
+	   		where orderNum=#{orderNum}
+		</update>
+  	   
+   	 <!-- 회원정보상세 -->
+   	 <select id="selectMyDetailInfo" resultType="userVO" parameterType="String">
+   	 	<![CDATA[
+   	 	select *  from shop_user
+   	 	where userId=#{userId}
+   	 	]]>
+   	 </select>
+   	 
+   	 <!-- 회원정보수정 -->
+   	 <update id="updateMyInfo" parameterType="java.util.HashMap">
+   
+	   update shop_user
+			   <set>
+			      <if test="userPwd!='' and userPwd!=null">
+			        userPwd=#{userPwd},
+			      </if>
+			      <if test="userName!='' and userName!=null">
+			        userName=#{userName},
+			      </if>
+			      <if test=" userGender!='' and userGender!=null">
+			         userGender=#{userGender},
+			      </if>
+			      <if test=" userEmail!='' and userEmail!=null">
+			         userEmail=#{userEmail},
+			      </if>
+			        <if test=" emailsts_yn!='' and emailsts_yn!=null">
+			         emailsts_yn=#{emailsts_yn},
+			      </if>  
+			       <if test=" userBirth!='' and userBirth!=null">
+			         userBirth=#{userBirth},
+			      </if>
+			      <if test=" userPhone!='' and userPhone!=null">
+			         userPhone=#{userPhone},
+			      </if>
+			        <if test=" smssts_yn!='' and smssts_yn!=null">
+			         smssts_yn=#{smssts_yn},
+			      </if>	
+			      <if test=" userAddress1!='' and userAddress1!=null">
+			         userAddress1=#{userAddress1},
+			      </if>
+			      <if test=" userAddress2!='' and userAddress2!=null">
+			         userAddress2=#{userAddress2}
+			      </if>	   
+			   </set>
+		where  userId=#{userId}
+	
+	</update>
+	
+	<!-- 회원정보탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+	<![CDATA[
+		delete from shop_user
+		where userId=#{userId}
+		]]>  
+	</delete>
+   	 
+</mapper>

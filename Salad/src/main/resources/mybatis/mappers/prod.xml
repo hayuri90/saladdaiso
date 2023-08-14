@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 김동혁 - prod 매퍼 -->
+<mapper namespace="mapper.prod">
+    <resultMap id="prodResult" type="prodVO">
+        <result property="prodNum" column="prodNum" />
+        <result property="prodName" column="prodName" />
+        <result property="prodPrice" column="prodPrice" />
+        <result property="prodDescription" column="prodDescription" />
+        <result property="prodBrand" column="prodBrand" />
+        <result property="prodCreateTimestamp" column="prodCreateTimestamp" />
+        <result property="prodDelieryPrice" column="prodDelieryPrice" />
+        <result property="prodImageUrl" column="prodImageUrl" />
+        <result property="prodImageName" column="prodImageName" />
+        <result property="prodImageDate" column="prodImageDate"/>
+    </resultMap>
+
+    <!-- 영양소 Map / 김동혁 추가 (23.07.18) -->
+    <resultMap id="prodNutrient" type="nutrientVO">
+        <result property="prodNum" column="prodNum" />
+        <result property="kcal" column="kcal" />
+        <result property="carbohydrates" column="carbohydrates" />
+        <result property="sugar" column="sugar" />
+        <result property="protein" column="protein" />
+        <result property="fat" column="fat" />
+        <result property="saturated_fat" column="saturated_fat" />
+        <result property="natrium" column="natrium" />
+    </resultMap>
+
+    <!-- 상품 select -->
+    <!--<select id="selectProdList" resultMap="prodResult">
+            select *
+            from shop_product
+            order by shop_product.prodNum
+    </select>-->
+    <select id="selectProdList" resultMap="prodResult">
+        select  a.*,
+                b.prodImageName, b.prodImageUrl, b.prodImageDate
+        from SHOP_PRODUCT a, prod_image b
+        where a.PRODNUM = b.prodNum
+        order by a.prodNum asc
+    </select>
+
+    <!-- 영양소 Select 문 / 김동혁 추가 (23.07.18) -->
+    <select id="selectProdNutrient" resultMap="prodNutrient" parameterType="int">
+        select * from prod_nutrient
+        where prodNum = #{prodNum}
+    </select>
+
+</mapper>

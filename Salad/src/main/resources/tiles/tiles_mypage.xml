@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+  <!-- 마이페이지 -->
+<tiles-definitions>
+	<definition name="baseLayoutMyPage"  template="/WEB-INF/views/mypage/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="side" value="/WEB-INF/views/mypage/side.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+  	 </definition>
+	
+	<definition name="/mypage/myDetailInfo" extends="baseLayoutMyPage">
+       <put-attribute name="title" value="회원 정보 관리 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myDetailInfo.jsp" />
+     </definition>
+
+    <definition name="/mypage/myPageMain" extends="baseLayoutMyPage">
+       <put-attribute name="title" value="마이페이지 메인" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myPageMain.jsp"/>
+    </definition>
+    
+   <!--  <definition name="/mypage/myOrderDetail" extends="baseLayoutMyPage">
+       <put-attribute name="title" value="내 주문 상세 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/myOrderDetail.jsp" />
+     </definition>
+      <definition name="/mypage/listMyOrderHistory" extends="baseLayoutMyPage">
+       <put-attribute name="title" value="내 주문 상세 페이지" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/listMyOrderHistory.jsp" />
+     </definition> -->
+	
+      <!-- orderList 추가 - 김동혁 -->
+      <definition name="/mypage/orderList" extends="baseLayoutMyPage">
+       <put-attribute name="title" value="주문 내역" />
+       <put-attribute name="body" value="/WEB-INF/views/mypage/orderList.jsp" />
+     </definition>
+     <!-- orderInfo 주문 상세 추가 - 김동혁 -->
+    <definition name="/mypage/orderInfo/*" extends="baseLayoutMyPage">
+        <put-attribute name="title" value="주문 상세 정보" />
+        <put-attribute name="body" value="/WEB-INF/views/mypage/orderInfo.jsp" />
+    </definition>
+    <!-- canceledList 주문 취소 리스트 - 김동혁 -->
+    <definition name="/mypage/canceledList" extends="baseLayoutMyPage">
+        <put-attribute name="title" value="주문 상세 정보" />
+        <put-attribute name="body" value="/WEB-INF/views/mypage/canceledList.jsp" />
+    </definition>
+     
+</tiles-definitions>
+
+

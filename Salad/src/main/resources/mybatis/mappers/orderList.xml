@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- orderList 매퍼 / 김동혁 추가(23.07.26) -->
+ <mapper namespace="mapper.orderList">
+
+    <!-- 반환값 Map(shop_order, order_menu을 Join 한 데이터) 지정 -->
+    <resultMap id="orderListResult" type="orderListVO">
+        <result column="orderNum" property="orderNum" />
+        <result column="userId" property="userId" />
+        <result column="orderStatus" property="orderStatus" />
+        <result column="orderCreateTimestamp" property="orderCreateTimestamp" />
+        <result column="orderUpdateTimestamp" property="orderUpdateTimestamp" />
+        <result column="ordererName" property="ordererName" />
+        <result column="ordererPhone" property="ordererPhone" />
+        <result column="ordererEmail" property="ordererEmail" />
+        <result column="destName" property="destName" />
+        <result column="destPhone" property="destPhone" />
+        <result column="destLoc1" property="destLoc1" />
+        <result column="destLoc2" property="destLoc2" />
+        <result column="totalPrice" property="totalPrice" />
+        <result column="prodDeliveryDate" property="prodDeliveryDate" />
+        <result column="orderMenuNum" property="orderMenuNum" />
+        <result column="menuName" property="menuName" />
+        <result column="menuCount" property="menuCount" />
+
+        <result column="reviewStatus" property="reviewStatus" />
+    </resultMap>
+
+    <!-- 주문 상세 결과 -->
+    <resultMap id="orderInfoResult" type="orderInfoVO">
+        <result column="orderNum" property="orderNum" />
+        <result column="userId" property="userId" />
+        <result column="orderStatus" property="orderStatus" />
+        <result column="orderCreateTimestamp" property="orderCreateTimestamp" />
+        <result column="orderUpdateTimestamp" property="orderUpdateTimestamp" />
+        <result column="ordererName" property="ordererName" />
+        <result column="ordererPhone" property="ordererPhone" />
+        <result column="ordererEmail" property="ordererEmail" />
+        <result column="destName" property="destName" />
+        <result column="destPhone" property="destPhone" />
+        <result column="destLoc1" property="destLoc1" />
+        <result column="destLoc2" property="destLoc2" />
+        <result column="totalPrice" property="totalPrice" />
+        <result column="prodDeliveryDate" property="prodDeliveryDate" />
+
+        <result column="reviewStatus" property="reviewStatus" />
+    </resultMap>
+
+    <!-- 주문 상세 메뉴 결과 -->
+    <resultMap id="orderMenuResult" type="orderMenuVO">
+        <result column="orderMenuNum" property="orderMenuNum"/>
+        <result column="orderNum" property="orderNum" />
+        <result column="userId" property="userId" />
+        <result column="menuName" property="menuName" />
+        <result column="menuCount" property="menuCount" />
+    </resultMap>
+
+
+    
+    <!-- 주문 목록 리스트 검색(임시 비활성) -->
+    <!-- 기준 : UserId만 검색, orderNum을 desc 순으로 정렬-->
+    <!--<select id="selectOrderList" parameterType="String" resultMap="orderListResult">
+        SELECT so.ORDERNUM,
+               so.USERID,
+               so.ORDERSTATUS,
+               so.ORDERCREATETIMESTAMP,
+               so.ORDERUPDATETIMESTAMP,
+               so.ORDERERNAME,
+               so.ORDERERPHONE,
+               so.ORDEREREMAIL,
+               so.DESTNAME,
+               so.DESTPHONE,
+               so.DESTLOC1,
+               so.DESTLOC2,
+               so.TOTALPRICE,
+               so.PRODDELIVERYDATE,
+               om.ORDERMENUNUM,
+               om.MENUNAME,
+               om.MENUCOUNT
+        FROM SCOTT.SHOP_ORDER so
+                 JOIN SCOTT.ORDER_MENU om ON so.ORDERNUM = om.ORDERNUM
+        WHERE so.ORDERERNAME = #{userName}
+        order by ORDERNUM desc
+    </select>-->
+    <select id="selectOrderList" parameterType="String" resultMap="orderListResult">
+        SELECT * FROM SHOP_ORDER
+        WHERE ordererName = #{userName}
+        ORDER BY orderNum desc
+    </select>
+
+    <!-- 주문 상세 페이지 Select -->
+    <select id="selectOrderInfo" parameterType="int" resultType="orderInfoVO">
+        select * from shop_order
+        where orderNum = #{orderNum}
+    </select>
+
+    <!-- 주문 상세의 메뉴 리스트 Select -->
+    <select id="selectOrderMenu" parameterType="int" resultMap="orderMenuResult">
+        select * from order_menu
+        where orderNum = #{orderNum}
+    </select>
+
+    <update id="updateOrderStatus" parameterType="int">
+        update shop_order
+        set
+            orderStatus = '취소완료'
+        where
+            orderNum = #{orderNum}
+    </update>
+
+    <!-- 주문 취소 리스트 Select -->
+    <select id="selectCanceledList" parameterType="String" resultMap="orderListResult">
+        SELECT * FROM SHOP_ORDER
+        WHERE ordererName = #{userName} and
+                orderStatus = '취소완료'
+        ORDER BY orderNum desc
+    </select>
+
+</mapper>

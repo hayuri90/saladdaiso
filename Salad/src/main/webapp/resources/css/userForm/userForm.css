@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+/* 하유리: 폰트(23.07.25.) */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+ 		
+/* 하유리: '회원가입' 텍스트를 포함한 전체(23.07.25.) */
+.total {
+	width: 100%;
+	font-family: 'Noto Sans KR', sans-serif;
+	/* margin: 50px 0; */	
+	padding-top: 178px;		/* 헤더 영역만큼 아래로 내림 */
+	margin-bottom: 100px;
+}
+
+/* 하유리: 테이블(23.07.25.) */
+table {
+	background-color: #fff;
+	padding: 23px 20px 0 20px;
+}
+
+/* 하유리: td(23.07.25.) */
+td {
+	width: 640px;
+	padding-bottom: 23px;
+}
+
+/*  */
+.join_sub {
+	margin: 50px 0;
+}
+
+.text_center {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 43px;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -3px;
+}
+
+/* 하유리: '회원가입' 텍스트를 제외한 회원가입폼(23.07.25.) */
+.lineAndForm {
+	width: 640px;
+	margin: 0px auto;
+	
+	border: 1px solid #e2e2e2;
+	padding: 80px 100px;
+	border-radius: 15px;
+}
+
+/* 하유리: 구분선(23.07.25.) */
+.top_line {
+	padding-bottom: 10px;
+    /* border-bottom: 2px solid rgb(51, 51, 51); */
+    border-bottom: 1px solid #e2e2e2;
+    font-size: 12px;
+    color: rgb(102, 102, 102);
+    line-height: 17px;
+    text-align: right;
+}
+
+/* 하유리: '정보입력' 텍스트(23.07.25.) */
+.basic {
+	float: left;
+	font-size: 20px;
+	font-weight: 600;
+	color: #000;
+}
+
+/* 하유리: 필수입력사항 앞(23.07.25.) * */
+.essential {
+	color: rgb(238, 106, 123);
+}
+
+/* 하유리: 회원가입폼(23.07.25.) */
+.userForm {
+	width: 640px;		/* 너비 지정 */
+}
+
+/* 하유리: 각 행(23.07.25.) */
+.dot_line {	/* 각 행을 1줄로 배열 */
+    padding: 10px 20px;
+}
+
+/* 하유리: label을 감싸고 있는 블록(23.07.25.) */
+.fixed_join {
+	width: 25%;
+   	align-items: center;		/* 라벨 수직 중앙정렬 */
+}
+
+/* 하유리: label(23.07.25.) */
+.join_label, .addressTxt {
+	font-size: 14px;
+	font-weight: 500;
+	text-align: left;				/* 라벨 왼쪽 정렬 */
+  	color: rgb(51, 51, 51);
+}
+
+/* 하유리: 이메일 label(체크박스 때문에 위치 따로 지정)(23.07.25.) */
+#label_email {
+	/* position: absolute;	 */	/* 절대위치로 지정 *//* 절대위치 주석 서승희 수정  23.07.28 */
+	top: 740px;
+  	color: rgb(51, 51, 51);
+    padding-bottom:30px; /* padding-bottom 서승희 추가  23.07.28 */
+}
+
+/* 하유리: 연락처 label(체크박스 때문에 위치 따로 지정)(23.07.25.) */
+#label_phone {
+	/* position: absolute;	 */	/* 절대위치로 지정 *//* 절대위치 주석 서승희 수정  23.07.28 */
+	top: 913px;
+  	color: rgb(51, 51, 51);
+    padding-bottom:30px; /* padding-bottom 서승희 추가  23.07.28 */
+}
+
+/* id <input> + 중복체크 button */ /*  #userPhone, #phoneChk, #phone2, #phoneChk2  서승희 추가 23.07.28 */
+#_user_id, #btnOverlapped, #userPhone, #phoneChk, #phone2, #phoneChk2 {
+	float: left;					/* 나란히 배열 */
+}
+
+/*  .btn_pass 서승희 추가 23.07.28 */
+#btnOverlapped, .btn_pass {
+	margin-left: 8px;		/* id <input> + 중복체크 button 간격 */
+}
+
+/* '여성', '남성' 텍스트 위치 지정 */
+.genderTxt {
+	position: absolute;		/* 절대위치로 지정 */
+	top: 679px;
+	font-size: 14px;
+}
+
+/* input박스(23.07.25.) */
+.join_input {
+	width: 100%; 
+   	height: 46px;
+   	padding: 0px 11px 1px 15px;
+   
+   	border: 1px solid rgb(221, 221, 221);
+   	border-radius: 5px;
+   
+   	line-height: 1.5;
+   	color: rgb(51, 51, 51);
+   	outline: none;
+   	box-sizing: border-box;		/* id inputbox, 중복체크 버튼 나란히 배열 */
+}
+
+/* 중복확인 버튼 *//*  .btn_pass 서승희 추가 23.07.28 */
+#btnOverlapped, .addBtn, .btn_pass{
+   	padding: 0px 10px;
+   	text-align: center;
+   	font-family: 'Noto Sans KR', sans-serif;
+   	font-size: 14px;
+   	font-weight: bold;
+   	overflow: hidden;
+   	/* width: 100%; */
+   	height: 46px;
+   	border-radius: 5px;
+   	color: #128853;	
+   	background-color: rgb(255, 255, 255);
+   	border: 1px solid #128853;	
+   	cursor: pointer; /* 23.07.28 하유리 추가 */
+}
+
+/* 하단 버튼(회원가입, 다시입력, 메인) */
+.clear input {
+	/* margin-left: 3px; */	/* 버튼 간격 조정 */
+   	padding: 0px 10px;
+  	width: 197px;
+   	height: 56px;
+
+   	font-family: 'Noto Sans KR', sans-serif;
+   	font-size: 16px;
+   	text-align: center;
+   	color: rgb(255, 255, 255);
+
+   	border: 0px none;
+   	border-radius: 5px;
+   	background-color: #128853;
+   
+   	overflow: hidden;
+}
+
+/* 체크박스 옆 텍스트 */
+.email_chk_text, .sms_chk_text {
+   	font-family: 'Noto Sans KR', sans-serif;
+   	font-size: 12px;
+   	color: rgb(102, 102, 102);
+}
+
+/* 이메일 체크박스 + 텍스트 */
+.email_chk, .email_chk_text {
+   	float: left;	/* 수직 중앙정렬 */
+}
+
+/* sms 체크박스 + 텍스트 */
+.sms_chk, .sms_chk_text {
+	float: left;
+}
+
+/* 주소 input */
+#userAddress1, #userAddress2 {
+   	margin-top: -10px;
+}
+

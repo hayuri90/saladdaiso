@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+body { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+.mymain_total{  /* 마이페이지 전체 23.08.01 서승희 추가 */
+	width:100%;
+	margin: 0px auto;
+   	/* padding: 80px 100px; */			/* 하유리: 주석 처리(23.08.02.) */
+   	margin-bottom: 100px;
+}
+
+.myinfo_container{
+    /* display: flex; */			/* 하유리: 주석 처리(23.07.31.) */
+    flex-direction: row;
+    /* width: 1097px; */				 	/* 하유리: 너비 수정(23.07.31.) */
+    width: 900px;
+    padding-top: 178px;   	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
+    /* padding-left:50px; */ 	 	/* 23.07.29 서승희 추가 */
+    padding-left:70px; 	 	/* 23.07.31 서승희 수정 */
+    text-align: left;			 	/* 하유리: 왼쪽 맞춤(23.07.31.) */
+}
+
+.new_order_container {
+    /* display: flex; */			/* 하유리: 주석 처리(23.07.31.) */
+    flex-direction: row;
+    /* width: 1097px; */				 	/* 하유리: 너비 수정(23.07.31.) */
+    width: 900px;
+    /* padding-top: 178px;   */ 	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
+  	 padding-top: 40px;    /* 23.07.31 서승희 수정 */
+    /* padding-left:50px; */ 	 	/* 23.07.29 서승희 추가 */
+    padding-left:70px; 	 	/* 23.07.31 서승희 수정 */
+    text-align: left;			 	/* 하유리: 왼쪽 맞춤(23.07.31.) */
+}
+
+/* 하유리: 제목 '나의 정보,최근주문내역'(23.07.31.) */
+.myinfo_container .myinfo,.new_order_container .new_order {
+	color: #128853;
+    font-weight: 700;
+    font-size: 28px;
+    text-align: left;
+  /*   padding-bottom: 10px; */ /* 나의 정보,최근주문내역 23.08.01 서승희 주석 */
+    margin-top: 28px;
+}
+
+.myinfo_table{
+    width: 100%;
+    text-align: center;								/* 하유리: 텍스트 가운데 배열(23.07.31.) */
+    border-top: 1px solid gray;					/* 하유리: 테이블 맨 위 테두리(23.07.31.) */
+    border-bottom: 1px solid gray;			/* 하유리: 테이블 맨 마지막 줄 테두리(23.07.31.) */
+	border-collapse: collapse;					/* 하유리: 테두리 안 끊기게 지정(23.07.31.) */
+	margin-top: -13px;							 /* 나의 정보 제목과 테이블 사이 공간 높이 변경 23.08.01 서승희 추가 */
+}
+
+.list_order_view{
+    width: 100%;
+    text-align: center;								/* 하유리: 텍스트 가운데 배열(23.07.31.) */
+    border-top: 1px solid gray;					/* 하유리: 테이블 맨 위 테두리(23.07.31.) */
+    border-bottom: 1px solid gray;			/* 하유리: 테이블 맨 마지막 줄 테두리(23.07.31.) */
+	border-collapse: collapse;					/* 하유리: 테두리 안 끊기게 지정(23.07.31.) */
+}
+
+/* 테이블_1번째 행 */
+.myinfo_td_title {
+    vertical-align: middle;
+    height: 50px;
+    background: #F7F7F7;						/* 하유리: <th> 배경색 변경(23.07.31.) */
+    color: #333;										/* 하유리: 폰트색 변경(23.07.31.) */
+    border-bottom: 1px solid #e2e2e2;		/* 하유리: 아래 테두리 추가(23.07.31.) */
+}
+
+.myinfo_td_title_add{							/* 주소지 제목 부분 분리 변경 23.08.01 서승희 추가 */
+	vertical-align: middle;
+    height: 50px;
+    background: #F7F7F7;						/* 하유리: <th> 배경색 변경(23.07.31.) */
+    color: #333;	
+	border-bottom: 1px solid gray;	
+}
+
+.myinfo_td_add{									/* 주소지 내용 분리 변경 23.08.01 서승희 추가 */
+	vertical-align: middle;
+    height: 50px;
+	border-bottom: 1px solid gray;	
+	text-decoration: none;						/* 하유리: 텍스트 스타일 제거(23.07.31.) */
+    font-size: 15px;									/* 하유리: 폰트 크기(23.07.31) */
+    color: #333;										/* 하유리: 폰트 색(23.07.31.) */
+    font-weight: 300;	
+}
+
+.list_order_title {
+    vertical-align: middle;
+    height: 50px;
+    background: #F7F7F7;						/* 하유리: <th> 배경색 변경(23.07.31.) */
+    color: #333;										/* 하유리: 폰트색 변경(23.07.31.) */
+    border-bottom: 1px solid gray;			/* 하유리: 아래 테두리 추가(23.07.31.) */
+}
+
+/* 1번째 행을 제외한 행 */
+.myinfo_td {
+    vertical-align: middle;
+    height: 50px;
+    border-bottom: 1px solid #e2e2e2;		/* 하유리: <td> 테두리 추가(23.07.31.) */
+
+	text-decoration: none;						/* 하유리: 텍스트 스타일 제거(23.07.31.) */
+    font-size: 15px;									/* 하유리: 폰트 크기(23.07.31) */
+    color: #333;										/* 하유리: 폰트 색(23.07.31.) */
+    font-weight: 300;								/* 하유리: 폰트 굵기(23.07.31.) */
+}
+/* 1번째 행을 제외한 행 */
+ .my_page_td {
+    vertical-align: middle;
+    height: 50px;
+    border-bottom: 1px solid #e2e2e2;		/* 하유리: <td> 테두리 추가(23.07.31.) */
+
+	/* text-decoration: none;		 */				/* 하유리: 텍스트 스타일 제거(23.07.31.) */
+    font-size: 15px;									/* 하유리: 폰트 크기(23.07.31) */
+ /*    color: #333;	 */									/* 하유리: 폰트 색(23.07.31.) */
+    font-weight: 300;								/* 하유리: 폰트 굵기(23.07.31.) */
+}
+
+#orderhis_Form{  /* 23.07.31 서승희 수정 */
+     width:100%;
+	 display: flex;
+	 justify-content: right;	
+	
+}
+
+.my_a a {  /*주문검색일자 a태그 23.07.31 서승희 수정 */
+	text-decoration:none
+ }
+ 
+.my_a img{ /* 주문검색일자 이미지 23.08.01 서승희 추가 */
+	 width:55px;
+	 height:35px;
+ }
+ 
+ .my_page_td a{  /* 주문번호 a태그 23.08.01 서승희 추가 */
+ 	text-decoration: none;
+    color: #333;
+     }
+ 
+.my_page_td a:hover{ /* 주문번호 a태그 hover 23.08.01 서승희 추가 */
+	cursor: pointer;
+    color: #128853;
+ }   
+    
+ .my_page_price{  /* 주문가격 23.08.01 서승희 추가 */
+ 	color: #d12420;
+    font-weight: 700;
+ }
+ .my_page_td_cancel{  /* 결제취소 되었을 때 23.08.01 서승희 추가 */
+ 	color: #5AB2FF;
+    text-decoration: line-through;
+ }
+
+ /* 주문취소 버튼  23.08.01 서승희 추가 */
+ .my_page_cancel{
+ /*font-family: 'nanumsquare', sans-serif;*/
+    height: 24px;										/* 하유리: 버튼 높이 수정(23.07.31.) */
+    width: 67px;										/* 하유리: 버튼 너비 수정(23.07.31.) */
+    /* border: none; */							/* 하유리: 주석 처리(23.07.31.) */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;								/* 하유리: 폰트 굵기 수정(23.07.31.) */
+    font-size: 13px;									/* 하유리: 폰트 크기 수정(23.07.31.) */
+    color: #333;										/* 하유리: 폰트 색 지정(23.07.31.) */
+    
+    border: 1px solid #63666a;					/* 하유리: 테두리 지정(23.07.31.) */
+    border-radius: 21px;							/* 하유리: 테두리 둥글게(23.07.31.) */
+ }
+  
+.my_page_cancel:hover{  /* 주문취소 버튼 hover  23.08.01 서승희 추가 */
+  	cursor: pointer;
+    background: #36DDA6;
+    color: white;
+  }
+
+.td-bold {
+    text-decoration: underline;
+}
+ 	
+/*  .myinfo{   하유리: 헤더 영역만큼 아래로 내림(23.07.25.)
+     padding-top: 178px;   
+     font-size:25px;
+     padding-left:30px;
+  }
+
+.myinfo_table{  jsp css 적은거 옮김 23.07.30 서승희
+	border: 1px solid #000;
+	 width:55%; 
+	 display:inline-table;
+	
+ }      
+
+.myinfo_td_title{
+	border: 1px solid #000;
+	text-align:center;
+}  
+  
+ .myinfo_td{
+	border: 1px solid #000;
+ 	text-align:center;
+ }    
+
+.new_order{
+      padding-top:15px;
+      font-size:25px;
+ 	  padding-left:20px;
+ } 
+#orderhis_Form{
+     width:100%;
+	 display: flex;
+	 justify-content: center;
+	 padding-left:20px;
+ }
+a { 
+	text-decoration:none
+ }
+.list_order_view{
+     display: flex;
+	 justify-content: center;
+ }
+ */
+ 
+/* 아이디(23.08.12.) */
+.memberMenu>ul>.userMenu p {
+	font-weight: 300;
+}
+ 
+/* 광고(23.08.11.) */
+.ad {
+    position: fixed;
+    width: 95px;
+    top: 237px;
+    right: 51.5px;
+}
+
+@media screen and (max-width: 1400px) {		/* 특정 창크기에서 특정요소 숨기기(23.08.12.) */
+  .ad {
+    display: none;
+  }
+} 
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+    background-color: #fff;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
+}

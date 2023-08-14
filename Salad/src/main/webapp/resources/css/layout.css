@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+/* 하유리: css 초기화 코드 적용(23.07.26.) */
+@import "reset.css";
+
+/* wrap */
+#container {
+	width: 100%;
+	margin: 0px auto;
+	text-align:center;
+	border: 0px solid #bcbcbc;
+}
+
+/* 주석: 하유리 */
+#header {
+	/* padding: 5px; */
+	/* margin-bottom: 5px; */
+	/* border: 0px solid #bcbcbc; */
+	border: 0px solid #bcbcbc;
+	font-family: Pretendard-Regular;
+	/* background-color: lightgreen; */
+}
+			
+/* 	body */
+#content {
+      width: 100%;
+      /* padding: 5px; */
+      /* margin-right: 5px; */	/* 주석: 하유리 */
+      float: left;
+      border: 0px solid #bcbcbc;
+}
+
+#footer {
+      clear: both;
+      border: 0px solid #bcbcbc;
+      background-color: #128853;
+      width: 100%;
+}

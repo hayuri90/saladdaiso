@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+   <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+
+   <!-- 리뷰게시판 -->
+   <!-- 하유리: value값 전체적으로 수정(23.07.31.) -->
+   <definition name="/review/list" extends="baseLayout">
+      <put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/review/reviewList.jsp" />
+   </definition>
+    <!-- 김동혁: 검색 페이지 추가(23.08.11) -->
+    <definition name="/review/search" extends="baseLayout">
+        <put-attribute name="title" value="샐러드다이소: 리뷰게시판 검색" />
+        <put-attribute name="body" value="/WEB-INF/views/review/reviewSearchList.jsp" />
+    </definition>
+   
+   <!-- 하유리: 글쓰기 페이지 추가(23.07.31.) -->
+   <definition name="/review/insertReview" extends="baseLayout">
+      <put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/review/insertReview.jsp" />
+   </definition>
+
+    <definition name="/review/reviewContent" extends="baseLayout">
+      <put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/review/reviewContent.jsp" />
+   </definition>
+
+    <definition name="/review/updateReview" extends="baseLayout">
+      <put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/review/updateReview.jsp" />
+   </definition>
+   
+    <definition name="/review/replyReview" extends="baseLayout">
+      <put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
+      <put-attribute name="body" value="/WEB-INF/views/review/replyReview.jsp" />
+   </definition>
+
+    <definition name="/review/insert" extends="baseLayout">
+        <put-attribute name="title" value="리뷰페이지_작성" />
+        <put-attribute name="body" value="/WEB-INF/views/review/insertReview.jsp" />
+    </definition>
+   
+</tiles-definitions>

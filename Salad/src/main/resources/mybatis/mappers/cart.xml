@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 김동혁 - cart 매퍼 -->
+<mapper namespace="mapper.cart">
+    <resultMap id="cartResult" type="cartVO">
+        <result property="cartNum" column="cartNum" />
+        <result property="userId" column="userId" />
+        <result property="prodNum" column="prodNum" />
+        <result property="cartCount" column="cartCount" />
+    </resultMap>
+
+    <resultMap id="cartListResult" type="cartListVO">
+        <result property="cartNum" column="cartNum" />
+        <result property="userId" column="userId" />
+        <result property="prodNum" column="prodNum" />
+        <result property="prodName" column="prodName" />
+        <result property="prodPrice" column="prodPrice" />
+        <result property="prodDescription" column="prodDescription" />
+        <result property="prodBrand" column="prodBrand" />
+        <result property="prodCreateTimestamp" column="prodCreateTimestamp" />
+        <result property="prodDeliveryPrice" column="prodDeliveryPrice" />
+        <result property="cartCount" column="cartCount" />
+
+        <result property="prodImageUrl" column="prodImageUrl" />
+        <result property="prodImageName" column="prodImageName" />
+
+    </resultMap>
+
+    <!-- 장바구니 추가 -->
+    <insert id="addCart" parameterType="cartVO">
+        insert into shop_cart
+            (cartNum, userId, prodNum, cartCount)
+        values
+            (
+                cart_seq.nextval,
+                #{userId},
+                #{prodNum},
+                #{cartCount}
+            )
+    </insert>
+
+    <!-- 장바구니 ID로 저장된 제품 검색 -->
+    <!--<select id="cartById" parameterType="String" resultMap="cartListResult">
+        SELECT
+            sc.cartNum,
+            sc.userId,
+            sp.prodNum,
+            sp.prodName,
+            sp.prodPrice,
+            sp.prodDescription,
+            sp.prodBrand,
+            sp.prodCreateTimestamp,
+            sp.prodDeliveryPrice,
+            sc.cartCount
+            FROM
+                shop_cart sc
+            JOIN
+                shop_product sp
+            ON
+                sc.prodNum = sp.prodNum
+        WHERE
+            sc.userId = #{userId}
+    </select>-->
+
+    <select id="cartById" parameterType="String" resultMap="cartListResult">
+        SELECT
+            SP.PRODNUM,
+            SP.PRODNAME,
+            SP.PRODPRICE,
+            SP.PRODDESCRIPTION,
+            SP.PRODBRAND,
+            SP.PRODCREATETIMESTAMP,
+            SP.PRODDELIVERYPRICE,
+            PI.PRODIMAGEURL,
+            PI.PRODIMAGENAME,
+            PI.PRODIMAGEDATE,
+            SC.CARTNUM,
+            SC.USERID,
+            SC.CARTCOUNT
+        FROM
+            SCOTT.SHOP_PRODUCT SP
+                LEFT JOIN
+            SCOTT.PROD_IMAGE PI
+            ON
+                SP.PRODNUM = PI.PRODNUM
+                LEFT JOIN
+            SCOTT.SHOP_CART SC
+            ON
+                SP.PRODNUM = SC.PRODNUM
+        WHERE SC.USERID = #{userId}
+    </select>
+
+
+
+    <!-- cartNum으로 장바구니 데이터 삭제 -->
+    <delete id="delCartOne" parameterType="int">
+        delete
+        from shop_cart
+        where cartNum = #{cartNum}
+    </delete>
+
+    <!-- cartNum, cartCount로 장바구니 데이터 수정 -->
+    <update id="updateCartOne" parameterType="cartVO">
+        update shop_cart
+        set
+            cartCount = #{cartCount}
+        where
+            cartNum = #{cartNum}
+    </update>
+
+</mapper>

@@ -1,0 +1,120 @@
+@charset "UTF-8";
+
+/* css 초기화 코드 적용 *//* 23.07.30 서승희 추가  */
+@import "../reset.css";
+
+body { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+}
+
+
+.odl-container{   /* jsp에 있던 css 옮김 23.07.30 서승희 */
+    padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
+   
+ }
+
+.odl-sub {
+    margin: 50px 0;
+}
+
+.odl-text1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -1px;
+}
+
+.order-info-table {
+    /*border: 1px solid black;*/
+      font-size:13px;  /* jsp에 있던 css 옮김 23.07.30 서승희 */
+    border-collapse: separate;
+    border-spacing: 10px 20px;
+    text-align: left;
+
+}
+
+.order-info-table > tr > td {
+    height: 20px;
+    width: 100px;
+    font-size: 20px;
+}
+
+
+.order-info-table tr td {
+    width: 150px;
+    /*height: 40px;*/
+    /*vertical-align: middle;*/
+    font-size: 13px;
+}
+
+.order-info-td-title {
+    /*background: #F7F7F7;*/
+    font-weight: 600;
+    /*border-bottom: 1px solid gray;*/
+    padding-right: 100px;
+
+}
+
+.oi-border-top {
+    /*border-top: 1px solid gray;*/
+}
+
+.content_input {
+    border: 1px solid #e3e3e3;
+    border-radius: 5px;
+    width: 320px;
+    height: 44px;
+    /*margin-left: 50px;*/
+}
+
+.order-info-td {
+    font-weight: 500;
+    /*padding-bottom: 20px;*/
+}
+
+.order-info-td-title.length {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*background: #eee;*/
+}
+
+.order-info-menuList {
+    border: 1px solid #e3e3e3;
+    background: #fafafa;
+    border-radius: 5px;
+    width: 320px;
+    padding: 15px 0;
+    color: rgb(84, 84, 84);
+}
+
+.odl-last {
+    padding-right: 0;
+}
+
+.btn-area {
+    width: 100%;
+    display: flex;
+}
+
+.orderInfo-review-btn {
+    float: right;
+    border: none;
+    height: 30px;
+    width: 70px;
+    background: #128853;
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.orderInfo-review-btn:hover {
+    cursor: pointer;
+}

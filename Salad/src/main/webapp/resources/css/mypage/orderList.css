@@ -1,0 +1,147 @@
+.test-h1 {
+    font-size: 30px;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
+}
+
+head {
+    font-family: 'Noto Sans KR', sans-serif !important;
+    font-weight: 600 !important;
+}
+.odl-container {
+    /* display: flex; */			/* 하유리: 주석 처리(23.07.31.) */
+    flex-direction: row;
+    width: 1072px;			 	/* 하유리: 너비 수정(23.07.31.) */	/* 하유리: 너비 수정(23.08.02.) */
+    padding-top: 178px;   	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
+    padding-left:70px; 	 	/* 23.07.29 서승희 추가 */				/* 하유리: 여백 수정(23.08.02.) */
+    text-align: left;			 	/* 하유리: 왼쪽 맞춤(23.07.31.) */
+    margin-bottom: 100px;	/* 추가(23.08.14.) */
+}
+
+/* 하유리: 제목 '나의 주문내역'(23.07.31.) */
+.odl-container .odl_sub {
+	color: #128853;
+    font-weight: 700;
+    font-size: 28px;
+    text-align: left;
+    padding-bottom: 10px;
+    margin-top: 28px;
+}
+.odl-box {
+    /*border: 5px solid indianred;*/
+    /*height: 1000px;*/
+    width: 1072px;							/* 하유리: 너비 수정(23.08.02.) */
+ 	
+}
+
+.odl-box2 {
+    border: 5px solid indigo;
+    height: 1000px;
+    width: 200px;
+}
+
+.odl-1box {
+    /*border-top: 2px solid #b6b57a;*/
+    /*border-bottom: 2px solid #0056b3;*/
+    /*padding-top: 5px;*/
+    /*padding-bottom: 5px;*/
+    /*margin-top: 10px;*/
+    /*margin-bottom: 10px;*/
+}
+
+#odl-underbar {
+    width: 100%;
+    border-bottom: 2px solid purple;
+    margin-bottom: 10px;
+}
+
+.odl-table {
+    width: 100%;
+    text-align: center;								/* 하유리: 텍스트 가운데 배열(23.07.31.) */
+    border-top: 1px solid gray;					/* 하유리: 테이블 맨 위 테두리(23.07.31.) */
+    border-bottom: 1px solid gray;			/* 하유리: 테이블 맨 마지막 줄 테두리(23.07.31.) */
+	border-collapse: collapse;					/* 하유리: 테두리 안 끊기게 지정(23.07.31.) */
+}
+
+/* 테이블_1번째 행 */
+.odl-table-th {
+    vertical-align: middle;
+    height: 50px;
+    background: #F7F7F7;						/* 하유리: <th> 배경색 변경(23.07.31.) */
+    color: #333;										/* 하유리: 폰트색 변경(23.07.31.) */
+    border-bottom: 1px solid gray;			/* 하유리: 아래 테두리 추가(23.07.31.) */
+}
+
+/* 1번째 행을 제외한 행 */
+.odl-table-td {
+    vertical-align: middle;
+    height: 50px;
+    border-bottom: 1px solid #e2e2e2;		/* 하유리: <td> 테두리 추가(23.07.31.) */
+
+	text-decoration: none;						/* 하유리: 텍스트 스타일 제거(23.07.31.) */
+    font-size: 15px;									/* 하유리: 폰트 크기(23.07.31) */
+    color: #333;										/* 하유리: 폰트 색(23.07.31.) */
+    font-weight: 300;								/* 하유리: 폰트 굵기(23.07.31.) */
+}
+
+.odl-td-pointer {
+    text-decoration: underline;
+}
+
+.odl-td-pointer:hover {
+    cursor: pointer;
+    color: #128853;
+}
+
+/* 가격 행 */
+.old-td-price {
+	color: #d12420;									/* 하유리: 금액 폰트색 지정(23.07.31.) */
+	font-weight: 700;								/* 하유리: 폰트 색상 지정(23.07.31.) */
+}
+
+/* 취소완료 */
+.orderStatus {
+	color: #5AB2FF;									/* 하유리: 취소완료 폰트색 지정(23.07.31.) */
+	text-decoration: line-through;			/* 하유리: 취소선(23.07.31.) */
+}
+
+/* 주문취소 버튼 */
+.odl-table-del {
+    /*font-family: 'nanumsquare', sans-serif;*/
+    height: 24px;										/* 하유리: 버튼 높이 수정(23.07.31.) */
+    width: 67px;										/* 하유리: 버튼 너비 수정(23.07.31.) */
+    /* border: none; */							/* 하유리: 주석 처리(23.07.31.) */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;								/* 하유리: 폰트 굵기 수정(23.07.31.) */
+    font-size: 13px;									/* 하유리: 폰트 크기 수정(23.07.31.) */
+    color: #333;										/* 하유리: 폰트 색 지정(23.07.31.) */
+    
+    border: 1px solid #63666a;					/* 하유리: 테두리 지정(23.07.31.) */
+    border-radius: 21px;							/* 하유리: 테두리 둥글게(23.07.31.) */
+}
+
+.odl-table-del:hover {
+    cursor: pointer;
+    background: #36DDA6;
+    color: white;
+}
+
+.odl-table-review-done {
+    height: 24px;										/* 하유리: 버튼 높이 수정(23.07.31.) */
+    width: 67px;										/* 하유리: 버튼 너비 수정(23.07.31.) */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 400;								/* 하유리: 폰트 굵기 수정(23.07.31.) */
+    font-size: 13px;									/* 하유리: 폰트 크기 수정(23.07.31.) */
+    color: #aaa;										/* 하유리: 폰트 색 지정(23.07.31.) */
+
+    border: 1px solid #999999;					/* 하유리: 테두리 지정(23.07.31.) */
+    border-radius: 21px;
+}
+
+/* 아이디(23.08.12.) */
+.memberMenu>ul>.userMenu p {
+	font-weight: 300;
+}

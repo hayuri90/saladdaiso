@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="review">
+	
+	<!-- 1-1. 전체목록조회 + 최다조회수 게시글 상단고정 + 페이징(23.07.16.) -->
+	<select id="selectAllReviewList" parameterType="com.proj.salad.review.vo.Criteria" resultType="com.proj.salad.review.vo.ReviewVO">
+		<![CDATA[			
+			SELECT * FROM (
+			    SELECT level, re_articleNO, re_parentNO, LPAD(' ', 4*(level-1)) || re_title re_title, re_content, userId, re_writeDate, re_viewCnt, rownum rno
+			    FROM SHOP_REVIEW
+			    WHERE re_parentNO=0
+			    START WITH re_parentNO=0
+			    CONNECT BY PRIOR re_articleNO=re_parentNO
+			    ORDER BY re_viewCnt DESC
+			)
+			WHERE ROWNUM<=3
+
+			UNION ALL
+
+			SELECT * FROM (
+			    SELECT level, re_articleNO, re_parentNO, LPAD(' ', 4*(level-1)) || re_title re_title, re_content, userId, re_writeDate, re_viewCnt, rownum rno
+			    FROM shop_review
+			    WHERE re_articleNO>=0
+			    START WITH re_parentNO=0
+			    CONNECT BY PRIOR re_articleNO=re_parentNO
+			    ORDER SIBLINGS BY DECODE(re_viewCnt,'max(re_noti)',1), re_articleNO DESC
+			    )
+			WHERE rno BETWEEN #{rowStart} and #{rowEnd}
+		]]>
+	</select>
+	
+	<!-- 1-2. 게시물 총 개수(23.07.16.) -->
+	<select id="getTotal" resultType="int">
+		select count(re_articleNO) from shop_review
+	</select>
+	
+	<!-- 2-1. 리뷰게시판 글쓰기(23.07.16.) -->
+	<!-- fakeOrderNum, orderNum 수정 - 김동혁(23.08.01) -->
+	<insert id="insertReview" parameterType="com.proj.salad.review.vo.ReviewVO">
+		<![CDATA[
+			INSERT INTO shop_review(re_articleNO, re_parentNO, re_title, userId, re_content, re_writeDate, re_viewCnt, re_fakeOrderNum, re_orderNum)
+			VALUES(
+			(SELECT MAX(re_articleNO)+1 from shop_review), 0, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt}, #{re_fakeOrderNum}, #{re_orderNum})
+		]]>
+	</insert>
+
+	<!-- 2-1-1. 리뷰게시판 글쓰기시 reviewStatus - 김동혁 수정(23.08.02) -->
+	<update id="updateOrderReviewStatus" parameterType="com.proj.salad.review.vo.ReviewVO">
+		UPDATE shop_order
+		SET reviewStatus = 1
+		WHERE ORDERNUM = #{re_orderNum}
+	</update>
+	
+   <!-- 2-2. 파일 업로드(23.07.20.) -->
+   <insert id="insertReviewImg" parameterType="java.util.Map">
+      <![CDATA[
+         INSERT INTO review_image(re_imgNo, userId, re_articleNO, re_originalFileName, re_storedFileName, re_fileSize)
+         VALUES(RE_IMG_SEQ.NEXTVAL, #{USERID}, #{RE_ARTICLENO}, #{RE_ORGINALFILENAME}, #{RE_STOREDFILENAME}, #{RE_FILESIZE})
+      ]]>
+   </insert>
+	
+	<!-- 2-3. 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.20.) -->
+	<select id="selectReview"  parameterType="com.proj.salad.review.vo.ReviewVO"  resultType="String">
+		SELECT re_articleNO 
+		from shop_review 
+		WHERE userId=#{userId} and  re_title=#{re_title}
+	</select>
+
+	<!-- 3-1. 게시물 상세조회(23.07.16.) -->
+	<!-- fakeOrderNum, orderNum 수정 - 김동혁(23.08.01) -->
+	<select id="detailReview" resultType="com.proj.salad.review.vo.ReviewVO">
+		<![CDATA[
+			SELECT re_title, userId, re_content, re_writeDate, re_viewCnt, re_articleNO, re_fakeOrderNum, re_orderNum
+			FROM shop_review
+			WHERE re_articleNO = #{re_articleNO}
+		]]>
+	</select>
+	
+	<!-- 이미지 정보 가져오기 -->
+	<select id="detailImg" parameterType="String" resultType="com.proj.salad.review.vo.Review_imageVO">
+	<![CDATA[
+			SELECT *
+            FROM review_image
+		    WHERE re_articleNO = #{RE_ARTICLENO}
+	]]>
+	</select>
+	
+	<!-- 3-2. 조회수 증가(23.07.16.) -->
+	<update id="updateCnt" parameterType="int">
+		<![CDATA[
+			UPDATE shop_review
+			SET re_viewCnt = re_viewCnt + 1
+			WHERE re_articleNO = #{re_articleNO}
+		]]>
+	</update>
+	
+	<!-- 하유리: 4-2. 게시물 수정하기(23.07.18.) -->
+	<update id="updateReview" parameterType="com.proj.salad.review.vo.ReviewVO">
+		<![CDATA[
+			UPDATE shop_review 
+			SET
+				userId=#{userId},
+				re_title = #{re_title},
+				re_content = #{re_content}
+			WHERE re_articleNO = #{re_articleNO}
+		]]>
+	</update>
+
+	<!-- 하유리: 5. 게시물 삭제하기(23.07.18.) -->
+	<delete id="deleteReview">
+		<![CDATA[
+			DELETE FROM shop_review
+			WHERE re_articleNO= #{re_articleNO}
+		]]>
+	</delete>
+	
+	<!-- 하유리: 6-2. 답변 작성(23.07.18.) -->
+	<insert id="replyReview" parameterType="com.proj.salad.review.vo.ReviewVO">
+		<![CDATA[
+			INSERT INTO shop_review(re_articleNO, re_parentNO, re_title, userId, re_content, re_writeDate, re_viewCnt)
+			VALUES(
+			(SELECT MAX(re_articleNO)+1 from shop_review), #{re_articleNO}, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt})
+		]]>
+	</insert>
+
+	<!-- 김동혁: 7-1. 검색기능 List(23.08.11) -->
+	<!-- 1-1. 전체목록조회 + 최다조회수 게시글 상단고정 + 페이징(23.07.16.) -->
+	<select id="selectSearchReviewList" parameterType="com.proj.salad.review.vo.Criteria" resultType="com.proj.salad.review.vo.ReviewVO">
+		<![CDATA[
+		SELECT * FROM (
+						  SELECT level, re_articleNO, re_parentNO, LPAD(' ', 4*(level-1)) || re_title re_title, re_content, userId, re_writeDate, re_viewCnt, rownum rno
+						  FROM shop_review
+						  WHERE re_articleNO>=0
+						  		and re_title LIKE '%' || #{s_title} || '%'
+							  START WITH re_parentNO=0
+						  CONNECT BY PRIOR re_articleNO=re_parentNO
+						  ORDER SIBLINGS BY DECODE(re_viewCnt,'max(re_noti)',1), re_articleNO DESC
+					  )
+		WHERE rno BETWEEN #{rowStart} and #{rowEnd}
+		]]>
+	</select>
+
+	<!-- 김동혁: 7-2. 검색된 게시물 총 개수(23.08.11.) -->
+	<select id="getSearchTotal" resultType="int" parameterType="String">
+		select count(re_articleNO) from shop_review
+		where re_title LIKE '%' || #{s_title} || '%'
+	</select>
+
+
+	<!-- 조상현: ajax 대댓글(23.07.31)  -->
+	<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
+	<![CDATA[
+		SELECT ac_commentNO,
+			   ac_parentNO,
+			   re_articleNO,
+			   userId,
+			   ac_content,
+			   ac_writeDate,
+			   level
+		FROM re_ajaxComment
+		WHERE re_articleNO = #{re_articleNO}
+		CONNECT BY PRIOR ac_commentNO = ac_parentNO
+		START WITH ac_parentNO = 0
+		ORDER SIBLINGS BY ac_writeDate
+		]]>
+	</select>
+
+	<!-- 기존 방법 Ajax 대댓글 방법!! 백업용 -->
+	<!--<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
+	<![CDATA[
+			select * from re_ajaxComment where re_articleNO = #{re_articleNO}
+		]]>
+	</select>-->
+	
+	<!-- 조상현: ajax 대댓글(23.08.01)  -->
+	<insert id="insertComment" parameterType="com.proj.salad.review.vo.ajaxCommentVO">
+		<![CDATA[
+			INSERT INTO re_ajaxComment(ac_commentNO, re_articleNO, ac_parentNO, userId, ac_content)
+			VALUES(re_accomment_seq.NEXTVAL, #{re_articleNO}, #{ac_parentNO}, #{userId}, #{ac_content})
+		]]>
+	</insert>
+	
+</mapper>

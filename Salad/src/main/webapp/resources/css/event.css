@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+/* 폰트 */
+	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 하유리: 이벤트페이지 제목(23.07.29.) */
+.event_sub {
+	margin: 50px 0;
+	padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+}												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+
+/* 하유리: 이벤트페이지 제목(23.07.29.)  */
+.event_text1 {
+ 	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
+	font-weight: 700;
+	line-height: 1.2;
+  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
+}
+
+/* 하유리: 배너 전체 */
+.eventBanner_wrap{
+	width: 100%;
+	margin: 50px auto;								/* 가로 가운데 정렬 */
+	font-family: 'Noto Sans KR', sans-serif;	/* 폰트 */
+}
+
+/* 하유리: 배너-푸터 사이 여백을 위한 <div> */
+.margin {
+	margin-bottom: 100px;
+}
+
+/* 하유리: 배너 1행(3개씩) */
+.bannerRow {
+	margin: 30px auto;
+	display: flex;
+	justify-content: center;
+}
+
+/* 하유리: 각각의 배너 */
+.banner {
+	border: 1px solid #e3e3e3;	/* 배너 테두리 */
+	border-radius: 10px;			/* 배너 테두리 둥글게 */
+	margin: 0 20px;					/* 배너별 간격 */
+}
+
+/* 하유리: 배너이미지 */
+.banner_img {	/* 배너이미지 위쪽테두리 둥글게 */
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+}
+
+.banner_img img {	
+	transition: all 0.1s linear;	/* 마우스오버(hover) 시 이미지 확대 */
+}
+
+.banner_img:hover img {	
+	transform: scale(1.1);		/* 마우스오버(hover) 시 이미지 확대 */
+}
+
+.banner_img {	
+	overflow: hidden;			/* 이미지가 div를 벗어났을 때, 벗어난 부분은 보이지 않음 */
+	height: 300px;				/* 이미지 아래 여백 없애기(23.07.23.) */
+}
+
+/* 하유리: 배너 설명(배너 이미지 text부분) */
+.banner_content {
+	padding: 15px;
+	border-top: 1px solid #e3e3e3;
+}
+
+/* 하유리: 배너 제목 */
+.content_sub {
+	color: #000;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+/* 하유리: 배너 브랜드명 */
+.content_brand	{
+	font-size: 12px;
+	color: #888887;
+}

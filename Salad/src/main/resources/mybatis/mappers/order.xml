@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.order">
+
+	<resultMap id="cartListResult" type="cartListVO">
+		<result property="cartNum" column="cartNum" />
+		<result property="userId" column="userId" />
+		<result property="prodNum" column="prodNum" />
+		<result property="prodName" column="prodName" />
+		<result property="prodPrice" column="prodPrice" />
+		<result property="prodDescription" column="prodDescription" />
+		<result property="prodBrand" column="prodBrand" />
+		<result property="prodCreateTimestamp"
+			column="prodCreateTimestamp" />
+		<result property="prodDeliveryPrice" column="prodDeliveryPrice" />
+		<result property="cartCount" column="cartCount" />
+
+	</resultMap>
+
+
+	<!-- 장바구니 ID로 저장된 제품 검색 -->
+	<select id="selectOrderList" parameterType="String"
+		resultMap="cartListResult">
+		SELECT
+		sc.cartNum,
+		sc.userId,
+		sp.prodNum,
+		sp.prodName,
+		sp.prodPrice,
+		sp.prodDescription,
+		sp.prodBrand,
+		sp.prodCreateTimestamp,
+		sp.prodDeliveryPrice,
+		sc.cartCount
+		FROM
+		shop_cart sc
+		JOIN
+		shop_product sp
+		ON
+		sc.prodNum = sp.prodNum
+		WHERE
+		sc.userId = #{userId}
+	</select>
+
+	<!-- 주문 테이블 insert -->
+	<insert id="newOrder" parameterType="orderVO">
+		insert into shop_order
+		(
+		orderNum,
+		fakeOrderNum,
+		userId,
+		orderStatus,
+		orderCreateTimestamp,
+		orderUpdateTimestamp,
+		ordererName,
+		ordererPhone,
+		ordererEmail,
+		destName,
+		destPhone,
+		destLoc,
+		totalPrice,
+		prodDeliveryDate,
+		memo
+		)
+		values
+		(
+		order_seq.NEXTVAL,
+		#{fakeOrderNum},
+		#{userId},
+		#{orderStatus},
+		SYSDATE,
+		SYSDATE,
+		#{ordererName},
+		#{ordererPhone},
+		#{ordererEmail},
+		#{destName},
+		#{destPhone},
+		#{destLoc},
+		#{totalPrice},
+		SYSDATE + 1,
+		#{memo}
+		)
+	</insert>
+
+	<!-- 현재 주문 테이블의 메뉴 테이블 insert -->
+	<insert id="newOrderMenu" parameterType="orderMenuVO">
+		insert into order_menu
+		(
+		orderMenuNum,
+		orderNum,
+		userId,
+		menuName,
+		menuCount
+		)
+		values
+		(
+		order_menu_seq.NEXTVAL,
+		order_seq.CURRVAL,
+		#{userId},
+		#{menuName},
+		#{menuCount}
+		)
+	</insert>
+
+	<!-- 현재 주문 테이블의 계좌정보 테이블 insert -->
+	<insert id="newAccount" parameterType="accountVO">
+		INSERT INTO order_account
+		(
+		OrderAccountNum,
+		orderNum,
+		accountNumber,
+		accountPeriod,
+		accountCVC,
+		accountName,
+		purchaseType
+		)
+		VALUES (
+		order_account_seq.NEXTVAL,
+		order_seq.CURRVAL,
+		#{accountNumber},
+		#{accountPeriod},
+		#{accountCVC},
+		#{accountName},
+		'카드결제'
+		)
+	</insert>
+
+	<!-- 주문 완료 후 장바구니 비우기(데이터 삭제) -->
+	<delete id="deleteCartList" parameterType="String">
+		delete from shop_cart
+		where userId = #{userId}
+	</delete>
+
+	<!-- 주문 날짜 가져오기 -->
+	<select id="selectOrderTime" parameterType="orderVO" resultType="com.proj.salad.order.vo.OrderVO">
+		SELECT
+		orderCreateTimestamp
+		FROM shop_order
+		WHERE OrderNum = (SELECT
+		MAX(OrderNum) FROM shop_order)
+
+	</select>
+
+</mapper>

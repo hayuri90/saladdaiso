@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+"-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+   <definition name="baseLayout"  template="/WEB-INF/views/common/layout.jsp">
+      <put-attribute name="title" value="" />
+      <put-attribute name="header" value="/WEB-INF/views/common/header.jsp" />
+      <put-attribute name="body" value="" />
+      <put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
+   </definition>
+
+   <!-- 공지게시판 -->
+   <definition name="/notice/list" extends="baseLayout">
+      <put-attribute name="title" value="리뷰페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/notice/noticeList.jsp" />
+   </definition>
+   
+   <!-- 하유리: 글쓰기 페이지 추가(23.07.31.) -->
+   <definition name="/notice/insertNotice" extends="baseLayout">
+      <put-attribute name="title" value="리뷰페이지" />
+      <put-attribute name="body" value="/WEB-INF/views/notice/insertNotice.jsp" />
+   </definition>
+
+    <definition name="/notice/noticeContent" extends="baseLayout">
+      <put-attribute name="title" value="리뷰페이지_상세" />
+      <put-attribute name="body" value="/WEB-INF/views/notice/noticeContent.jsp" />
+   </definition>
+
+    <definition name="/notice/updateNotice" extends="baseLayout">
+      <put-attribute name="title" value="리뷰페이지_상세" />
+      <put-attribute name="body" value="/WEB-INF/views/notice/updateNotice.jsp" />
+   </definition>
+   
+    <definition name="/notice/replyNotice" extends="baseLayout">
+      <put-attribute name="title" value="리뷰페이지_상세" />
+      <put-attribute name="body" value="/WEB-INF/views/notice/replyNotice.jsp" />
+   </definition>
+   
+</tiles-definitions>

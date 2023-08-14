@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+/* 하유리: 헤더(배너 포함)(23.07.12.) */
+.header_outside {
+	width: 1519.2px									/* 하유리: 창 축소 시 요소 안 밀리게 너비 지정(23.07.29.) */
+	left: 0;
+	top: 0;
+	margin: 0 auto;									/* auto: 가로 중앙 정렬 */
+	border-bottom: 1px solid #e2e2e2;								/* 변경(23.08.11.) */
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;		/* 추가(23.08.11.) */
+	background-color: #fff;						/* 하유리: 배경색 추가(23.07.25.) */
+
+	position: fixed;			/* 헤더: 상단고정 */						
+	top: 0;
+	left: 0;
+	right: 0;
+
+	z-index:999;				/* 헤더를 맨 앞으로 정렬 */
+}
+
+/* 하유리: 최상단 배너(23.07.14) */
+#topBanner {
+	position: relative;
+    z-index: 11;
+    background: #128853;	
+    display:block;
+}
+    
+#topBanner div {
+	position: relative;
+ 	z-index: 12;
+ 	width: 100%;
+ 	height: 52px;
+ 	margin: 0 auto;
+ 	text-align: center;
+ 	line-height: 52px;
+}
+    
+#topBanner div p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+}
+	
+#topBanner span.closeBtn {	/* 배너 닫기버튼 위치 조정(23.07.14.) */
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    z-index: 13;
+}
+
+#topBanner .closeBtn a img {	/* 배너 닫기버튼 크기 조정(23.07.14.) */
+    display: block;
+    height:15px;		
+}
+
+/* 하유리: 헤더(배너 미포함)(23.07.12.) */
+.header_inside {
+	padding: 10px 100px;	/* 여백지정(23.07.12.) */
+}
+
+/* 하유리: 로고(23.07.12.) */
+.header_top_content {
+	/* 로고+메뉴 양쪽 끝 정렬(23.07.12.) */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	/* 로고+메뉴 수직 중앙 정렬(23.07.12.) */
+	align-items: center;	
+}
+
+/* 메뉴1, 2 공통사항 */
+.list1, .list2 {
+	list-style: none;	/* <ul> 말머리기호 제거(23.07.12.) */
+}
+
+.list1 li, .list2 li {
+	display: inline-block;	/* <li> 1줄로 배열(23.07.12.) */
+}	
+
+.list1 li a, .list2 li a {
+	text-decoration: none;	/* <a>태그 밑줄 제거(23.07.12.) */
+	color: #000;
+}
+
+.list1 li a:hover, .list2 li a:hover {	/* 메뉴1+메뉴2 마우스오버 시 글자색 변경(23.07.14.) */
+	color: #128853;
+	transition: 0.3s;
+}
+
+/* 하유리: 메뉴1(23.07.12.) */
+.list1 li {
+	float: left;	/* 요소 간 간격 지정(23.07.12.) */
+}
+
+.list1 {
+	width: 127.35px;		/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
+}
+
+/* 하유리: 주석처리(23.07.30.) */
+/* .list1 li::before {	메뉴 사이에 구분선 넣기(23.07.12.)
+	padding-left: 5px;
+	content: " | ";
+}
+
+.list1 > li:first-child::before {	첫번째 구분선만 안보이게 처리 
+	content:" ";
+}	 */	
+
+/* 하유리: 메뉴2(23.07.12.) */
+.mainMenu {
+	font-size: 19px;
+	font-weight: bold;
+	/* 하유리: 메인메뉴 요소 간 위치/간격조정(23.07.14.) */
+	text-align: center;
+	position: relative;
+	height: 48px;
+	line-height: 48px;
+	display: inline-block;
+}
+
+.list2 {	/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
+	width: 780.74px;			/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
+	display: flex;
+	justify-content: space-between;
+}
+
+.list2 li{	/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
+	position: relative;
+	display: inline-block;
+	padding: 0px 60px;
+}
+
+.slideBanner {
+	width: 100%;
+	height: 100%;
+}
+
+/* 하유리: 로그인ID, 로그아웃버튼(23.07.30.) */
+.userMenu {
+	display: flex;			/* 1줄로 배열 */
+	margin-top: 5px;
+}
+
+/* 하유리: 로그아웃 버튼(23.07.30.) */
+.userMenu img {
+	/* width: 51px; */
+	width: 65px;
+	margin: 1px 0 0 3px;
+}
+
+/* 하유리: 페이지 이동버튼(23.07.30.) */
+.functionMenu ul {
+	margin-top: 15px;
+	display: flex;
+    justify-content: space-between;	/* 일정간격으로 배열 */
+}
+
+/* 하유리: 장바구니 아이콘(23.07.30.) */
+.functionMenu .cart_icon {
+	margin-top: -2px;
+}

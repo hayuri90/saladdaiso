@@ -1,0 +1,78 @@
+/* 주석 처리(23.08.11.) */
+/* .search-bar {							
+    font-size: 16px;
+    background: blue;
+} */
+
+/* 검색어 입력 input */
+.search-bar {
+	/* border: none;
+	border-bottom: 1px solid black; */
+	border: 1px solid #e2e2e2;		/* 추가(23.08.11.) */
+    border-radius: 7px;				/* 추가(23.08.11.) */
+    width: 170px;							/* 추가(23.08.11.) */
+	height: 30px;							/* 추가(23.08.11.) */
+	padding: 5px;						/* 추가(23.08.11.) */
+	margin-right: 5px;					/* 추가(23.08.11.) */
+}
+
+.review_search img {					/* 추가(23.08.11.) */
+	position: absolute;
+    top: 4px;
+    width: 21px;
+    right: 3px;
+    margin: 0;
+}
+
+.search-bar:focus {
+	outline: none;
+}
+
+/* 검색어 입력 input: placeholder */
+.search-bar::placeholder {	/* 추가(23.08.11.) */
+	color: #cccccc;			
+}
+
+/* 검색 버튼 */
+.search-btn {
+	border: none;
+    border-radius: 7px;		/* 추가(23.08.11.) */
+	height: 30px;					/* 변경(23.08.11.) */
+	width: 28px;					/* 변경(23.08.11.) */
+	font-size: 12px;
+	background: #128853;
+	color: white;
+}
+
+/* 광고(23.08.11.) */
+.ad {
+    position: fixed;
+    width: 95px;
+    top: 237px;
+    right: 95px;
+}
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
+}

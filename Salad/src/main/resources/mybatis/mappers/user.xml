@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+      PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+   <mapper namespace="mapper.user"> <!-- 매퍼 가져올때 사용할 고유이름 -->
+  	 <!-- 유저 정보를 저장할 resultMap의 정의와  SQL문을 실행 한 후 반환되는 레코드들을 typeAlias 태그에서 지정한 userVO 빈에 저장 -->
+  	 <resultMap id="userResult" type="userVO" >
+  	 	 <!-- 레코드의 컬럼 이름에 대해 userVO의 같은 속성에 값을 설정 -->
+   		<result property="userId" column="userId"/>
+   		<result property="userPwd" column="userPwd"/>
+   		<result property="userName" column="userName"/>
+   		<result property="userBirth" column="userBirth"/>
+   		<result property="userGender" column="userGender"/>
+   		<result property="userEmail" column="userEmail"/>
+   		<result property="userPhone" column="userPhone"/>
+   		<result property="userAddress1" column="userAddress1"/>
+   		<result property="userAddress2" column="userAddress2"/>
+   		<!-- SMS,Email 수신동의 여부 관련(23.07.20 추가) -->
+   		<result property="smssts_yn" column="smssts_yn"/>
+   		<result property="emailsts_yn" column="emailsts_yn"/>
+   	 </resultMap>
+   
+   <!-- 로그인 -->
+   <!-- userDAO에서 id를 이용해 해당 SQL문을 호출 id는 매퍼 내에서 쿼리를 구분짓는 고유 이름, resultType은 데이터를 쿼리를 실행한 뒤 결과가 있을 경우에 사용, parameterType(매개변수 타입)은 매퍼에 데이터를 넣을 때 사용 -->
+   <select id="login" resultType="userVO" parameterType="java.util.Map"> <!-- parameterType="java.util.Map", "userVO" -->
+   	<![CDATA[
+   		select *from shop_user
+   		where userId=#{userId}
+   		and userPwd=#{userPwd}
+   	]]>
+   </select>
+   
+   <!-- 회원가입 -->
+   <!-- SMS,Email 수신동의 여부 관련(23.07.20 추가) -->
+   <insert id="insertNewUser" parameterType="userVO">
+     <![CDATA[
+    	insert into  shop_user(userId,
+				 					             userPwd,
+                                    			 userName,
+                                    			 userGender,
+                                    			 userEmail,
+                                     			 userBirth,
+                                     			 userPhone,
+                                     			 userAddress1,
+                                     			 userAddress2,
+                                     			 smssts_yn,
+                                     			 emailsts_yn)
+							 values(#{userId},
+										  #{userPwd},
+									 	  #{userName},
+									 	  #{userGender},
+									 	  #{userEmail},
+                                 	 	  #{userBirth},
+                                   	      #{userPhone},
+                                   	      #{userAddress1},
+                                    	  #{userAddress2},
+                                    	  #{smssts_yn},
+                                    	  #{emailsts_yn})
+           ]]>
+   </insert>
+
+   <!-- ID 중복검사 -->
+ <!-- 회원 가입시 입력한 id로 id 중복 검사를 합니다. -->
+   <select id="selectOverlappedID" parameterType="String" resultType="String">
+	  <![CDATA[
+	   select decode(count(*),1, 'true', 0, 'false')
+	   from shop_user
+	   where userId = #{id}
+	      ]]>      
+	</select>
+	
+   </mapper>

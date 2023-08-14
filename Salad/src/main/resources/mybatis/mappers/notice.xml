@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="notice">
+	
+	<!-- 1-1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.24.) -->
+	<select id="selectAllNoticeList" parameterType="com.proj.salad.notice.vo.Criteria" resultType="com.proj.salad.notice.vo.NoticeVO">
+		<![CDATA[			
+			SELECT * FROM (
+			    SELECT LEVEL, ARTICLENO, PARENTNO, LPAD(' ', 4*(level-1)) || TITLE TITLE, CONTENT, USERID, WRITEDATE, VIEWCNT, ROWNUM RNO
+			    from SHOP_BOARD
+			    where ARTICLENO>=0
+			    START WITH parentNO=0
+			    CONNECT BY PRIOR articleNO=parentNO
+			    ORDER SIBLINGS BY ARTICLENO DESC
+			    )
+			WHERE RNO BETWEEN #{rowStart} and #{rowEnd}
+		]]>
+	</select>
+	
+	<!-- 1-2. 게시물 총 개수(23.07.16.) -->
+	<select id="getTotal" resultType="int">
+		SELECT COUNT(ARTICLENO) FROM SHOP_BOARD
+	</select>
+	
+	<!-- 2-1. 리뷰게시판 글쓰기(23.07.24.) -->
+	<insert id="insertNotice" parameterType="com.proj.salad.notice.vo.NoticeVO">
+		<![CDATA[
+			INSERT INTO SHOP_BOARD(ARTICLENO, PARENTNO, USERID, TITLE, CONTENT, WRITEDATE, VIEWCNT)
+			VALUES(
+			(SELECT MAX(ARTICLENO)+1 from SHOP_BOARD), 0, #{userId}, #{title},  #{content}, SYSDATE, #{viewCnt})
+		]]>
+	</insert>
+
+	<!-- 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.24.) -->
+	<select id="selectNotice"  parameterType="com.proj.salad.notice.vo.NoticeVO"  resultType="String">
+		SELECT ARTICLENO 
+		FROM SHOP_BOARD
+		WHERE USERID=#{userId} and  TITLE=#{title}
+	</select>
+	
+	<!-- 2-2. 파일 업로드(23.07.20.) -->
+	<insert id="insertNoticeImg" parameterType="java.util.Map">
+		<![CDATA[
+			INSERT INTO BOARD_IMAGE(NT_IMGNO, USERID, ARTICLENO, ORIGINALFILENAME, STOREDFILENAME, FILESIZE)
+			VALUES(NT_IMG_SEQ.NEXTVAL, #{USERID}, #{ARTICLENO}, #{ORIGINALFILENAME}, #{STOREDFILENAME}, #{FILESIZE})
+		]]>
+	</insert>
+	
+	<!-- 3-1. 게시물 상세조회(23.07.16.) -->
+	<select id="detailNotice" resultType="com.proj.salad.notice.vo.NoticeVO">
+		<![CDATA[
+			SELECT articleNO, title, content, userId, writeDate, viewCnt			
+			FROM shop_board
+			WHERE articleNO = #{articleNO}
+		]]>
+	</select>
+	
+	<!-- 3-2. 조회수 증가(23.07.16.) -->
+	<update id="updateCnt" parameterType="int">
+		<![CDATA[
+			UPDATE SHOP_BOARD
+			SET VIEWCNT = viewCnt + 1
+			WHERE ARTICLENO = #{articleNO}
+		]]>
+	</update>
+	
+	<!-- 이미지 정보 가져오기 -->
+	<select id="detailImg" parameterType="String" resultType="com.proj.salad.notice.vo.Notice_imageVO">
+		<![CDATA[
+				SELECT *
+	            FROM BOARD_IMAGE
+			    WHERE ARTICLENO = #{ARTICLENO}
+		]]>
+	</select>
+	
+	<!-- 하유리: 4-2. 게시물 수정하기(23.07.18.) -->
+	<update id="updateNotice" parameterType="com.proj.salad.notice.vo.NoticeVO">
+		<![CDATA[
+			UPDATE SHOP_BOARD 
+			SET
+				USERID=#{userId},
+				TITLE = #{title},
+				CONTENT = #{content}
+			WHERE ARTICLENO = #{articleNO}
+		]]>
+	</update>
+
+	<!-- 하유리: 5. 게시물 삭제하기(23.07.18.) -->
+	<delete id="deleteNotice">
+		<![CDATA[
+			DELETE FROM SHOP_BOARD
+			WHERE ARTICLENO= #{articleNO}
+		]]>
+	</delete>
+	
+	<!-- 하유리: 6-2. 답변 작성(23.07.18.) -->
+	<insert id="replyNotice" parameterType="com.proj.salad.notice.vo.NoticeVO">
+		<![CDATA[
+			INSERT INTO SHOP_BOARD(ARTICLENO, PARENTNO, USERID, TITLE, CONTENT, WRITEDATE, VIEWCNT)
+			VALUES(
+			(SELECT MAX(ARTICLENO)+1 from SHOP_BOARD), #{articleNO}, #{userId}, #{title},  #{content}, SYSDATE, #{viewCnt})
+		]]>
+	</insert>
+	
+</mapper>

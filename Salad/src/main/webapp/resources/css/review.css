@@ -1,0 +1,183 @@
+@charset "UTF-8";
+
+/* css 초기화 코드 적용 */
+@import "reset.css";
+
+/* 하유리: 폰트 */
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 하유리: 리뷰 페이지 제목 수정(23.07.29.) */
+.review_sub {
+	margin: 50px 0;
+	padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	/*width: 1519.2px;						!* 하유리: 창 너비 줄여도 요소 밀리지 않게 너비 지정(23.07.31.) *!*/
+}
+
+/* 하유리: 리뷰페이지 제목(23.07.29.)  */
+.review_text {
+ 	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
+	font-weight: 700;
+	line-height: 1.2;
+  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
+}
+
+.container {
+	/* width: 100%; */									/* 주석처리(23.08.12.) */
+	/* padding: 0 200px 100px 200px; */		/* 주석처리(23.08.12.) */
+	width: 920px;											/* 추가(23.08.12.) */
+	margin: auto;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	padding-bottom: 100px;						/* 추가(23.08.14.) */
+}
+
+/* 하유리: 테이블 */
+.table {
+	padding: 20px 0;
+	text-align: center;
+	/* width: 920px; */				/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */ /* 주석처리(23.08.12.) */
+    /* table-layout: fixed; */
+    width: 100%;						/* 추가(23.08.12.) */
+}
+
+/* 하유리: 제목 스타일 */
+.re_title a {
+	text-decoration: none;
+	color: #000;
+}
+
+/* 하유리: 페이징 */
+.pagination {
+	display: inline-block;
+	margin: 20px 0;
+}
+
+.pagination a {
+	color: black;
+	padding: 8px 16px;
+	text-decoration: none;
+}
+
+/* 현재페이지 스타일 */
+.pagination a.active{
+	background-color: #128853;
+	color: #fff;
+	font-weight: bold;
+}
+
+.pagination a:hover:not(.active){
+	background-color: #ddd;
+}
+
+/* 글쓰기 버튼 */
+.writeBtn{
+	margin: 0px 0px 60px 0px;
+	padding: 5px 10px;					/* 하유리: 버튼 안쪽 여백 수정(23.07.31.) */
+	border-radius: 5px;
+	border-style: none;
+	background-color:#128853;
+	color: #fff;
+	float: right;
+}
+
+/* reviewList.jsp 검색(23.08.11.) */
+.search-form {
+	display: flex;						/* 추가(23.08.11.) */
+	align-items: flex-start;		/* 추가(23.08.11.) */
+}
+
+/* 검색어 전체 */
+.review_search {
+	display: flex;
+	justify-content: right;
+	margin-bottom: 21px;
+	position: relative;
+}
+
+/* 검색어 form */
+.search-form {
+	display: flex;
+	align-items: flex-start;
+}
+
+/* 검색어 입력 input */
+.search-bar {
+	/* border: none;
+	border-bottom: 1px solid black; */
+	border: 1px solid #e2e2e2;		/* 추가(23.08.11.) */
+    border-radius: 7px;				/* 추가(23.08.11.) */
+    width: 170px;							/* 추가(23.08.11.) */
+	height: 30px;							/* 추가(23.08.11.) */
+	padding: 5px;						/* 추가(23.08.11.) */
+	margin-right: 5px;					/* 추가(23.08.11.) */
+}
+
+.review_search img {					/* 추가(23.08.11.) */
+	position: absolute;
+    top: 4px;
+    width: 21px;
+    right: 3px;
+    margin: 0;
+}
+
+.search-bar:focus {
+	outline: none;
+}
+
+/* 검색어 입력 input: placeholder */
+.search-bar::placeholder {	/* 추가(23.08.11.) */
+	color: #cccccc;			
+}
+
+/* 검색 버튼 */
+.search-btn {
+	border: none;
+    border-radius: 7px;		/* 추가(23.08.11.) */
+	height: 30px;					/* 변경(23.08.11.) */
+	width: 28px;					/* 변경(23.08.11.) */
+	font-size: 12px;
+	background: #128853;
+	color: white;
+}
+
+/* 광고(23.08.11.) */
+.ad {
+    position: fixed;
+    top: 237px;
+    right: 51.5px;
+}
+
+@media screen and (max-width: 1260px) {
+  .ad {
+    display: none;
+  }
+} 
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+    background-color: #fff;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,235 @@
+@charset "UTF-8";
+
+/* 하유리 */
+
+/* css 초기화 코드 적용 */
+@import "reset.css";
+
+.content1 {
+	font-family: 'Pretendard-Regular';
+	font-size: 19px;
+	font-weight: bold;
+	margin: 20px 0 100px 0;
+}
+
+/* 하유리: 타이틀(23.07.14.) */
+.content1 h3{
+	font-size: 28px;
+	margin-top: 35px;		/* 하유리: 첫 화면에서 안 보이도록 여백 추가(23.07.26.) */
+}
+
+/* 하유리: 슬라이드배너 슬라이드효과 추가(23.07.15.)  */
+.section [id*="slide"] {	/* input 숨김 */
+	display:none;
+}
+.section .slideWrap {	/* 슬라이드 영역 */
+	max-width:100%;
+	margin:0 auto;
+	overflow:hidden;
+	position:relative;
+	padding-top: 156px;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+}
+.section .slideBannerList {
+	white-space:nowrap;		/* inline 요소의 자동 줄바꿈 제거 */
+}
+.section .slideBannerList > li {
+	display:inline-block;
+	vertical-align:middle;
+	width: 100%;
+	transition:all .5s;
+}
+
+/* 좌우로 넘기는 label버튼 */
+.section .slideControl {	/* 스타일 지정 */
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	width:100%;	/* 좌우 버튼 간격 */
+	height:100%;	/* 좌우 버튼 높이 */
+}
+.section .slideControl label {
+	position:absolute;
+	z-index:1;
+	top:60%;	/* 하유리: 헤더 고정으로 인해 위치 조정(23.07.25.) */
+	transform:translateY(-50%);
+	padding:10px;	/* 좌우 버튼 크기 */
+	cursor:pointer;
+}
+.section .slideControl .left {
+	left:30px;		/* 왼쪽 버튼 위치 */
+	background:url('../image/main/slideBanner_back.png') center center / 100% no-repeat;
+}
+.section .slideControl .right {
+	right:30px;		/* 왼쪽 버튼 위치 */
+	background:url('../image/main/slideBanner_next.png') center center / 100% no-repeat;
+}
+.section .slideControl [class*="control"] {
+	display:none;
+}
+
+.section [id="slide1"]:checked ~ .slideWrap .slideBannerList > li {	/* input 체크 시, 변화값이 li까지 전달 */
+	transform:translateX(0%);
+}
+.section [id="slide2"]:checked ~ .slideWrap .slideBannerList > li {
+	transform:translateX(-100%);
+}
+.section [id="slide3"]:checked ~ .slideWrap .slideBannerList > li {
+	transform:translateX(-200%);
+}
+
+.section [id="slide1"]:checked ~ .slideWrap .control1 {	/*  input 체크 시, 변화값이 좌우 슬라이드 버튼을 담고 있는 div까지 전달 */
+	display:block;
+}
+.section [id="slide2"]:checked ~ .slideWrap .control2 {
+	display:block;
+}
+.section [id="slide3"]:checked ~ .slideWrap .control3 {
+	display:block;
+}
+
+/* 하유리: 폰트(23.07.26.) */
+	@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+/* 하유리: 추천상품 열 단위(상품 3개씩)(23.07.26.) */
+.prodRow {
+/* 	margin: 10px auto;
+    margin-bottom: 30px; */
+	margin: 30px auto;
+	display: flex;
+	justify-content: center;
+}
+
+.line1 {
+	margin-left: 98px;				/* 추가(23.08.12.) */
+}
+
+/* 하유리: 제목(23.07.26.) */
+.prod_sub {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 28px;
+	color: #333;
+ 	letter-spacing: -1px;
+ 	font-weight: 500;
+}
+
+/* 하유리: 제목(23.07.26.) */
+.padding {
+	padding-top: 80px;			/* 2번째, 3번째 제목에만 여백 지정 */
+}
+
+/* 하유리: 각각의 추천상품(23.07.26.) */
+.content1 .prod {
+	margin: 0 35px;					/* 배너별 간격 */
+}
+
+/* 하유리: 추천상품 이미지(23.07.26.) */
+.prod_img img {
+	width: 250px;										/* 추천상품 이미지 사이즈 */
+	/* padding-bottom: 15px; */				/* 추천상품 이미지 - 추천상품 이름 간격 */
+}
+
+.prod_img img {	
+	transition: all 0.2s linear;	/* 마우스오버(hover) 시 이미지 확대(23.07.27.) */
+}
+
+.prod_img:hover img {	
+	transform: scale(1.05);		/* 마우스오버(hover) 시 이미지 확대(23.07.27.) */
+}
+
+/* 하유리: 추천상품 이름(23.07.26.) */
+.prod_content {
+	/* border-top: 1px solid #e2e2e2; */			/* 윗부분 테두리 */
+	/* border-bottom: 1px solid #e2e2e2; */		/* 아랫부분 테두리 */
+	padding: 7px;											/* 추천상품 이름 테두리 간격 */
+	margin: 0 24px;											/* 테두리 길이 */
+	margin-bottom: 5px;						
+}
+
+.prod_content_sub {
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 500;		/* 하유리: 폰트 굵기 수정(23.07.27.) */
+	font-size: 15px;
+	color: #333;
+}
+
+/* 하유리: 추천상품 할인가격(23.07.27.) */
+.content_discount {
+	color: rgb(250, 98, 47);
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* 하유리: 추천상품 가격(23.07.27.) */
+.content_price {
+	font-size: 15px;
+	font-weight: 800;
+	padding-top: 5px;
+}
+
+/* 하유리: 원가(23.07.27.) */
+.content_cost span {
+	font-size: 14px;
+	color: rgb(181, 181, 181);
+	font-weight: 400;
+	text-decoration:line-through;
+}
+
+/* 하유리: 장바구니+구매 아이콘(23.07.26.) */
+.mainBtn {			
+	display: flex;									/* 아이콘+<p> 일렬로 배열 */			
+ 	justify-content: space-evenly;			/* 간격 일정하게 유지 */
+ 	border: 1px solid rgb(221, 221, 221);;
+  	border-radius: 4px;
+  	margin: 0 78px;								/* 버튼 너비 조정 */
+  	padding: 4px 15px;						/* 버튼 너비 조정 */
+  	color: #333;
+  	cursor: pointer;								/* 하유리: 포인터 추가(23.07.27.) */
+}
+
+/* 하유리: 장바구니 아이콘(23.07.26.) */
+.wishBtn {
+	width: 24px;
+}
+
+/* 하유리: 장바구니 옆 텍스트(23.07.26.) */
+.mainBtn p {
+  	font-family: 'Noto Sans KR', sans-serif;
+    font-size: 15px;
+  	font-weight: 400;
+}
+
+/* 광고(23.08.11.) */
+.ad {
+    position: sticky;
+	right: 50px;
+    top: 50%;
+    transform: translateY(5%);
+    float: right;
+}
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+    background-color: #fff;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
+}

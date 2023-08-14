@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+body {
+	/* font-family: Arial, sans-serif; */			/* 하유리: 주석 처리(23.08.02.) */
+  	line-height: 1.6;
+  	margin: 0;
+  	padding: 0;
+}
+
+main {
+	font-family: 'Noto Sans KR', sans-serif;	/* 하유리: 폰트 변경(23.08.02.) */
+	max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 178px;   			/* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
+    margin-left: 500px;				/* 하유리: 마진 지정(23.08.02.) */
+    margin-right: 500px;				/* 하유리: 마진 지정(23.08.02.) */
+}
+
+/* 상단 이미지+텍스트<div> */
+.complete_msg {
+	margin: 45px auto;				/* 하유리: 위아래 여백 지정(23.08.02.) */
+}
+
+/* 상단 v이미지 */
+.complete_msg img {
+	width: 85px;							/* 하유리: 너비 지정(23.08.02.) */
+}
+
+/* 주문완료 텍스트 */
+#h1 {
+	color : #333;
+	font-size:30px						/* 하유리: 폰트 크기 수정(23.08.02.) */;
+	letter-spacing: -0.8px;			/* 하유리: 자간 수정(23.08.02.) */
+   	font-weight: 600;					/* 하유리: 폰트 굵기 지정(23.08.02.) */
+	/* margin-top : 70px; */			/* 하유리: 주석 처리(23.08.02.) */
+	/* margin-bottom: 150px; */	/* 하유리: 주석 처리(23.08.02.) */
+}
+
+#h1 b {
+	color: #02BC7D;
+	
+}
+
+.h3 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size:15px;
+    font-weight: bold;
+    margin-left:15px;
+}
+
+.info-block {
+    border: none;
+    margin: 55px 25px;								/* 하유리: 위아래 여백 지정(23.08.02.) */
+    border-top: 2px dashed #e2e2e2;			/* 하유리: 위 테두리 지정(23.08.02.) */
+    border-bottom: 2px dashed #e2e2e2;	/* 하유리: 위 테두리 지정(23.08.02.) */
+    padding: 10px 0;									/* 하유리: 안쪽 여백 지정(23.08.02.) */
+    font-weight: 500;									/* 하유리: 폰트 굵기 지정(23.08.02.) */
+    font-size: 16px;										/* 하유리: 폰트 크기 지정(23.08.02.) */
+    letter-spacing: -0.3px;							/* 하유리: 자간 지정(23.08.02.) */
+    color: #333;											/* 하유리: 폰트 색상 지정(23.08.02.) */	
+    /* margin-bottom: 20px; */					/* 하유리: 주석 처리(23.08.02.) */
+    /* padding: 10px; */								/* 하유리: 주석 처리(23.08.02.) */
+    /* background-color: #f9f9f9; */				/* 하유리: 주석 처리(23.08.02.) */    
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    /* margin-bottom: 10px; */				/* 하유리: 주석 처리(23.08.02.) */
+    flex-direction: row;
+ }
+ 
+ /* 주문번호 전체 행 */
+ .line-orderNum {
+ 	margin: 10px 0;									/* 하유리: 위아래 마진 지정(23.08.02.) */
+ }
+
+.line-title {
+    width: 120px;
+    font-weight: 500;								/* 하유리: 폰트 굵기 변경(23.08.02.) */
+    margin-right: 10px;
+    padding:10px 0;									/* 하유리: 여백 변경(23.08.02.) */
+    /* background-color: #128853; */		/* 하유리: 주석 처리(23.08.02.) */
+    color: #333;										/* 하유리: 폰트 색상 변경(23.08.02.) */
+    text-align: left;
+}
+
+.line-content {
+     flex-grow: 1;
+     text-align: right;								/* 하유리: 텍스트 우측 배열(23.08.02.) */
+     padding: 10px 0;								/* 하유리: 여백 변경(23.08.02.) */
+}
+
+/* 버튼 전체<div> */
+.payment_btn {
+	margin-bottom: 45px;						/* 하유리: 하단 마진 지정(23.08.02.) */
+}
+
+/* 하유리: 하단 버튼(23.08.02.) */
+.payment_btn button {
+   	padding: 0px 10px;
+  	width: 214px;
+   	height: 56px;
+
+   	font-family: 'Noto Sans KR', sans-serif;
+   	font-size: 16px;
+   	text-align: center;
+   	color: rgb(255, 255, 255);
+
+   	border: 0px none;
+   	border-radius: 5px;
+   	background-color: #128853;
+   
+   	overflow: hidden;
+   	cursor: pointer;											/* 마우스오버 시 커서 변경 */
+}
+
+/* 버튼: 호버 */
+.payment_btn button:hover { 
+	background: #fff; 
+	color: #333;
+	border: 1px solid #128853;
+}

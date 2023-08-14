@@ -1,0 +1,197 @@
+/* 김동혁 css 추가 (23.07.19) */
+
+/* body 영역 Container */
+.body-container {
+    display: flex;
+    justify-content: center;
+    padding-top: 178px;
+}
+
+/* 장바구니 Container */
+.cart-container {
+    /*background-color: aliceblue;*/
+    /*height: 1000px;*/
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid darkgray;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    /* 장바구니 부분 기본 폰트 변경 */
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 500;
+}
+
+/* 장바구니 안 물건들 */
+.cart-stuff {
+    margin-bottom: 20px;
+}
+
+/* 장바구니 내용 박스 */
+.cart-box {
+    background-color: white;
+    /*height: 500px;*/
+    /*overflow: auto;*/
+    display: flex;
+    flex-direction: column;
+}
+
+/* 장바구니 비어있는 부분 여백 */
+#cart-null {
+    font-size: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#cart-null-div {
+    display: flex;
+    justify-content: center;
+
+}
+
+/* 장바구니 전체 목록 묶음 */
+.cart-list {
+    width: 100%;
+    border-bottom: 1px solid lightgray;
+    /*padding-bottom: 200px;*/
+}
+
+.cart-list-ul {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 장바구니 각 목록 */
+.cart-list-li {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart-list-li:first-child {
+    margin-top: 25px;
+}
+
+.cart-list-li:last-child {
+    margin-bottom: 25px;
+
+}
+
+.cart-list-li:hover {
+    background: rgba(74,255,146,0.1);
+}
+
+/* 장바구니 수량 부분 */
+.cart-list-li > .cart-count {
+    height: 30px;
+    width: 100px;
+}
+
+.cart-list-li > div {
+
+}
+
+/* 장바구니 목록 이미지 */
+#cart-image {
+    margin-left: 5px;
+    /*width: 40px;*/
+    height: 40px;
+    margin-right: -100px;
+}
+
+/* 장바구니 제목 부분 */
+.cart-list-span {
+    width: 500px;
+    text-align: left;
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+/* 장바구니 삭제 부분 */
+.cart-list-del {
+    height: 35px;
+    width: 60px;
+    border: none;
+    margin-right: 20px;
+}
+
+.cart-list-del:hover {
+    cursor: pointer;
+    background-color: #128853;
+    color: white;
+}
+
+/* 장바구니 수량 부분 */
+.cart-count {
+    font-size: 18px;
+    text-align: center;
+    width: 20px;
+    border: none;
+}
+
+/* 장바구니 계산 부분 */
+.cart-sum {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 150px;
+    width: 100%;
+}
+
+.cart-sum-res {
+
+}
+
+.cart-sum > div {
+    align-items: center;
+}
+
+.cart-sum > div > span {
+    font-size: 20px;
+}
+
+.cart-margin {
+    margin-top: 5px;
+}
+
+.text-h1 {
+    font-size: 30px;
+}
+
+.cart-h1 {
+    font-size: 30px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 10px;
+}
+
+/* 주문하기 버튼 부분 */
+/*.button-order {*/
+/*    background-color: #128853;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    height: 60px;*/
+/*    width: 180px;*/
+/*    font-size: 24px;*/
+/*    font-weight: bold;*/
+/*}*/
+.button-order {
+    background-color: #128853;
+    color: white;
+    border: none;
+    height: 50px;
+    width: 140px;
+    font-size: 18px;
+    /*font-weight: bold;*/
+}
+
+.button-order:hover {
+    /*background-color: #36DDA6;*/
+}
+
+.button-order:hover {
+    cursor: pointer;
+    border: 2px solid black;
+}
