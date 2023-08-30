@@ -19,43 +19,36 @@
 
 <body>
 <div class="container mt-3">
-	<!-- 제목: 변경(23.07.21.)(23.07.30.) -->
-	<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
-	<div class="review_sub">                              <!-- 하유리: 클래스명 변경(23.07.30.) -->
-		<p class="review_text1">REVIEW</p>            <!-- 하유리: 클래스명 변경(23.07.30.) -->
+	<div class="review_sub">                       
+		<p class="review_text1">REVIEW</p>
 	</div>
 
 	<!-- 게시판 -->
 	<div class="content_table">
-		<%--          <form action="<c:url value='/review/update'/>" method="POST"
-                    enctype="multipart/form-data" role="form"> --%>
 		<input name="re_articleNO" type="hidden"
 			   value="${review.re_articleNO }" disabled>
 		<table>
-			<%-- 답글형은 주문번호 숨기기 - 김동혁(23.08.01) --%>
+			<!-- 김동혁: 답글형은 주문번호 숨기기(23.08.01) -->
 			<c:if test="${review.re_fakeOrderNum != null}">
 				<tr>
 					<th>주문번호</th>
-					<td>   <input class="content_input" name="re_fakeOrderNum" type="text" value="${review.re_fakeOrderNum}" disabled/></td>
+					<td><input class="content_input" name="re_fakeOrderNum" type="text" value="${review.re_fakeOrderNum}" disabled/></td>
 				</tr>
 			</c:if>
 
 			<tr>
 				<th>작성자</th>
-				<td><input class="content_input" name="userId" type="text"
-						   value="${review.userId }" disabled></td>
+				<td><input class="content_input" name="userId" type="text" value="${review.userId }" disabled></td>
 			</tr>
 
 			<tr>
 				<th>제목</th>
-				<td><input class="content_input" name="review_title"
-						   type="text" value="${review.re_title }" disabled></td>
+				<td><input class="content_input" name="review_title" type="text" value="${review.re_title }" disabled></td>
 			</tr>
 
 			<tr>
 				<th>내용</th>
-				<td><textarea class="content_text" name="review_content"
-							  cols="50" rows="10" disabled>${review.re_content }</textarea></td>
+				<td><textarea class="content_text" name="review_content" cols="50" rows="10" disabled>${review.re_content }</textarea></td>
 			</tr>
 
 			<tr>
@@ -92,16 +85,14 @@
 		</table>
 
 		<!-- 버튼 -->
-		<div class="btn_wrap">                           <!-- 하유리: 버튼 전체를 감싸는 <div> 추가(23.08.01.) -->
+		<!-- 하유리: 버튼 전체를 감싸는 <div> 추가(23.08.01.) -->
+		<div class="btn_wrap">	
 			<div class="content_btn1">
 				<button type="button" class="contentBtn"
 						onClick="location.href='${contextPath}/review/list'">목록</button>
-				<%-- 김동혁: 글쓰기 버튼 비활성화(23.08.03) --%>
-				<%--<button type="button" class="contentBtn"
-						onClick="location.href='${contextPath}/review/insert'">글쓰기</button>--%>
 			</div>
 			<div class="content_btn2">
-				<%-- 김동혁: 답글 버튼 admin만 사용 가능 --%>
+				<!-- 김동혁: 답글 버튼 admin만 사용 가능 -->
 				<c:if test="${user.userId == 'admin'}">
 					<button type="button" class="contentBtn"
 							onClick="location.href='${contextPath}/review/reply?re_articleNO=${review.re_articleNO }'">답글</button>
@@ -115,22 +106,21 @@
 				</c:if>
 			</div>
 		</div>
-		<!--          </form> -->
 	</div>
 
 
 	<!-- 댓글 작성 폼 -->
 	<div class="comment_wrap">
-		<div id="commentForm2">                                                                  <!-- 하유리: <div> 추가(23.08.01.) -->
+		<div id="commentForm2">                                                                  	<!-- 하유리: <div> 추가(23.08.01.) -->
 			<form id="commentForm" method="POST">
 				<p>댓글<p>
-				<div class="comment_input">                                                                  <!-- 하유리: 댓글 입력 부분 <div> 추가(23.08.01.) -->
-					<img src="${contextPath }/resources/image/review/007.png"/>                           <!-- 하유리: 아이콘 추가(23.08.01.) -->
+				<div class="comment_input">                                                      	<!-- 하유리: 댓글 입력 부분 <div> 추가(23.08.01.) -->
+					<img src="${contextPath }/resources/image/review/007.png"/>                  	<!-- 하유리: 아이콘 추가(23.08.01.) -->
 					<input class="comment_id" type="text" name="userId" id="userId"
-						   placeholder="로그인 후 이용 가능" value="${userVO.userId}" required readOnly>   <!-- 하유리: 클래스명, reaOnly 추가(23.08.01.) -->
+						   placeholder="로그인 후 이용 가능" value="${userVO.userId}" required readOnly>	<!-- 하유리: 클래스명, reaOnly 추가(23.08.01.) -->
 					<input class="comment_text" type="text" name="ac_content" id="ac_content"
-						   placeholder="댓글 내용" required autocomplete="off">                              <!-- 하유리: 클래스명, 자동완성 끄기 추가(23.08.01.) -->
-					<button type="submit" id="commentBt">댓글 입력</button>                           <!-- 하유리: 오타 및 텍스트 수정(23.08.01.) -->
+						   placeholder="댓글 내용" required autocomplete="off">                     	<!-- 하유리: 클래스명, 자동완성 끄기 추가(23.08.01.) -->
+					<button type="submit" id="commentBt">댓글 입력</button>                           	<!-- 하유리: 오타 및 텍스트 수정(23.08.01.) -->
 				</div>
 				<!-- 댓글 목록 테이블 -->
 			</form>
@@ -168,22 +158,12 @@
 						newComment = $('<div class="line">').css('padding-left', levelSum + 'px');
 						// newComment.addClass('line-child');
 					}
-					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));			/* 하유리: 이미지 추가(23.08.01.) */
-					newComment.append($('<div class="line-userId">').text(comment.userId));                    				/* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
-					newComment.append($('<div class="line-title">').text(comment.ac_content));                              	/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));	/* 하유리: 이미지 추가(23.08.01.) */
+					newComment.append($('<div class="line-userId">').text(comment.userId));             	/* 하유리: 변수명+클래스명 변경, '아이디' 텍스트 삭제(23.08.02.) */
+					newComment.append($('<div class="line-title">').text(comment.ac_content));           	/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
 					var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));                     /* 하유리: 텍스트 수정(23.08.02.) */
-					newComment.append($('<button class="line-comment" name="reply" onclick="showCommentForm('+i+')">・ 대댓글</button>'));			/* 하유리: 대댓글 버튼 추가(23.08.02.) */
-
-					/* 하유리: 주석 처리(23.08.02.) */
-					// 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
-					/* newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST" style="display:none;">'));
-					var ac_commentNoValue = comment.ac_commentNO;
-					console.log('넘버 내용: ' + ac_commentNoValue);
-					newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
-					newComment.append($('<input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
-					newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
-					newComment.append($('</form>')); */
+					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));      	/* 하유리: 텍스트 수정(23.08.02.) */
+					newComment.append($('<button class="line-comment" name="reply" onclick="showCommentForm('+i+')">・ 대댓글</button>'));	/* 하유리: 대댓글 버튼 추가(23.08.02.) */
 					
 					/* 하유리: 자꾸 <form>태그가 바로 닫혀서, 위의 코드를 1줄로 작성(23.08.02.) */
 					/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
@@ -243,24 +223,12 @@
 						newComment = $('<div class="line">').css('padding-left', levelSum + 'px');
 						// newComment.addClass('line-child');
 					}
-                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));					/* 하유리: 이미지 추가(23.08.01.) */
-                    newComment.append($('<div class="line-userId">').text(comment.userId));											/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
-                    newComment.append($('<div class="line-title">').text(comment.ac_content));											/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+                    newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));	/* 하유리: 이미지 추가(23.08.01.) */
+                    newComment.append($('<div class="line-userId">').text(comment.userId));					/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
+                    newComment.append($('<div class="line-title">').text(comment.ac_content));				/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
                     var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-                    newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));								/* 하유리: 텍스트 수정(23.08.02.) */
-                    newComment.append($('<button class="line-comment" name="reply"  onclick="showCommentForm('+i+')">・ 대댓글</button>'));				/* 하유리: 대댓글 버튼 추가(23.08.02.) */
-                    
-                 	// 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
-                 	/* 하유리: 주석 처리(23.08.02.) */
-                 	/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
-/*                     newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
-                    var ac_commentNoValue = comment.ac_commentNO;
-                    console.log('넘버 내용: ' + ac_commentNoValue);
-                    newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
-                    newComment.append($('<input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력해주세요">'));
-                    newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글 입력</button>'));
-                    newComment.append($('</form>'));
-                    commentList.append(newComment); */
+                   newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));			/* 하유리: 텍스트 수정(23.08.02.) */
+                    newComment.append($('<button class="line-comment" name="reply"  onclick="showCommentForm('+i+')">・ 대댓글</button>'));	/* 하유리: 대댓글 버튼 추가(23.08.02.) */
                     
 					/* 하유리: 자꾸 <form>태그가 바로 닫혀서, 위의 코드를 1줄로 작성(23.08.02.) */
 					/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
@@ -310,23 +278,13 @@
 						newComment = $('<div class="line">').css('padding-left', levelSum + 'px');
 						// newComment.addClass('line-child');
 					}
-					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));				/* 하유리: 이미지 추가(23.08.01.) */
-					newComment.append($('<div class="line-userId">').text(comment.userId));                                 		/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
-					newComment.append($('<div class="line-title">').text(comment.ac_content));                                 	/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
+					newComment.append($('<img src="${contextPath }/resources/image/review/006.png"/>'));	/* 하유리: 이미지 추가(23.08.01.) */
+					newComment.append($('<div class="line-userId">').text(comment.userId));           		/* 하유리: '아이디' 텍스트 삭제(23.08.01.)' */
+					newComment.append($('<div class="line-title">').text(comment.ac_content));            	/* 하유리: x번째 댓글' 텍스트 삭제(23.08.02.) */
 					var dateString = new Date(comment.ac_writeDate).toISOString().split('T')[0];
-					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));							/* 하유리: 텍스트 수정(23.08.02.) */
+					newComment.append($('<div class="line-content">').text('등록일자: ' + dateString));		/* 하유리: 텍스트 수정(23.08.02.) */
 
-					newComment.append($('<button class="line-comment" name="reply"  onclick="showCommentForm('+i+')">・ 대댓글</button>'));				/* 하유리: 대댓글 버튼 추가(23.08.02.) */
-					
-					/* 하유리: 주석 처리(23.08.02.) */
-					// 인덱스를 이용하여 고유한 id 속성을 추가하여 폼 요소를 생성합니다.
-					/* newComment.append($('<form id="comment_reply_Form_' + i + '" method="POST">'));
-					var ac_commentNoValue = comment.ac_commentNO;
-					console.log('넘버 내용: ' + ac_commentNoValue);
-					newComment.append($('<input type="text" id="reply-NO_' + i + '" value="' + ac_commentNoValue + '" hidden>'));
-					newComment.append($('<input type="text" class="comment_text2" id="reply-input_' + i + '" placeholder="대댓글을 입력하세요...">'));
-					newComment.append($('<button type="submit" id="commentBt2_' + i + '" class="reply-btn">대댓글달기</button>'));
-					newComment.append($('</form>')); */
+					newComment.append($('<button class="line-comment" name="reply"  onclick="showCommentForm('+i+')">・ 대댓글</button>'));	/* 하유리: 대댓글 버튼 추가(23.08.02.) */
 					
 					/* 하유리: 자꾸 <form>태그가 바로 닫혀서, 위의 코드를 1줄로 작성(23.08.02.) */
 					/* 하유리: 댓글 입력 input 클래스명, placeholder, 버튼 텍스트 변경(23.08.02.) */
@@ -335,7 +293,7 @@
 					console.log('넘버 내용: ' + ac_commentNoValue);
 					commentList.append(newComment);
 					
-					$('#ac_content').val('');		/* 하유리: '댓글 입력' 버튼 클릭 후 입력이 완료되면 input에 작성한 내용 지우기(23.08.02.) */
+					$('#ac_content').val('');	/* 하유리: '댓글 입력' 버튼 클릭 후 입력이 완료되면 input에 작성한 내용 지우기(23.08.02.) */
 				}
 			},
 			error: function() {

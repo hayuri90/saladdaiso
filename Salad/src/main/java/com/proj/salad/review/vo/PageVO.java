@@ -1,17 +1,20 @@
 package com.proj.salad.review.vo;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageVO {	
 	
-	private int totalPost;					//총 게시물 수 	
-	private int startPage;				//시작페이지 번호		
-	private int endPage;				//마지막페이지 번호
-	private int realEnd;					//실제 마지막페이지 번호
+	private int totalPost;			//총 게시물 수 	
+	private int startPage;			//시작페이지 번호		
+	private int endPage;			//마지막페이지 번호
+	private int realEnd;			//실제 마지막페이지 번호
 	private boolean prev, next;		//이전버튼, 다음버튼
 	private int displayPage=10;		//한 화면에 표시될 페이지개수	
-	private Criteria criteria;				//현재페이지에 관한 데이터 호출
+	private Criteria criteria;		//현재페이지에 관한 데이터 호출
 		
 	public PageVO() {}
 	
@@ -108,18 +111,30 @@ public class PageVO {
 	   
 	 return uriComponents.toUriString();
 	}
-
-	public String makeSearchQuery(int curPage, String s_title){
-		UriComponents uriComponents =
-				UriComponentsBuilder.newInstance()
-						.queryParam("s_title", s_title)
-						.queryParam("curPage", curPage)
-						.queryParam("perPageNum", criteria.getPostsPerPage())
-						.build();
-
+	
+	//검색기능 관련 메소드
+	public String makeSearch(int page) {
+		UriComponents uriComponents = 
+		  UriComponentsBuilder.newInstance()
+		  .queryParam("page", page)
+		  .queryParam("perPageNum", criteria.getPostsPerPage())
+		  .queryParam("searchType", ((SearchCriteria)criteria).getSearchType())
+		  .queryParam("keyword", encoding(((SearchCriteria)criteria).getKeyword()))
+		  .build();
 		return uriComponents.toUriString();
 	}
 	
+	private String encoding(String keyword) {
+		if(keyword == null || keyword.trim().length() == 0) {
+			return "";
+		}
+		try {
+			return URLEncoder.encode(keyword, "UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			return "";
+		}
+	}
+
 	//toString
 	@Override
 	public String toString() {

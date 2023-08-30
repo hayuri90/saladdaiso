@@ -19,6 +19,7 @@ import com.proj.salad.review.util.FileUtils;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.SearchCriteria;
 import com.proj.salad.review.vo.ajaxCommentVO;
 
 @Service("reviewService")
@@ -160,6 +161,18 @@ public class ReviewServiceImpl implements ReviewService {
 			reviewDao.insertImage(list.get(i));
 		}
 	}
+	
+	//목록+페이징+검색
+	@Override
+	public List<ReviewVO> searchList(SearchCriteria scri) throws Exception {
+		return reviewDao.searchList(scri);
+	}
+	
+	//검색 결과 개수
+	@Override
+	public int searchCount(SearchCriteria scri) throws Exception{
+		return reviewDao.searchCount(scri);
+	}
 
 	@Override
 	public List<ajaxCommentVO> ajaxComment(int re_articleNO) {
@@ -172,13 +185,6 @@ public class ReviewServiceImpl implements ReviewService {
 		
 	}
 
-	@Override
-	public List<ReviewVO> selectSearchReviewList(Criteria criteria) {
-		return reviewDao.selectSearchReviewList(criteria);
-	}
 
-	@Override
-	public int getSearchTotal(String s_title) {
-		return reviewDao.getSearchTotal(s_title);
-	}
+
 }

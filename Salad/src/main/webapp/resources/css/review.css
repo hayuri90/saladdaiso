@@ -24,23 +24,73 @@
 }
 
 .container {
-	/* width: 100%; */									/* 주석처리(23.08.12.) */
-	/* padding: 0 200px 100px 200px; */		/* 주석처리(23.08.12.) */
-	width: 920px;											/* 추가(23.08.12.) */
+	width: 100%;
+	padding: 0 200px 100px 200px;
 	margin: auto;
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
-	padding-bottom: 100px;						/* 추가(23.08.14.) */
+}
+
+/********* 검색 *********/
+/* 검색 전체(23.08.29.) */
+.search-form {
+	display: flex;
+	align-items: flex-start;
+}
+
+/* 검색어 전체(23.08.29.) */
+.search {
+	display: flex;
+	justify-content: right;
+	margin-bottom: 21px;
+	position: relative;
+}
+
+/* 검색어 입력 input */
+.search-bar, .searchType {
+	border: 1px solid #e2e2e2;		/* 추가(23.08.11.) */
+    border-radius: 7px;				/* 추가(23.08.11.) */
+    /* width: 170px; */				/* 추가(23.08.11.) */ /* 주석처리(23.08.19.) */
+	height: 30px;					/* 추가(23.08.11.) */
+	padding-left: 5px;				/* 추가(23.08.11.) */	 /* 수정(23.08.19.) */
+	margin-right: 5px;				/* 추가(23.08.11.) */
+}
+
+.search img {				/* 추가(23.08.11.) */
+	position: absolute;
+    top: 4px;
+    width: 21px;
+    right: 3px;
+    margin: 0;
+}
+
+.search-bar:focus, .searchType:focus {	/* 수정(23.08.19.) */
+	outline: none;
+}
+
+/* 검색어 입력 input: placeholder */
+.search-bar::placeholder {	/* 추가(23.08.11.) */
+	color: #cccccc;			
+}
+
+
+/* 검색버튼(23.08.29.) */
+.search-btn {
+	border: none;
+    border-radius: 7px;		/* 추가(23.08.11.) */
+	height: 30px;					/* 변경(23.08.11.) */
+	width: 28px;					/* 변경(23.08.11.) */
+	font-size: 12px;
+	background: #128853;
+	color: white;
 }
 
 /* 하유리: 테이블 */
 .table {
 	padding: 20px 0;
 	text-align: center;
-	/* width: 920px; */				/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */ /* 주석처리(23.08.12.) */
-    /* table-layout: fixed; */
-    width: 100%;						/* 추가(23.08.12.) */
+	width: 920px;				/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */
 }
 
 /* 하유리: 제목 스타일 */
@@ -81,103 +131,4 @@
 	background-color:#128853;
 	color: #fff;
 	float: right;
-}
-
-/* reviewList.jsp 검색(23.08.11.) */
-.search-form {
-	display: flex;						/* 추가(23.08.11.) */
-	align-items: flex-start;		/* 추가(23.08.11.) */
-}
-
-/* 검색어 전체 */
-.review_search {
-	display: flex;
-	justify-content: right;
-	margin-bottom: 21px;
-	position: relative;
-}
-
-/* 검색어 form */
-.search-form {
-	display: flex;
-	align-items: flex-start;
-}
-
-/* 검색어 입력 input */
-.search-bar {
-	/* border: none;
-	border-bottom: 1px solid black; */
-	border: 1px solid #e2e2e2;		/* 추가(23.08.11.) */
-    border-radius: 7px;				/* 추가(23.08.11.) */
-    width: 170px;							/* 추가(23.08.11.) */
-	height: 30px;							/* 추가(23.08.11.) */
-	padding: 5px;						/* 추가(23.08.11.) */
-	margin-right: 5px;					/* 추가(23.08.11.) */
-}
-
-.review_search img {					/* 추가(23.08.11.) */
-	position: absolute;
-    top: 4px;
-    width: 21px;
-    right: 3px;
-    margin: 0;
-}
-
-.search-bar:focus {
-	outline: none;
-}
-
-/* 검색어 입력 input: placeholder */
-.search-bar::placeholder {	/* 추가(23.08.11.) */
-	color: #cccccc;			
-}
-
-/* 검색 버튼 */
-.search-btn {
-	border: none;
-    border-radius: 7px;		/* 추가(23.08.11.) */
-	height: 30px;					/* 변경(23.08.11.) */
-	width: 28px;					/* 변경(23.08.11.) */
-	font-size: 12px;
-	background: #128853;
-	color: white;
-}
-
-/* 광고(23.08.11.) */
-.ad {
-    position: fixed;
-    top: 237px;
-    right: 51.5px;
-}
-
-@media screen and (max-width: 1260px) {
-  .ad {
-    display: none;
-  }
-} 
-
-.ad .ad_img, .ad .ad_div {
-	width: 95px;
-}
-
-.ad .ad_div {
-	border: 1px solid #e2e2e2;
-	margin-top: 10px;
-    background-color: #fff;
-}
-
-.ad .ad_div a {
-	text-decoration: none;		
-}
-
-.ad .ad_div p {
-	padding: 3px;
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 13px;
-	font-weight: 300;
-	color: #333;
-}
-
-.ad_div p:hover {
-    cursor: pointer;
 }

@@ -40,7 +40,7 @@
 					<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 				</select>
 				<input type="text" class="search-bar" id="keywordInput" name="keyword" placeholder="검색" autocomplete="off" value="${scri.keyword}"/>	
-				<button type="submit" class="search-btn" value="" onClick="inputChk()"><img src="${contextPath}/resources/image/common/footer/magnifier.png"/></button>	<!-- button태그로 변경, value값 제거, 이미지 추가(23.08.11.) -->			
+				<button type="submit" class="search-btn" value=""><img src="${contextPath}/resources/image/common/footer/magnifier.png"/></button>	<!-- button태그로 변경, value값 제거, 이미지 추가(23.08.11.) -->			
 			</div>
 		</div>
 		<table class="table table-hover">
@@ -76,7 +76,7 @@
 					    			<c:choose>
 					    				<c:when test="${reviewStatus.count<=3}"><!-- 베스트글 표시 -->
 					    					<span style="font-size:15px; color:#128853"> [베스트]</span>
-					    					<a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO }"><c:out value="${review.re_title }"/></a>
+					    					<a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO }z"><c:out value="${review.re_title }"/></a>
 					    				</c:when>
 					    				
 					    				<c:when test="${review.level>1 }"> <!-- 답변 표시 -->
@@ -124,22 +124,22 @@
 		<div class="pagination">
 			<!-- 이전 버튼 -->
 			<c:if test="${pageMaker.prev}">
-            	<a href="${pageMaker.makeQuery(pageMaker.startPage-1)}">&laquo;</a></li>
+            	<a href="${pageMaker.makeSearch(pageMaker.startPage-1)}">&laquo;</a></li>
             </c:if>
               	
 			<!-- 각 번호 페이지 버튼 -->				
 			<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage}" var="curPage">
 				<c:if test="${select != curPage }">
-					<a href="${pageMaker.makeQuery(curPage)}">${curPage}</a>
+					<a href="${pageMaker.makeSearch(curPage)}">${curPage}</a>
 				</c:if>
 				<c:if test="${select == curPage }">
-					<a class="active" href="${pageMaker.makeQuery(curPage)}">${curPage}</a>
+					<a class="active" href="${pageMaker.makeSearch(curPage)}">${curPage}</a>
 				</c:if>
 			</c:forEach>
 			
 			<!-- 다음페이지 버튼 -->
             <c:if test="${pageMaker.next && pageMaker.endPage>0}">
-                <a href="${pageMaker.makeQuery(pageMaker.endPage+1)}">&raquo;</a>
+                <a href="${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a>
             </c:if>  
 			<form id="moveForm" method="get">
 				<input type="hidden" name="curPage" value="${pageMaker.criteria.curPage }">

@@ -12,8 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
-	<link href="../../resources/css/header.css" rel="stylesheet" type="text/css">
-	<link href="../../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<style>
 	
 		/* 폰트 */
@@ -188,9 +186,9 @@
 				</table>
 				
 				<div class="insert_btn">
-					<button class="writeBtn" type="submit">글등록</button>
-					<button class="writeBtn" type="reset" >초기화</button>
 					<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
+					<button class="writeBtn" type="reset" >초기화</button>
+					<button class="writeBtn" type="submit">글등록</button>
 				</div>
 			</form>
 		</div>

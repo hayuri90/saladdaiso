@@ -1,11 +1,10 @@
 package com.proj.salad.review.vo;
 
 public class Criteria {
-	private int curPage;				//현재페이지
+	private int curPage;			//현재페이지
 	private int postsPerPage;		//페이지당 게시글 수
-	private int rowStart;				//현재페이지의 시작게시물 번호
+	private int rowStart;			//현재페이지의 시작게시물 번호
 	private int rowEnd;				//현재페이지의 마지막게시물 번호
-	private String s_title; // 검색할 게시판 이름
 	
 	public Criteria() {
 		this.curPage=1;
@@ -49,14 +48,6 @@ public class Criteria {
 	public int getRowEnd() {
 		rowEnd=rowStart+postsPerPage-1;
 		return rowEnd;
-	}
-
-	public String getS_title() {
-		return s_title;
-	}
-
-	public void setS_title(String s_title) {
-		this.s_title = s_title;
 	}
 
 	//toString

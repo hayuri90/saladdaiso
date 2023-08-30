@@ -21,22 +21,19 @@
 }
 
 .container {
-	/* width: 100%;	*/								/* 주석 처리(23.08.12.) */
-	/* padding: 0 200px 100px 200px; */	/* 주석 처리(23.08.12.) */
-	width: 920px;										/* 추가(23.08.12.) */
-	margin: 0 auto;									/* 하유리: 여백 수정(23.07.31.) */
+	width: 100%;
+	padding: 0 200px 100px 200px;
+	margin: 0 auto;						/* 하유리: 여백 수정(23.07.31.) */
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
-	padding-bottom: 100px;					/* 추가(23.08.14.) */
 }
 
 /* 하유리: 테이블 */
 .table {
 	padding: 20px 0;
 	text-align: center;
-	/* width: 920px;	*/			/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */
-	width: 100%;					/* 추가(23.08.12.) */
+	width: 920px;				/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */
 }
 
 /* 하유리: 제목 스타일 */
@@ -77,44 +74,4 @@
 	background-color:#128853;
 	color: #fff;
 	float: right;
-}
-
-/* 광고(23.08.11.) */
-.ad {
-    position: fixed;
-    width: 95px;
-    top: 237px;
-    right: 51.5px;
-}
-
-@media screen and (max-width: 1260px) {		/* 특정 창크기에서 특정요소 숨기기(23.08.12.) */
-  .ad {
-    display: none;
-  }
-} 
-
-.ad .ad_img, .ad .ad_div {
-	width: 95px;
-}
-
-.ad .ad_div {
-	border: 1px solid #e2e2e2;
-	margin-top: 10px;
-    background-color: #fff;
-}
-
-.ad .ad_div a {
-	text-decoration: none;		
-}
-
-.ad .ad_div p {
-	padding: 3px;
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 13px;
-	font-weight: 300;
-	color: #333;
-}
-
-.ad_div p:hover {
-    cursor: pointer;
 }

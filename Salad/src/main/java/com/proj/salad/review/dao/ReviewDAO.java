@@ -10,6 +10,7 @@ import org.springframework.dao.DataAccessException;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.SearchCriteria;
 import com.proj.salad.review.vo.ajaxCommentVO;
 
 public interface ReviewDAO {
@@ -50,12 +51,14 @@ public interface ReviewDAO {
 	//하유리: 6-2. 답변 작성(23.07.18.)
 	public void replyReview(ReviewVO reviewVO);
 
+	//목록+페이징+검색
+	public List<ReviewVO> searchList(SearchCriteria scri) throws Exception;
+	
+	//검색 결과 개수
+	public int searchCount(SearchCriteria scri) throws Exception;
+	
 	public List<ajaxCommentVO> selectComment(int re_articleNO);
 
 	public void insertCommnet(ajaxCommentVO ajaxCommentVO);
-
-	public List<ReviewVO> selectSearchReviewList(Criteria criteria);
-
-	public int getSearchTotal(String s_title);
 
 }

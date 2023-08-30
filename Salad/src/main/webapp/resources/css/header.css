@@ -6,8 +6,7 @@
 	left: 0;
 	top: 0;
 	margin: 0 auto;									/* auto: 가로 중앙 정렬 */
-	border-bottom: 1px solid #e2e2e2;								/* 변경(23.08.11.) */
-	box-shadow: rgba(0, 0, 0, 0.07) 0px 3px 4px 0px;		/* 추가(23.08.11.) */
+	border-bottom: 2px solid #f7f7f7;		/* 하유리: header 구분선 추가(23.07.25.) */
 	background-color: #fff;						/* 하유리: 배경색 추가(23.07.25.) */
 
 	position: fixed;			/* 헤더: 상단고정 */						

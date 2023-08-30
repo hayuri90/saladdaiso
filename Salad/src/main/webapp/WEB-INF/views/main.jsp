@@ -16,7 +16,36 @@
 	<link href="resources/css/header.css" rel="stylesheet" type="text/css" >
 	<link href="resources/css/footer.css" rel="stylesheet" type="text/css" >
 	<link href="resources/css/main.css" rel="stylesheet" type="text/css" >
-	<!-- <style> 삭제(23.08.12.) --> 	
+	<style>
+		/* 김동혁 - css 임시 추가(23.07.13.) */
+		.listBox {
+			display: inline-block;
+		}
+
+		.prodBox {
+			display: flex;
+			float: left;
+			height: 300px;
+			width: 300px;
+			background-color: #bcbcbc;
+			margin: 20px;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.prodBox:hover {
+			cursor: pointer;
+		}
+
+		.prodP {
+			display: block;
+			transition: all 0.1s linear;
+		}
+
+		.prodP:hover {
+			transform: scale(1.2);
+		}
+	</style>  	
 </head>
 
 <body>
@@ -51,22 +80,14 @@
 </div>
 <div class="content1">
 	<!-- 하유리: 태그 수정(<p> → <h3>)(23.07.14.) -->
-	<!-- 광고(23.08.11.) -->
-	<div class="ad">
-		<a href="${contextPath}/event">
-			<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
-		</a>
-		<div class="ad_div">
-			<a href="${contextPath }/menu"><p>구매하기</p></a>
-			<a href="${contextPath }/notice/list"><p style="border-top: 1px solid #e2e2e2;">공지확인</p></a>
-		</div>
-	</div>
+
 	<%-- 김동혁 수정 ( 리스트 출력 )(23.07.14.)--%>
 	<div class="mainProd_wrap">
 		<div class="margin">
+		
 			<!-- 1번째 열 -->
-			<h3 class="prod_sub line1">판매량이 증명하는 추천상품🏆️</h3><br>		<!-- 클래스명 추가(23.08.12.) -->
-			<div class="prodRow line1">																			<!-- 클래스명 추가(23.08.12.) -->
+			<h3 class="prod_sub">판매량이 증명하는 추천상품🏆️</h3><br>
+			<div class="prodRow">		
 				<!-- 추천상품01 -->
 				<div class="prod" name="13">
 					<div class="prod_img">		<!-- 추천상품01 이미지 -->

@@ -123,31 +123,41 @@
 			(SELECT MAX(re_articleNO)+1 from shop_review), #{re_articleNO}, #{re_title}, #{userId}, #{re_content}, SYSDATE, #{re_viewCnt})
 		]]>
 	</insert>
-
-	<!-- 김동혁: 7-1. 검색기능 List(23.08.11) -->
-	<!-- 1-1. 전체목록조회 + 최다조회수 게시글 상단고정 + 페이징(23.07.16.) -->
-	<select id="selectSearchReviewList" parameterType="com.proj.salad.review.vo.Criteria" resultType="com.proj.salad.review.vo.ReviewVO">
+	
+	<!-- 검색 -->
+	<select id="searchList" resultType="com.proj.salad.review.vo.ReviewVO" parameterType="com.proj.salad.review.vo.SearchCriteria">
+		SELECT re_articleNO, re_title, re_content, userId, re_writeDate, re_viewCnt
+		FROM (
+    		SELECT re_articleNO, re_title, re_content, userId, re_writeDate, re_viewCnt, row_number() over(ORDER BY re_articleNO DESC) as rno
+    		FROM shop_review
+    			<include refid="search"></include>
+    		) review
+		WHERE rno between #{rowStart} and #{rowEnd}
+		ORDER BY re_articleNO DESC
+	</select>
+	
+	<sql id="search">
+		<if test="searchType!=null">
+			<if test="searchType == 't'.toString()">WHERE re_title like '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">WHERE re_content like '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'w'.toString()">WHERE userId like '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'tc'.toString()">WHERE (re_title like '%' || #{keyword} || '%') 
+													 OR (re_content like '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+	
+	<!-- 검색된 게시물 개수 -->
+	<select id="searchCount" resultType="int">
 		<![CDATA[
-		SELECT * FROM (
-						  SELECT level, re_articleNO, re_parentNO, LPAD(' ', 4*(level-1)) || re_title re_title, re_content, userId, re_writeDate, re_viewCnt, rownum rno
-						  FROM shop_review
-						  WHERE re_articleNO>=0
-						  		and re_title LIKE '%' || #{s_title} || '%'
-							  START WITH re_parentNO=0
-						  CONNECT BY PRIOR re_articleNO=re_parentNO
-						  ORDER SIBLINGS BY DECODE(re_viewCnt,'max(re_noti)',1), re_articleNO DESC
-					  )
-		WHERE rno BETWEEN #{rowStart} and #{rowEnd}
+		SELECT count(*)
+		FROM shop_review
+		]]>
+			<include refid="search"></include>
+		<![CDATA[
+			AND re_articleNO > 0
 		]]>
 	</select>
-
-	<!-- 김동혁: 7-2. 검색된 게시물 총 개수(23.08.11.) -->
-	<select id="getSearchTotal" resultType="int" parameterType="String">
-		select count(re_articleNO) from shop_review
-		where re_title LIKE '%' || #{s_title} || '%'
-	</select>
-
-
+	
 	<!-- 조상현: ajax 대댓글(23.07.31)  -->
 	<select id="selectComment" parameterType="int" resultType="com.proj.salad.review.vo.ajaxCommentVO">
 	<![CDATA[

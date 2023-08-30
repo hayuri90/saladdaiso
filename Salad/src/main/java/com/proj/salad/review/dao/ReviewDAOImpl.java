@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -14,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.ReviewVO;
 import com.proj.salad.review.vo.Review_imageVO;
+import com.proj.salad.review.vo.SearchCriteria;
 import com.proj.salad.review.vo.ajaxCommentVO;
 
 import lombok.RequiredArgsConstructor;
@@ -96,6 +96,18 @@ public class ReviewDAOImpl implements ReviewDAO {
 	public void replyReview(ReviewVO reviewVO) {
 		sqlSession.insert("review.replyReview", reviewVO);
 	}
+	
+	//목록+페이징+검색
+	@Override
+	public List<ReviewVO> searchList(SearchCriteria scri) throws Exception {
+		return sqlSession.selectList("review.searchList", scri);
+	}
+	
+	//검색 결과 개수
+	@Override
+	public int searchCount(SearchCriteria scri) throws Exception {
+		return sqlSession.selectOne("review.searchCount", scri);
+	}	
 
 	@Override
 	public List<ajaxCommentVO> selectComment(int re_articleNO) {
@@ -108,14 +120,5 @@ public class ReviewDAOImpl implements ReviewDAO {
 		sqlSession.insert("review.insertComment",ajaxCommentVO);
 		
 	}
-
-	@Override
-	public List<ReviewVO> selectSearchReviewList(Criteria criteria) {
-		return sqlSession.selectList("review.selectSearchReviewList", criteria);
-	}
-
-	@Override
-	public int getSearchTotal(String s_title) {
-		return sqlSession.selectOne("review.getSearchTotal", s_title);
-	}
+	
 }

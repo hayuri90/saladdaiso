@@ -252,8 +252,3 @@ td {
 .btn-cursor-pointer {
 	cursor: pointer;
 }
-
-/* 아이디(23.08.12.) */
-.memberMenu>ul>.userMenu p {
-	font-weight: 300;
-}

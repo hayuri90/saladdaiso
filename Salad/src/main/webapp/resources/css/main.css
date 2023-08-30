@@ -100,10 +100,6 @@
 	justify-content: center;
 }
 
-.line1 {
-	margin-left: 98px;				/* 추가(23.08.12.) */
-}
-
 /* 하유리: 제목(23.07.26.) */
 .prod_sub {
 	font-family: 'Noto Sans KR', sans-serif;
@@ -197,39 +193,4 @@
   	font-family: 'Noto Sans KR', sans-serif;
     font-size: 15px;
   	font-weight: 400;
-}
-
-/* 광고(23.08.11.) */
-.ad {
-    position: sticky;
-	right: 50px;
-    top: 50%;
-    transform: translateY(5%);
-    float: right;
-}
-
-.ad .ad_img, .ad .ad_div {
-	width: 95px;
-}
-
-.ad .ad_div {
-	border: 1px solid #e2e2e2;
-	margin-top: 10px;
-    background-color: #fff;
-}
-
-.ad .ad_div a {
-	text-decoration: none;		
-}
-
-.ad .ad_div p {
-	padding: 3px;
-	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 13px;
-	font-weight: 300;
-	color: #333;
-}
-
-.ad_div p:hover {
-    cursor: pointer;
 }

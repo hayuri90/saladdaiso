@@ -23,16 +23,6 @@
 		<div class="map_sub">
 			<p class="map_text">LOCATION</p>
 		</div>
-		<!-- 광고(23.08.11.) -->
-		<div class="ad">
-			<a href="${contextPath}/event">
-				<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
-			</a>
-			<div class="ad_div">
-				<a href="${contextPath }/menu"><p>구매하기</p></a>
-				<a href="${contextPath }/notice/list"><p style="border-top: 1px solid #e2e2e2;">공지확인</p></a>
-			</div>
-		</div>
 		
 		<!-- 지도 -->
 		<div class="map">
