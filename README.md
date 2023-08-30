@@ -53,7 +53,7 @@
 <div align='center'>
   <hr/><h3>2️⃣E-R 다이어그램</h3><hr/>
   <br/>
-  <img src="https://github.com/startDev01/Salad/assets/97159362/c8aea799-8e4a-4738-9c8e-51008326b0c1" width="850">
+  <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/fb143583-1039-4ceb-89cb-73ad64355df3" width="850">
 </div>
 <br/><br/>
 
