@@ -8,15 +8,14 @@
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css 적용 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS -->
     <link href="resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
     <link href="resources/css/common/terms.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>	
-	<div>	
+<body>
 	<div class="terms_sub">
 		<p class="terms_text">이용약관</p>
 		<select>

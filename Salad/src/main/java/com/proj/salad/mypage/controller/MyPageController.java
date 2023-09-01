@@ -14,20 +14,19 @@ import com.proj.salad.user.vo.UserVO;
 public interface MyPageController {
 	
 	//회원정보상세
-	public ModelAndView myDetailInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception;
+	public ModelAndView myDetailInfo(HttpServletRequest request, HttpServletResponse response) throws Exception;
+	
 	//회원정보수정
 	public ResponseEntity modifyMyInfo(@RequestParam("attribute") String attribute,
                                        @RequestParam("value") String value,
-                                       HttpServletRequest request, HttpServletResponse response)  throws Exception;
+                                       HttpServletRequest request, HttpServletResponse response) throws Exception;
 	//회원정보탈퇴
 	public ModelAndView removeUser(HttpServletRequest request, HttpServletResponse response) throws Exception;
 	
 	//마이페이지 메인
-	public ModelAndView myPageMain(@RequestParam(required = false,value="message")  String message,@RequestParam Map<String, String> dateMap,HttpServletRequest request, HttpServletResponse response)  throws Exception ;
+	public ModelAndView myPageMain(@RequestParam(required = false,value="message") String message, @RequestParam Map<String, String> dateMap,
+								   HttpServletRequest request, HttpServletResponse response) throws Exception ;
 	//주문취소
-	public ModelAndView cancelMyOrder(@RequestParam("orderNum")  int orderNum,HttpServletRequest request, HttpServletResponse response)  throws Exception;
-	
-	
-	
-	
+	public ModelAndView cancelMyOrder(@RequestParam("orderNum") int orderNum,HttpServletRequest request, HttpServletResponse response) throws Exception;
+
 }

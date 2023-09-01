@@ -12,9 +12,9 @@ import com.proj.salad.order.vo.AccountVO;
 import com.proj.salad.order.vo.OrderMenuVO;
 import com.proj.salad.order.vo.OrderVO;
 
-
 @Repository
 public class OrderDAOImpl implements OrderDAO{
+	
 	@Autowired
     private SqlSession sqlSession;
 
@@ -42,7 +42,6 @@ public class OrderDAOImpl implements OrderDAO{
 	@Override
 	public void newAccount(AccountVO accountVO) throws DataAccessException{
 		sqlSession.insert("mapper.order.newAccount",accountVO);
-		
 	}
 	
 	@Override
@@ -50,5 +49,5 @@ public class OrderDAOImpl implements OrderDAO{
 		List<OrderVO> orderTime = sqlSession.selectList("mapper.order.selectOrderTime");
 		return orderTime;
 	}
+	
 }
-

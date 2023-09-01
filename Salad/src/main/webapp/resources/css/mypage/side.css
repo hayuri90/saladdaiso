@@ -36,7 +36,7 @@
 	font-size: 17px;
 	color: #128853;
    	text-align: left;
-   	margin-bottom: 10px;			/* 제목 아래 여백 지정 */
+   	margin-bottom: 10px;	/* 제목 아래 여백 지정 */
 }
 
 /* 하유리: 실제 메뉴(23.07.31.) */
@@ -49,67 +49,11 @@
 
 /* 하유리: <ul>태그(23.07.31.) */
 .side_ul ul {
-	    text-align: left;					/* 좌측정렬 */
-	    padding: 0 14px;				/* 들여쓰기 */
-	    line-height: 2.3;					/* 줄간격 */
+	text-align: left;	/* 좌측정렬 */
+	padding: 0 14px;	/* 들여쓰기 */
+	line-height: 2.3;	/* 줄간격 */
 }
    
-   /* 사이드: 왼쪽고정 하려고 했는데 footer 부분 겹침..23.07.30 서승희 추가 */
- /*   nav{
-    position: fixed;		
-  	list-style-type: none;
-  	padding: 0px;
-  	margin-bottom: 0px;
-  	width: 18%;
-  	bottom: 0px;
-   } */
-
-/* 하유리: 주석처리(23.07.31.) */   
-/*    주문관리 주제목 부분
-   .list_order{  
-   	 background-color : lightgray;		하유리: 주석처리(23.07.31.)
- 	 border-radius: 3px;
- 	 width: 100px;
- 	 height: auto;
- 	 display: inline-block;
-     padding:5px;
- 	 margin-bottom: 15px; 
- 	 margin-top:15px;
-   }
-   
-   정보관리 주제목 부분
-   .list_info{
-   	 background-color : lightgray;		하유리: 주석처리(23.07.31.)
- 	 border-radius: 3px;
- 	 width: 100px;
- 	 height: auto;
- 	 display: inline-block;
-     padding:5px;
- 	 margin-bottom: 15px; 
- 	 margin-top:15px;
-   }
-   
-   공지게시판 주제목 부분
-   .mynotice{
-   	 background-color : lightgray;		하유리: 주석처리(23.07.31.)
- 	 border-radius: 3px;
- 	 width: 100px;
- 	 height: auto;
- 	 display: inline-block;
-     padding:5px;
- 	 margin-bottom: 15px; 
- 	 margin-top:15px;
-   }  
-   
-  	공지게시물 너비, 높이
-    .notice_hid{
-    	width:80%;
-  		height: 50px;
-   		display: inline-block;
-   		margin-left:20px;
-   		font-size:16px;
-   } */
-   
-   .notice_hid {
-   		letter-spacing: -0.2px;
-   }
+.notice_hid {
+	letter-spacing: -0.2px;
+}

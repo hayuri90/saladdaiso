@@ -9,15 +9,13 @@
 
 /* 장바구니 Container */
 .cart-container {
-    /*background-color: aliceblue;*/
-    /*height: 1000px;*/
     width: 1000px;
     display: flex;
     flex-direction: column;
-    padding: 30px;
-    border: 1px solid darkgray;
+    padding: 0 30px;			/* 수정(23.08.31.) */
+    margin: 100px 0;			/* 위 아래 여백(23.08.31.) */
+    border: 1px solid darkgray;	/* 전체 테두리(23.08.31.) */
     border-radius: 10px;
-    margin-bottom: 20px;
 
     /* 장바구니 부분 기본 폰트 변경 */
     font-family: 'Noto Sans KR', sans-serif;
@@ -26,14 +24,12 @@
 
 /* 장바구니 안 물건들 */
 .cart-stuff {
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 /* 장바구니 내용 박스 */
 .cart-box {
     background-color: white;
-    /*height: 500px;*/
-    /*overflow: auto;*/
     display: flex;
     flex-direction: column;
 }
@@ -48,14 +44,12 @@
 #cart-null-div {
     display: flex;
     justify-content: center;
-
 }
 
 /* 장바구니 전체 목록 묶음 */
 .cart-list {
     width: 100%;
     border-bottom: 1px solid lightgray;
-    /*padding-bottom: 200px;*/
 }
 
 .cart-list-ul {
@@ -88,10 +82,7 @@
 .cart-list-li > .cart-count {
     height: 30px;
     width: 100px;
-}
-
-.cart-list-li > div {
-
+    background: none;	/* 수량 박스 배경 삭제(23.08.31.) */
 }
 
 /* 장바구니 목록 이미지 */
@@ -141,10 +132,6 @@
     width: 100%;
 }
 
-.cart-sum-res {
-
-}
-
 .cart-sum > div {
     align-items: center;
 }
@@ -157,26 +144,22 @@
     margin-top: 5px;
 }
 
+/* '장바구니' 텍스트 */
 .text-h1 {
-    font-size: 30px;
+    font-size: 32px;							/* 수정(23.08.31.) */
+    font-family: 'Noto Sans KR', sans-serif;	/* 수정(23.08.31.) */
+    font-weight: 700;							/* 수정(23.08.31.) */
+    line-height: 1.2;							/* 수정(23.08.31.) */
+    letter-spacing: -1px;						/* 수정(23.08.31.) */
 }
 
+/* '장바구니' 텍스트 */
 .cart-h1 {
-    font-size: 30px;
     border-bottom: 1px solid lightgray;
-    padding-bottom: 10px;
+    padding: 20px 0;	/* 수정(23.08.31.) */
 }
 
-/* 주문하기 버튼 부분 */
-/*.button-order {*/
-/*    background-color: #128853;*/
-/*    color: white;*/
-/*    border: none;*/
-/*    height: 60px;*/
-/*    width: 180px;*/
-/*    font-size: 24px;*/
-/*    font-weight: bold;*/
-/*}*/
+/* '주문하기' 버튼 */
 .button-order {
     background-color: #128853;
     color: white;
@@ -184,7 +167,7 @@
     height: 50px;
     width: 140px;
     font-size: 18px;
-    /*font-weight: bold;*/
+    margin-bottom: 20px;	/* 버튼 아래 여백(23.08.31.) */
 }
 
 .button-order:hover {

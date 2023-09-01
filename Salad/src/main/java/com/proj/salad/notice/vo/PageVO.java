@@ -5,13 +5,13 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class PageVO {	
 	
-	private int totalPost;					//총 게시물 수 	
-	private int startPage;				//시작페이지 번호		
-	private int endPage;				//마지막페이지 번호
-	private int realEnd;					//실제 마지막페이지 번호
+	private int totalPost;			//총 게시물 수 	
+	private int startPage;			//시작페이지 번호		
+	private int endPage;			//마지막페이지 번호
+	private int realEnd;			//실제 마지막페이지 번호
 	private boolean prev, next;		//이전버튼, 다음버튼
 	private int displayPage=10;		//한 화면에 표시될 페이지개수	
-	private Criteria criteria;				//현재페이지에 관한 데이터 호출
+	private Criteria criteria;		//현재페이지에 관한 데이터 호출
 		
 	public PageVO() {}
 	

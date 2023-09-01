@@ -9,24 +9,64 @@
 /* 하유리: 리뷰 페이지 제목 수정(23.07.29.) */
 .review_sub {
 	margin: 50px 0;
-	padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
-	/*width: 1519.2px;						!* 하유리: 창 너비 줄여도 요소 밀리지 않게 너비 지정(23.07.31.) *!*/
+	padding: 178px 0 24px 0;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+								/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
 }
 
 /* 하유리: 리뷰페이지 제목(23.07.29.)  */
 .review_text {
  	font-family: 'Noto Sans KR', sans-serif;
-	font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
+	font-size: 32px;		/* 하유리: 폰트 크기 수정(23.07.29.) */
 	font-weight: 700;
 	line-height: 1.2;
-  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
+ 	letter-spacing: -1px;	/* 하유리: 제목 자간 수정(23.07.29.) */
 }
 
+/******** 광고(23.08.11.) ********/
+.ad {
+    position: fixed;
+    top: 237px;
+    right: 51.5px;
+}
+
+@media screen and (max-width: 1260px) {
+  .ad {
+    display: none;
+  }
+} 
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+    background-color: #fff;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
+}
+
+/******** 광고 end ********/
+
 .container {
-	width: 100%;
-	padding: 0 200px 100px 200px;
+	width: 920px;
 	margin: auto;
+	margin-bottom: 100px;
 	text-align: center;
 	font-family: 'Noto Sans KR', sans-serif;
 	font-size: 14px;
@@ -51,13 +91,12 @@
 .search-bar, .searchType {
 	border: 1px solid #e2e2e2;		/* 추가(23.08.11.) */
     border-radius: 7px;				/* 추가(23.08.11.) */
-    /* width: 170px; */				/* 추가(23.08.11.) */ /* 주석처리(23.08.19.) */
 	height: 30px;					/* 추가(23.08.11.) */
 	padding-left: 5px;				/* 추가(23.08.11.) */	 /* 수정(23.08.19.) */
 	margin-right: 5px;				/* 추가(23.08.11.) */
 }
 
-.search img {				/* 추가(23.08.11.) */
+.search img {	/* 추가(23.08.11.) */
 	position: absolute;
     top: 4px;
     width: 21px;
@@ -74,13 +113,12 @@
 	color: #cccccc;			
 }
 
-
 /* 검색버튼(23.08.29.) */
 .search-btn {
 	border: none;
     border-radius: 7px;		/* 추가(23.08.11.) */
-	height: 30px;					/* 변경(23.08.11.) */
-	width: 28px;					/* 변경(23.08.11.) */
+	height: 30px;			/* 변경(23.08.11.) */
+	width: 28px;			/* 변경(23.08.11.) */
 	font-size: 12px;
 	background: #128853;
 	color: white;
@@ -90,7 +128,7 @@
 .table {
 	padding: 20px 0;
 	text-align: center;
-	width: 920px;				/* 하유리: 창 너비 줄여도 요소 안 밀리게 너비 지정(23.07.31.) */
+	width: 100%;
 }
 
 /* 하유리: 제목 스타일 */
@@ -125,7 +163,7 @@
 /* 글쓰기 버튼 */
 .writeBtn{
 	margin: 0px 0px 60px 0px;
-	padding: 5px 10px;					/* 하유리: 버튼 안쪽 여백 수정(23.07.31.) */
+	padding: 5px 10px;	/* 하유리: 버튼 안쪽 여백 수정(23.07.31.) */
 	border-radius: 5px;
 	border-style: none;
 	background-color:#128853;

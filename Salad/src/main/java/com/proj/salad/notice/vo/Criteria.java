@@ -1,10 +1,10 @@
 package com.proj.salad.notice.vo;
 
 public class Criteria {
-	private int curPage;				//현재페이지
-	private int postsPerPage;		//페이지당 게시글 수
-	private int rowStart;				//현재페이지의 시작게시물 번호
-	private int rowEnd;				//현재페이지의 마지막게시물 번호
+	private int curPage;		//현재페이지
+	private int postsPerPage;	//페이지당 게시글 수
+	private int rowStart;		//현재페이지의 시작게시물 번호
+	private int rowEnd;			//현재페이지의 마지막게시물 번호
 	
 	public Criteria() {
 		this.curPage=1;

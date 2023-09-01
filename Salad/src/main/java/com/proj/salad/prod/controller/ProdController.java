@@ -40,14 +40,14 @@ public class ProdController {
     public ModelAndView menuPage(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String viewName = getViewName(request);
 
-        // 제품리스트 담을 리스트 생성
+        //제품리스트 담을 리스트 생성
         List prodList = new ArrayList();
         
-        // Service에서 상품 목록 select, prodList에 담기
+        //Service에서 상품 목록 select, prodList에 담기
         prodList = prodService.selectProdList();
         System.out.println("prodList 객체 확인 : " + prodList);
 
-        // ModelAndView 생성 후 JSP에 prodList 리스트 전달
+        //ModelAndView 생성 후 JSP에 prodList 리스트 전달
         ModelAndView mav = new ModelAndView();
         mav.addObject("prodList", prodList);
         mav.setViewName(viewName);
@@ -55,23 +55,22 @@ public class ProdController {
         return mav;
     }
 
-    /* 김동혁 detail 메소드 추가 (23.07.18) */
+    /* 김동혁: detail 메소드 추가(23.07.18) */
     @RequestMapping(value = "/detail", method = RequestMethod.GET, produces = "application/json")
     @ResponseBody
-    public String detailPage(@RequestParam int prodNum,
-            HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String detailPage(@RequestParam int prodNum, HttpServletRequest request, HttpServletResponse response) throws Exception {
         String viewName = getViewName(request);
 
         System.out.println("shopdetail");
 
-        // 영양소 VO 생성
+        //영양소 VO 생성
         NutrientVO nutrientVO = new NutrientVO();
 
-        // prodNum으로 영양소 테이블 조회
+        //prodNum으로 영양소 테이블 조회
         nutrientVO = prodService.selectProdNutrient(prodNum);
         System.out.println("영양소 VO : " + nutrientVO);
 
-        // JSON 으로 리턴값 보내기
+        //JSON 으로 리턴값 보내기
         ObjectMapper objectMapper = new ObjectMapper();
         String jsonData = objectMapper.writeValueAsString(nutrientVO);
 
@@ -108,4 +107,5 @@ public class ProdController {
         }
         return viewName;
     }
+    
 }

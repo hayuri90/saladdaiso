@@ -82,6 +82,4 @@ public class NoticeVO {
 				+ ", imageFileList=" + imageFileList + "]";
 	}
 	
-	
-	
 }

@@ -3,20 +3,20 @@
 /* css 초기화 코드 적용 *//* 23.07.30 서승희 추가  */
 @import "../reset.css";
 
-body { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+/* 서승희: 마이페이지 폰트 통일(23.07.30.) */
+body {
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 600;
 }
 
-head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
+/* 서승희: 마이페이지 폰트 통일(23.07.30.) */
+head {
     font-family: 'Noto Sans KR', sans-serif !important;
     font-weight: 600 !important;
 }
 
-
-.odl-container{   /* jsp에 있던 css 옮김 23.07.30 서승희 */
+.odl-container{
     padding-top: 178px;   /* 하유리: 헤더 영역만큼 아래로 내림(23.07.27.) */
-   
  }
 
 .odl-sub {
@@ -32,8 +32,7 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
 }
 
 .order-info-table {
-    /*border: 1px solid black;*/
-      font-size:13px;  /* jsp에 있던 css 옮김 23.07.30 서승희 */
+	font-size:13px;
     border-collapse: separate;
     border-spacing: 10px 20px;
     text-align: left;
@@ -46,11 +45,8 @@ head { /* 마이페이지 글씨체 폰트 맞추기 23.07.30 서승희 추가*/
     font-size: 20px;
 }
 
-
 .order-info-table tr td {
     width: 150px;
-    /*height: 40px;*/
-    /*vertical-align: middle;*/
     font-size: 13px;
 }
 

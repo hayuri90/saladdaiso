@@ -12,8 +12,10 @@ import java.util.List;
 
 @Repository
 public class MyPageOrderDAOImpl implements MyPageOrderDAO{
+	
     @Autowired
     SqlSession sqlSession;
+    
     @Override
     public List<OrderListVO> selectOrderList(String userName) throws DataAccessException {
         System.out.println("selectOrderList DAO 실행");
@@ -39,4 +41,5 @@ public class MyPageOrderDAOImpl implements MyPageOrderDAO{
     public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException {
         return sqlSession.selectList("mapper.orderList.selectCanceledList",userName);
     }
+    
 }

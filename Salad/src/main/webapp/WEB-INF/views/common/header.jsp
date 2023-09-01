@@ -8,18 +8,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!-- 	<link href="/css/header.css" rel="stylesheet" type="text/css" > -->
-	<!-- 하유리: CSS 링크 수정(23.07.31.) -->
+	<!-- CSS -->
 	<link href="../resources/css/style.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
-
 	<meta charset="UTF-8">
 	<title>헤더</title>
 </head>
 
 <body>
 	<div class="header_outside">
-		
 		<!-- 하유리: 최상단 배너(23.07.14.) -->
 		<div id="topBanner">
 			<div>
@@ -36,19 +33,19 @@
 				<!-- 로고 -->
 				<div class="header_logo">
 					<a href="${contextPath}/main.do">
-						<img style="height: 80px" src="${contextPath}/resources/image/main/logo.png" />	<!-- 하유리: 로고 파일명 수정(23.07.14.) -->
+						<img style="height: 80px" src="${contextPath}/resources/image/main/logo.png" />
 					</a>
 				</div>	
 				
 				<!-- 메인메뉴 -->
 				<div class="mainMenu">
 					<ul class="list2">
-						<%-- 김동혁: 메뉴 앵커 주소 수정(23.07.14) --%>
+						<!-- 김동혁: 메뉴 앵커 주소 수정(23.07.14.) -->
 						<li><a href="${contextPath}/menu">메뉴</a></li>
 						<!-- 하유리: 메뉴 위치 수정(23.07.14.) -->
 						<li><a href="${contextPath}/review/list">리뷰</a></li>
 						<li><a href="${contextPath}/notice/list" class="">공지</a></li>
-						<li><a href="${contextPath}/event">이벤트</a></li>		<!-- 하유리: 이벤트↔위치 순서 변경(23.07.29.) -->
+						<li><a href="${contextPath}/event">이벤트</a></li>
 						<li><a href="${contextPath}/map">위치</a></li>
 					</ul>
 				</div>
@@ -65,22 +62,35 @@
 								</div>
 								<div class="functionMenu">
 									<ul>
-										<li><a href="${contextPath}/mypage/myPageMain.do"><img width="25px" src="${contextPath}/resources/image/common/header/mypage2.png"/></a></li>	<!-- 마이페이지 -->
-										<li><a href="${contextPath}/cart"><img class="cart_icon" width="30px" src="${contextPath}/resources/image/common/header/cart.png"/></a></li>	<!-- 장바구니 -->
-										<li><a href="${contextPath}/mypage/orderList"><img width="26px" src="${contextPath}/resources/image/common/header/buyList.png"/></a></li>	<!-- 구매목록 -->
+										<!-- 마이페이지 -->
+										<li>
+											<a href="${contextPath}/mypage/myPageMain.do">
+												<img width="25px" src="${contextPath}/resources/image/common/header/mypage2.png"/>
+											</a>
+										</li>
+										<!-- 장바구니 -->
+										<li>
+											<a href="${contextPath}/cart">
+												<img class="cart_icon" width="30px" src="${contextPath}/resources/image/common/header/cart.png"/>
+											</a>
+										</li>
+										<!-- 구매목록 -->	
+										<li>
+											<a href="${contextPath}/mypage/orderList">
+												<img width="26px" src="${contextPath}/resources/image/common/header/buyList.png"/>
+											</a>
+										</li>
 									</ul>
 								</div>
 							</c:when>
 							<c:otherwise>
-								<li><a href="${contextPath}/user/loginForm.do">로그인&nbsp;&nbsp;</a></li>		<!-- 하유리: 텍스트 수정(23.07.30.) -->
-								<li><a href="${contextPath}/user/userForm.do">&nbsp;&nbsp;회원가입</a></li> 	<!-- 하유리: 텍스트 수정(23.07.30.) -->
+								<li><a href="${contextPath}/user/loginForm.do">로그인&nbsp;&nbsp;</a></li>
+								<li><a href="${contextPath}/user/userForm.do">&nbsp;&nbsp;회원가입</a></li>
 							</c:otherwise>
 						</c:choose>
 					</ul>
 				</div>
-
 			</div>
-			
 		</div>
 	</div>
 

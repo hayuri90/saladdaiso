@@ -5,8 +5,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 
-/* 김동혁 - VO 추가 */
-/* SHOP_PRODUCT, PROD_IMAGE 의 조인을 위해 VO 수정(23.07.14) */
+/* 김동혁: SHOP_PRODUCT, PROD_IMAGE 의 조인을 위해 VO 수정(23.07.14) */
 @Data
 @Component
 public class ProdVO {
@@ -20,6 +19,7 @@ public class ProdVO {
     private String prodImageUrl;
     private String prodImageName;
     private Date prodImageDate;
+    
 	public int getProdNum() {
 		return prodNum;
 	}
@@ -80,6 +80,7 @@ public class ProdVO {
 	public void setProdImageDate(Date prodImageDate) {
 		this.prodImageDate = prodImageDate;
 	}
+	
 	@Override
 	public String toString() {
 		return "ProdVO [prodNum=" + prodNum + ", prodName=" + prodName + ", prodPrice=" + prodPrice
@@ -87,6 +88,5 @@ public class ProdVO {
 				+ prodCreateTimestamp + ", prodDeliveryPrice=" + prodDeliveryPrice + ", prodImageUrl=" + prodImageUrl
 				+ ", prodImageName=" + prodImageName + ", prodImageDate=" + prodImageDate + "]";
 	}
-    
-    
+ 
 }

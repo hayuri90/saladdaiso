@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 김동혁 - cart 매퍼 -->
+<!-- 김동혁: cart 매퍼 -->
 <mapper namespace="mapper.cart">
     <resultMap id="cartResult" type="cartVO">
         <result property="cartNum" column="cartNum" />
@@ -42,29 +40,6 @@
             )
     </insert>
 
-    <!-- 장바구니 ID로 저장된 제품 검색 -->
-    <!--<select id="cartById" parameterType="String" resultMap="cartListResult">
-        SELECT
-            sc.cartNum,
-            sc.userId,
-            sp.prodNum,
-            sp.prodName,
-            sp.prodPrice,
-            sp.prodDescription,
-            sp.prodBrand,
-            sp.prodCreateTimestamp,
-            sp.prodDeliveryPrice,
-            sc.cartCount
-            FROM
-                shop_cart sc
-            JOIN
-                shop_product sp
-            ON
-                sc.prodNum = sp.prodNum
-        WHERE
-            sc.userId = #{userId}
-    </select>-->
-
     <select id="cartById" parameterType="String" resultMap="cartListResult">
         SELECT
             SP.PRODNUM,
@@ -92,8 +67,6 @@
                 SP.PRODNUM = SC.PRODNUM
         WHERE SC.USERID = #{userId}
     </select>
-
-
 
     <!-- cartNum으로 장바구니 데이터 삭제 -->
     <delete id="delCartOne" parameterType="int">

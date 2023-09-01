@@ -10,16 +10,12 @@ import com.proj.salad.order.vo.OrderMenuVO;
 import com.proj.salad.order.vo.OrderVO;
 
 public interface OrderDAO {
+	
 	public List<CartListVO> selectOrderList(String userId) throws DataAccessException;
-
 	public void newOrder(OrderVO orderVO) throws DataAccessException;
-
 	public void newOrderMenu(OrderMenuVO orderMenuVO) throws DataAccessException;
-
 	public void deleteCartList(String userId) throws DataAccessException;
-
 	public void newAccount(AccountVO accountVO) throws DataAccessException;
-
 	public List<OrderVO> orderTime() throws DataAccessException;
 
 }

@@ -6,53 +6,44 @@
 <!DOCTYPE html >
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script src="http://code.jquery.com/jquery-latest.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-     <!-- css 적용 -->
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!-- 부트스트랩 -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- CSS -->
  	<link href="../resources/css/header.css" rel="stylesheet" type="text/css" >
 	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css" >
 	<link href="${contextPath}/resources/css/userForm/loginForm.css" rel="stylesheet" type="text/css" >	<!-- 하유리: login -->
 	
 	<c:if test='${result==not empty message }'>
-	<script>
-		window.onload=function()
-		{
-			alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
-		}
-	</script>
+		<script>
+			window.onload=function()
+			{
+				alert("아이디나  비밀번호가 틀립니다. 다시 로그인해주세요");
+			}
+		</script>
 	</c:if>
 </head>
 
 <body>
-	<div class="loginForm">			<!-- 하유리: <div> 추가(23.07.26.) -->
-		<div class="login_wrap">		<!-- 하유리: <div> 추가(23.07.26.) -->
-			<a href="${contextPath}/main.do">	<!-- 하유리: 로고 이미지 클릭 시 메인 이동 링크 추가(23.07.26.) -->
-				<img src="${contextPath}/resources/image/user/logo.png"/>	<!-- 하유리: 로고 이미지 추가(23.07.26.) -->
+	<div class="loginForm">
+		<div class="login_wrap">
+			<a href="${contextPath}/main.do">
+				<img src="${contextPath}/resources/image/user/logo.png"/>
 			</a>
-			<!-- <h1 align="center">회원 로그인 </h1> -->				<!-- 하유리: 해당 태그 주석처리(23.07.26.) -->
 			<div id="login_table">
 			 	<!-- 로그인 클릭 시 /user/login.do로 요청  -->
 				<form action="${contextPath}/user/login.do" method="post" class="login-form">
-					<!-- 하유리: table border="1", <tbody>, <tr> 속성, <td> 주석처리(23.07.26.) -->
 					<table class="login_input">
-						<!-- <tbody> -->
-							<tr><!-- <tr class="dot_line"  align="center"> -->	
-								<!-- <td class="fixed_join">아이디</td> -->	
-								<td><input class="userId" name="userId" type="text" size="20" placeholder="아이디" autocomplete="off"/></td>
-							</tr>
-							<tr>
-							<!-- <tr class="solid_line"  align="center"> -->
-								<!-- <td class="fixed_join">비밀번호</td> -->
-								<td><input name="userPwd" type="password" size="20" placeholder="비밀번호" autocomplete="off"/></td>
-							</tr>
-						<!-- </tbody> -->
+						<tr>
+							<td><input type="text" class="userId" name="userId" size="20" placeholder="아이디" autocomplete="off"/></td>
+						</tr>
+						<tr>
+							<td><input type="password" name="userPwd" size="20" placeholder="비밀번호" autocomplete="off"/></td>
+						</tr>
 					</table>
 					<div class="btnCen">
-						<input type="submit" value="로그인" class="btnLogin"/>
-						<br> 
-						<!-- <input type="reset" value="다시입력" class="btnCancel"/> -->		<!-- 하유리: 주석처리(23.07.26.) -->
+						<input type="submit" class="btnLogin" value="로그인" /><br>
 						<input type="button" onclick="location.href='${contextPath}/user/userForm.do'" value="회원가입" />
 					</div>
 				</form>	

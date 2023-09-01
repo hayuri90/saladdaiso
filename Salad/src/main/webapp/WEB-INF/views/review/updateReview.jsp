@@ -1,14 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- 부트스트랩 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css 적용 -->
+    <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
@@ -123,10 +124,8 @@
 
 <body>
 	<div class="container mt-3">
-		<!-- 하유리: 제목 변경(23.07.21.)(23.07.30.) -->
-		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
-		<div class="review_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
-			<p class="review_text1">REVIEW</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
+		<div class="review_sub">
+			<p class="review_text1">REVIEW</p>
 		</div>
 	
 		<!-- 게시판 -->
@@ -134,40 +133,39 @@
 			<form action="<c:url value='/review/update'/>" method="POST" enctype="multipart/form-data">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
 				<table>
-					<%-- 답글형은 주문번호 숨기기 - 김동혁(23.08.01) --%>
+					<%-- 김동혁: 답글형은 주문번호 숨김 처리 --%>
 					<c:if test="${review.re_fakeOrderNum != null}">
 						<tr>
 							<th>주문상품</th>
-							<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" value="${review.re_fakeOrderNum}" disabled/></td>
+							<td>
+								<input class="insert_input" name="orderList" value="${review.re_fakeOrderNum}" width="440px" 
+								 	   required disabled autocomplete="off" />
+							</td>
 						</tr>
 					</c:if>
-				
  					<tr>
 						<th>작성자</th>
 						<td>	
-							<input class="insert_input" name="userId" value="${review.userId }" type="text" placeholder="이름을 입력해 주세요." 
-							required autocomplete="off">
+							<input type="text" class="insert_input" name="userId" value="${review.userId }" 
+								   placeholder="이름을 입력해 주세요." required autocomplete="off">
 						</td>
 					</tr>
-		
 					<tr>
 						<th>제목</th>
 						<td>	
-							<input class="insert_input" name="re_title" value="${review.re_title }" type="text" placeholder="제목을 입력해 주세요." 
-							required autocomplete="off"></td>
+							<input type="text" class="insert_input" name="re_title" value="${review.re_title }" 
+								   placeholder="제목을 입력해 주세요." required autocomplete="off"></td>
 					</tr>
-					
 					<tr>
 						<th>내용</th>
 						<td>
 							<textarea class="insert_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
-							required autocomplete="off">${review.re_content }</textarea>
+									  required autocomplete="off">${review.re_content }</textarea>
 						</td>
 					</tr>
-					
 					<tr>
 						<th>이미지 업로드</th>
-						<td><input class="insert_file" type="file" multiple="multiple"></td>		<!-- 하유리: 클래스명 변경(23.07.31.) -->
+						<td><input type="file" class="insert_file" multiple="multiple"></td>
 					</tr>			
 				</table>
 				

@@ -1,22 +1,14 @@
-/* 주석 처리(23.08.11.) */
-/* .search-bar {							
-    font-size: 16px;
-    background: blue;
-} */
-
 /* 검색어 입력 input */
 .search-bar {
-	/* border: none;
-	border-bottom: 1px solid black; */
-	border: 1px solid #e2e2e2;		/* 추가(23.08.11.) */
-    border-radius: 7px;				/* 추가(23.08.11.) */
-    width: 170px;							/* 추가(23.08.11.) */
-	height: 30px;							/* 추가(23.08.11.) */
-	padding: 5px;						/* 추가(23.08.11.) */
-	margin-right: 5px;					/* 추가(23.08.11.) */
+	border: 1px solid #e2e2e2;	/* 추가(23.08.11.) */
+    border-radius: 7px;			/* 추가(23.08.11.) */
+    width: 170px;				/* 추가(23.08.11.) */
+	height: 30px;				/* 추가(23.08.11.) */
+	padding: 5px;				/* 추가(23.08.11.) */
+	margin-right: 5px;			/* 추가(23.08.11.) */
 }
 
-.review_search img {					/* 추가(23.08.11.) */
+.review_search img {	/* 추가(23.08.11.) */
 	position: absolute;
     top: 4px;
     width: 21px;
@@ -37,8 +29,8 @@
 .search-btn {
 	border: none;
     border-radius: 7px;		/* 추가(23.08.11.) */
-	height: 30px;					/* 변경(23.08.11.) */
-	width: 28px;					/* 변경(23.08.11.) */
+	height: 30px;			/* 변경(23.08.11.) */
+	width: 28px;			/* 변경(23.08.11.) */
 	font-size: 12px;
 	background: #128853;
 	color: white;

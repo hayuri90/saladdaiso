@@ -1,20 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"   isELIgnored="false"  %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-<%  request.setCharacterEncoding("UTF-8"); %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	<!-- 부트스트랩 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-	<meta charset="UTF-8">
-  	<title>메인 페이지</title>
-  	<script src="http://code.jquery.com/jquery-latest.js"></script>
-  		<!-- 하유리: CSS 링크 수정(23.07.31.) -->
+  	<!-- CSS -->
 	<link href="resources/css/header.css" rel="stylesheet" type="text/css">
 	<link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 	<link href="resources/css/map/mapPage.css" rel="stylesheet" type="text/css">
+	<meta charset="UTF-8">
+  	<title>메인 페이지</title>
 </head>
 
 <body>
@@ -22,6 +22,17 @@
 		<!-- 하유리: 제목 -->
 		<div class="map_sub">
 			<p class="map_text">LOCATION</p>
+		</div>
+		
+		<!-- 광고(23.08.11.) -->
+		<div class="ad">
+			<a href="${contextPath}/event">
+				<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
+			</a>
+			<div class="ad_div">
+				<a href="${contextPath }/menu"><p>구매하기</p></a>
+				<a href="${contextPath }/notice/list"><p style="border-top: 1px solid #e2e2e2;">공지확인</p></a>
+			</div>
 		</div>
 		
 		<!-- 지도 -->
@@ -45,14 +56,6 @@
 						<dd><strong>메일</strong> : saladdaiso@shop.co.kr</a></dd>
 					</dl>
 				</li>
-				<!-- <li>
-					<dl>
-						<dt class="sTitle bullet">Contact</dt>
-						<dd><strong>Address</strong> : 637, Gyeryong-ro, Seo-gu, Daejeon, Republic of Korea</dd>
-						<dd><strong>For Enquiries</strong> : +82-42-123-1234</dd>
-						<dd><strong>E-mail</strong> : saladdaiso@shop.co.kr</a></dd>
-					</dl>
-				</li> -->
 				<li>
 					<dl>
 						<dt class="sTitle bullet">영업시간</dt>
@@ -61,14 +64,6 @@
 						<dd>무료</dd>
 					</dl>
 				</li>
-				<!-- <li>
-					<dl>
-						<dt class="sTitle bullet">Opening Hours</dt>
-						<dd>Monday–Friday, 9am–6pm(Excluding holidays and holidays)</dd>
-						<dt class="sTitle bullet">Parking fee</dt>
-						<dd>Free</dd>
-					</dl>
-				</li> -->
 			</ul>
 		</div>
    </div>

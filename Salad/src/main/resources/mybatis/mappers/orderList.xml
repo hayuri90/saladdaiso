@@ -24,7 +24,6 @@
         <result column="orderMenuNum" property="orderMenuNum" />
         <result column="menuName" property="menuName" />
         <result column="menuCount" property="menuCount" />
-
         <result column="reviewStatus" property="reviewStatus" />
     </resultMap>
 
@@ -44,7 +43,6 @@
         <result column="destLoc2" property="destLoc2" />
         <result column="totalPrice" property="totalPrice" />
         <result column="prodDeliveryDate" property="prodDeliveryDate" />
-
         <result column="reviewStatus" property="reviewStatus" />
     </resultMap>
 
@@ -56,34 +54,8 @@
         <result column="menuName" property="menuName" />
         <result column="menuCount" property="menuCount" />
     </resultMap>
-
-
     
-    <!-- 주문 목록 리스트 검색(임시 비활성) -->
-    <!-- 기준 : UserId만 검색, orderNum을 desc 순으로 정렬-->
-    <!--<select id="selectOrderList" parameterType="String" resultMap="orderListResult">
-        SELECT so.ORDERNUM,
-               so.USERID,
-               so.ORDERSTATUS,
-               so.ORDERCREATETIMESTAMP,
-               so.ORDERUPDATETIMESTAMP,
-               so.ORDERERNAME,
-               so.ORDERERPHONE,
-               so.ORDEREREMAIL,
-               so.DESTNAME,
-               so.DESTPHONE,
-               so.DESTLOC1,
-               so.DESTLOC2,
-               so.TOTALPRICE,
-               so.PRODDELIVERYDATE,
-               om.ORDERMENUNUM,
-               om.MENUNAME,
-               om.MENUCOUNT
-        FROM SCOTT.SHOP_ORDER so
-                 JOIN SCOTT.ORDER_MENU om ON so.ORDERNUM = om.ORDERNUM
-        WHERE so.ORDERERNAME = #{userName}
-        order by ORDERNUM desc
-    </select>-->
+    <!-- 주문 목록 리스트 검색 -->
     <select id="selectOrderList" parameterType="String" resultMap="orderListResult">
         SELECT * FROM SHOP_ORDER
         WHERE ordererName = #{userName}
@@ -104,17 +76,14 @@
 
     <update id="updateOrderStatus" parameterType="int">
         update shop_order
-        set
-            orderStatus = '취소완료'
-        where
-            orderNum = #{orderNum}
+        set orderStatus = '취소완료'
+        where orderNum = #{orderNum}
     </update>
 
     <!-- 주문 취소 리스트 Select -->
     <select id="selectCanceledList" parameterType="String" resultMap="orderListResult">
         SELECT * FROM SHOP_ORDER
-        WHERE ordererName = #{userName} and
-                orderStatus = '취소완료'
+        WHERE ordererName = #{userName} and orderStatus = '취소완료'
         ORDER BY orderNum desc
     </select>
 

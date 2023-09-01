@@ -21,17 +21,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.mypage.service.MyPageService;
 import com.proj.salad.mypage.vo.MyPageVO;
 import com.proj.salad.user.vo.UserVO;
-
 
 @Controller("myPageController")
 public class MyPageControllerImpl implements MyPageController {
 
 	@Autowired  //의존성주입
 	MyPageService myPageService;
+	
 	@Autowired //의존성주입
 	UserVO userVO;
 
@@ -51,10 +50,8 @@ public class MyPageControllerImpl implements MyPageController {
 	//attribute는 수정할 회원 정보 속성을 저장하고 value는 회원 정보의 속성 값을 저장
 	@Override
 	@RequestMapping(value="/mypage/modifyMyInfo.do",method=RequestMethod.POST)
-	public ResponseEntity modifyMyInfo(@RequestParam("attribute")  String attribute,
-            																@RequestParam("value")  String value, 
-            																HttpServletRequest request,
-            																HttpServletResponse response) throws Exception {
+	public ResponseEntity modifyMyInfo(@RequestParam("attribute") String attribute,
+            						   @RequestParam("value")  String value, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		Map<String, String> userMap = new HashMap<String, String>();
 		String val[]=null; //배열 초기화
@@ -101,25 +98,23 @@ public class MyPageControllerImpl implements MyPageController {
 	
 	//회원정보탈퇴
 	//23.07.31  회원정보 및 회원내역 전체 삭제 되게 수정
-   @RequestMapping(value="/mypage/removeUser.do", method=RequestMethod.GET)
-	public ModelAndView removeUser(HttpServletRequest request, HttpServletResponse response)
-																		throws Exception {
+	@RequestMapping(value="/mypage/removeUser.do", method=RequestMethod.GET)
+	public ModelAndView removeUser(HttpServletRequest request, HttpServletResponse response) throws Exception {  
+		ModelAndView mav = new ModelAndView();
 	   
-	   ModelAndView mav = new ModelAndView();
-	   
-	   HttpSession session = request.getSession();  //세션 사용
+		HttpSession session = request.getSession();  //세션 사용
 		userVO = (UserVO)session.getAttribute("user");
 		
 		String userId = userVO.getUserId();
 		
 		try {
-			int result=myPageService.removeUser(userId); 
+			int result=myPageService.removeUser(userId);
 			
 			if(result == 1) {
-				mav.setViewName("redirect:/user/logout.do");   //로그아웃 하여 메인페이지로 감
+				mav.setViewName("redirect:/user/logout.do");	//로그아웃 하여 메인페이지로 감
 			}
 		}catch(Exception e) {
-				mav.addObject("msg", e.getMessage());  //탈퇴 시 확인 메세지
+			mav.addObject("msg", e.getMessage());	//탈퇴 시 확인 메세지
 		}
 	   
 	   return mav;
@@ -130,13 +125,11 @@ public class MyPageControllerImpl implements MyPageController {
 	@ResponseBody 
 	@RequestMapping(value="/mypage/myPageMain.do",method=RequestMethod.GET)
 	public ModelAndView myPageMain(@RequestParam(required = false,value="message") String message, 
-																		@RequestParam Map<String, String> dateMap,
-																			HttpServletRequest request, HttpServletResponse response)
-																			throws Exception {
+								   @RequestParam Map<String, String> dateMap, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		HttpSession session=request.getSession();  //세션사용
+		HttpSession session=request.getSession();		//세션사용
 		session=request.getSession();
-		session.setAttribute("side_menu", "my_page"); //마이페이지 사이드 메뉴로 설정한다.
+		session.setAttribute("side_menu", "my_page"); 	//마이페이지 사이드 메뉴로 설정한다.
 		
 		String viewName = getViewName(request);
 		ModelAndView mav = new ModelAndView(viewName);
@@ -183,14 +176,14 @@ public class MyPageControllerImpl implements MyPageController {
 		  
 	//주문검색 년월일 계산코드
 	protected String calcSearchPeriod(String fixedSearchPeriod){ 
-		String beginDate=null; 
-		String endDate=null; 
-		String endYear=null; 
-		String endMonth=null; 
-		String endDay=null; 
-		String beginYear=null; 
-		String beginMonth=null; 
-		String beginDay=null; 
+		String beginDate = null; 
+		String endDate = null; 
+		String endYear = null; 
+		String endMonth = null; 
+		String endDay = null; 
+		String beginYear = null; 
+		String beginMonth = null; 
+		String beginDay = null; 
 			  
 		DecimalFormat df = new DecimalFormat("00"); 
 			  
@@ -201,35 +194,32 @@ public class MyPageControllerImpl implements MyPageController {
 		endDay =df.format(cal.get(Calendar.DATE)); 
 		endDate = endYear +"-"+ endMonth+"-"+endDay;
 		  
-		  if(fixedSearchPeriod == null) { 
-			  cal.add(cal.MONTH,-4); 
-		  }else if(fixedSearchPeriod.equals("three_day")) { 
-			  cal.add(Calendar.DAY_OF_YEAR, -3);
-		  }else if(fixedSearchPeriod.equals("one_week")) {
-			  cal.add(Calendar.DAY_OF_YEAR, -7); 
-		  }else if(fixedSearchPeriod.equals("one_month")) { 
-			  cal.add(cal.MONTH,-1); 
-		  }else if(fixedSearchPeriod.equals("three_month")) { 
-			  cal.add(cal.MONTH,-3); 
-		  }else if(fixedSearchPeriod.equals("six_month")) { 
-			  cal.add(cal.MONTH,-6); 
-		} 
-		  beginYear = Integer.toString(cal.get(Calendar.YEAR)); 
-		  beginMonth =df.format(cal.get(Calendar.MONTH) + 1); 
-		  beginDay =df.format(cal.get(Calendar.DATE)); 
-		  beginDate = beginYear +"-"+ beginMonth+"-"+beginDay;
+			if(fixedSearchPeriod == null) { 
+				cal.add(cal.MONTH,-4); 
+			}else if(fixedSearchPeriod.equals("three_day")) { 
+				cal.add(Calendar.DAY_OF_YEAR, -3);
+			}else if(fixedSearchPeriod.equals("one_week")) {
+				cal.add(Calendar.DAY_OF_YEAR, -7); 
+			}else if(fixedSearchPeriod.equals("one_month")) { 
+				cal.add(cal.MONTH,-1); 
+			}else if(fixedSearchPeriod.equals("three_month")) { 
+				cal.add(cal.MONTH,-3); 
+			}else if(fixedSearchPeriod.equals("six_month")) { 
+				cal.add(cal.MONTH,-6); 
+			} 
+			
+		beginYear = Integer.toString(cal.get(Calendar.YEAR)); 
+		beginMonth =df.format(cal.get(Calendar.MONTH) + 1); 
+		beginDay =df.format(cal.get(Calendar.DATE)); 
+		beginDate = beginYear +"-"+ beginMonth+"-"+beginDay;
 		  
-		  return beginDate+","+endDate;
-		 
+		return beginDate+","+endDate; 
 	}
 
 	//주문취소
 	@Override
 	@RequestMapping(value="/mypage/cancelMyOrder.do" ,method = RequestMethod.POST)
-	public ModelAndView cancelMyOrder(@RequestParam("orderNum") int orderNum, 
-																				HttpServletRequest request, HttpServletResponse response)
-																				throws Exception {
-
+	public ModelAndView cancelMyOrder(@RequestParam("orderNum") int orderNum, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		
 		ModelAndView mav = new ModelAndView(viewName);
@@ -239,7 +229,6 @@ public class MyPageControllerImpl implements MyPageController {
 		mav.setViewName("redirect:/mypage/myPageMain.do");
 		
 		return mav;
-		
 	}
 
 	private String getViewName(HttpServletRequest request) throws Exception {
@@ -272,5 +261,4 @@ public class MyPageControllerImpl implements MyPageController {
 		}
 		return viewName;
 	}
-
 }

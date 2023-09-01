@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> <!-- 날짜 -->
@@ -12,20 +11,30 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 	<!-- 부트스트랩 -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-	<!-- 리뷰 css 적용 -->
+	<!-- CSS -->
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<link href="../resources/css/review.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
-	<!-- 제목: 변경(23.07.21.) -->
 	<div class="review_sub">
-		<p class="review_text">REVIEW</p>		<!-- 하유리: 텍스트 수정(23.07.29.) -->
+		<p class="review_text">REVIEW</p>
+	</div>
+	
+	<!-- 광고(23.08.11.) -->
+	<div class="ad">
+		<a href="${contextPath}/event">
+			<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
+		</a>
+		<div class="ad_div">
+			<a href="${contextPath }/menu"><p>구매하기</p></a>
+			<a href="${contextPath }/notice/list"><p style="border-top: 1px solid #e2e2e2;">공지확인</p></a>
+		</div>
 	</div>
 	
 	<!-- 게시판 -->
@@ -40,15 +49,17 @@
 					<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
 				</select>
 				<input type="text" class="search-bar" id="keywordInput" name="keyword" placeholder="검색" autocomplete="off" value="${scri.keyword}"/>	
-				<button type="submit" class="search-btn" value="" onClick="inputChk()"><img src="${contextPath}/resources/image/common/footer/magnifier.png"/></button>	<!-- button태그로 변경, value값 제거, 이미지 추가(23.08.11.) -->			
+				<button type="submit" class="search-btn" value="" onClick="inputChk()">
+					<img src="${contextPath}/resources/image/common/footer/magnifier.png"/>
+				</button>		
 			</div>
 		</div>
 		<table class="table table-hover">
 			<thead class="table_tread" style="text-align: center;">
 	    		<tr style="border-top: 1px solid #000; border-bottom: 1px solid #000;"> 
 					<th scope="col" width="15%">글 번호</th>
-			      	<th scope="col" width="40%">제목</th>
-			      	<th scope="col" width="15%">작성자</th>
+			      	<th scope="col" width="41%">제목</th>
+			      	<th scope="col" width="14%">작성자</th>
 			      	<th scope="col" width="15%">작성일</th>
 			      	<th scope="col" width="15%">조회수</th>
 			    </tr>
@@ -156,39 +167,38 @@
 		</div>
 	</div>
 
-<script>
-	function handleButtonClick() {
-		// 경고창 띄우기
-		if (true) {
-			alert("주문하신 상품을 선택해주세요.")
-			// 사용자가 확인 버튼을 누른 경우 페이지 이동
-			const contextPath = '${contextPath}'; // 여기에 원하는 경로를 입력하세요
-			const insertUrl = contextPath + '/mypage/orderList';
-			window.location.href = insertUrl;
-		} else {
-			// 사용자가 취소 버튼을 누른 경우 아무 작업 없음
-			// 필요에 따라 취소 버튼을 눌렀을 때의 동작을 추가할 수 있습니다.
-		}
-	}
-	
-	//jQuery를 이용하여 검색기능 구현(23.08.29.)
- 	$(function(){
-		$('.search-btn').click(function(){	//검색버튼 눌렀을 때
-			var keyword = document.getElementById("keywordInput");	//input박스에 해당하는 변수 선언
-			if(keyword.value.length==0){	//검색어가 입력이 안 되었다면
-				alert('검색어를 입력하세요.');	//경고창 출력
-				return false;				//또는 e.priventDefault(); 입력하여 이벤트 중단
+	<script>
+		function handleButtonClick() {
+			// 경고창 띄우기
+			if (true) {
+				alert("주문하신 상품을 선택해주세요.")
+				// 사용자가 확인 버튼을 누른 경우 페이지 이동
+				const contextPath = '${contextPath}'; // 여기에 원하는 경로를 입력하세요
+				const insertUrl = contextPath + '/mypage/orderList';
+				window.location.href = insertUrl;
 			} else {
-				self.location = "searchList"
-					+ '${pageMaker.makeQuery(1)}'
-					+ "&searchType="
-					+ $("select option:selected").val()
-					+ "&keyword="
-					+ encodeURIComponent($('#keywordInput').val());
-				}
-		});
-	}); 
-</script>
-	
+				// 사용자가 취소 버튼을 누른 경우 아무 작업 없음
+				// 필요에 따라 취소 버튼을 눌렀을 때의 동작을 추가할 수 있습니다.
+			}
+		}
+		
+		//jQuery를 이용하여 검색기능 구현(23.08.29.)
+	 	$(function(){
+			$('.search-btn').click(function(){	//검색버튼 눌렀을 때
+				var keyword = document.getElementById("keywordInput");	//input박스에 해당하는 변수 선언
+				if(keyword.value.length==0){	//검색어가 입력이 안 되었다면
+					alert('검색어를 입력하세요.');	//경고창 출력
+					return false;				//또는 e.priventDefault(); 입력하여 이벤트 중단
+				} else {
+					self.location = "searchList"
+						+ '${pageMaker.makeQuery(1)}'
+						+ "&searchType="
+						+ $("select option:selected").val()
+						+ "&keyword="
+						+ encodeURIComponent($('#keywordInput').val());
+					}
+			});
+		}); 
+	</script>
 </body>
 </html>

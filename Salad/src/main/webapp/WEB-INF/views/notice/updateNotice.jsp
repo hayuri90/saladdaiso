@@ -8,8 +8,8 @@
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css 적용 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS -->
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<style>
@@ -126,48 +126,38 @@
 			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 		}
 	</style>
-
 </head>
 
 <body>
 	<div class="container mt-3">
-		<!-- 제목: 변경(23.07.21.) -->
-		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
-		<div class="notice_sub">							<!-- 하유리: 클래스명 변경(23.07.30.) -->
-			<p class="notice_text">NOTICE</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
+		<div class="notice_sub">
+			<p class="notice_text">NOTICE</p>
 		</div>
-	
 		<!-- 게시판 -->
 		<div class="insert_table">
 			<form action="<c:url value='/notice/update'/>" method="POST" enctype="multipart/form-data">
 				<input name="re_articleNO" type="hidden" value="${notice.articleNO }">
 				<table>
-				<!-- 하유리: 필요 없는 부분  주석(23.07.30.) -->
- 					<!-- <tr>
-						<th>주문상품</th>
-						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-					</tr> -->
-				
  					<tr>
 						<th>작성자</th>
 						<td>	
-							<input class="insert_input" name="userId" value="${notice.userId }" type="text" placeholder="이름을 입력해 주세요." 
-							required autocomplete="off">
+							<input type="text" class="insert_input" name="userId" value="${notice.userId }" placeholder="이름을 입력해 주세요." 
+								   autocomplete="off" required>
 						</td>
 					</tr>
 		
 					<tr>
 						<th>제목</th>
 						<td>	
-							<input class="insert_input" name="re_title" value="${notice.title }" type="text" placeholder="제목을 입력해 주세요." 
-							required autocomplete="off"></td>
+							<input type="text" class="insert_input" name="re_title" value="${notice.title }" placeholder="제목을 입력해 주세요." 
+								   autocomplete="off" required></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
 						<td>
 							<textarea class="insert_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
-							required autocomplete="off">${notice.content }</textarea>
+									  autocomplete="off" required>${notice.content }</textarea>
 						</td>
 					</tr>
 					

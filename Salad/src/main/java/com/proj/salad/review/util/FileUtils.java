@@ -32,7 +32,7 @@ public class FileUtils {
         System.out.println("ReviewSeq: " + ReviewSeq);
         String re_articleNO = ReviewSeq;	//ServiceImpl에서 전달해준 map에서 신규생성되는 게시글 번호를 받아옴
         
-        File file = new File(filePath);	//파일 저장경로에 해당폴더가 없을 경우 폴더 생성
+        File file = new File(filePath);		//파일 저장경로에 해당폴더가 없을 경우 폴더 생성
         if(file.exists() == false){
         	file.mkdirs();
         }
@@ -60,4 +60,5 @@ public class FileUtils {
         }
 		return list;
 	}
+	
 }

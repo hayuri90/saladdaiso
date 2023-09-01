@@ -18,8 +18,6 @@ public class ReviewVO {
 	private String re_noti;
 	private int re_viewCnt;
 	private List<Review_imageVO> re_imageFileList;
-
-	// 김동혁 VO 추가(23.08.01) - getter, setter, toString도 수정
 	private String re_fakeOrderNum;
 	private int re_orderNum;
 	
@@ -121,7 +119,6 @@ public class ReviewVO {
 	}
 
 	//toString
-
 	@Override
 	public String toString() {
 		return "ReviewVO{" +
@@ -139,4 +136,5 @@ public class ReviewVO {
 				", re_orderNum=" + re_orderNum +
 				'}';
 	}
+	
 }

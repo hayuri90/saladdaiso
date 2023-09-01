@@ -21,49 +21,49 @@ public class NoticeDAOImpl implements NoticeDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	//하유리: 1-1. 리뷰게시판 전체리스트 보기(23.07.16.)
+	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@Override
 	public List<NoticeVO> selectAllNoticeList(Criteria criteria) {
 		return sqlSession.selectList("notice.selectAllNoticeList", criteria);
 	}
 
-	//하유리: 1-2. 게시물 총 개수(23.07.16.)
+	//하유리: 1-1-1. 게시물 총 개수(23.07.16.)
 	@Override
 	public int getTotal() {
 		return sqlSession.selectOne("notice.getTotal");
 	}
 
-	//하유리: 2-1. 리뷰게시판 글쓰기(23.07.16.)
+	//하유리: 2-2. 글쓰기(23.07.16.)
 	@Override
 	public void insertNotice(NoticeVO noticeVO) {
 		sqlSession.insert("notice.insertNotice", noticeVO);
 	}
 	
-	//하유리: 게시물 번호 가져오기(23.07.20.)
+	//하유리: 2-2-1. 게시물 번호 가져오기(23.07.20.)
 	@Override
 	public String selectNotice(NoticeVO noticeVO) {
 		return sqlSession.selectOne("notice.selectNotice", noticeVO);
 	}
 	
-	//하유리: 파일 업로드(23.07.20.)
+	//하유리: 2-2-2. 파일 업로드(23.07.20.)
 	@Override
 	public void insertImage(Map<String, Object> map) throws Exception {
 		sqlSession.insert("notice.insertNoticeImg", map);
 	}
 	
-	//하유리: 3-1. 게시물 상세보기(23.07.16.)
+	//하유리: 3-1. 게시물 상세조회(23.07.16.)
 	@Override
 	public NoticeVO detailNotice(int articleNO) {
 		return (NoticeVO) sqlSession.selectOne("notice.detailNotice", articleNO);
 	}
 	
-	//하유리: 3-2. 조회수(23.07.16.)
+	//하유리: 3-1-1. 조회수(23.07.16.)
 	@Override
 	public void updateCnt(int articleNO) {
 		sqlSession.update("notice.updateCnt", articleNO);
 	}
 	
-	//하유리: 이미지 정보 가져오기(23.07.23.)
+	//하유리: 3-1-2. 이미지 정보 가져오기(23.07.23.)
 	@Override
 	public List<Notice_imageVO> detailImg(int articleNO) {
 		return sqlSession.selectList("notice.detailImg", articleNO);

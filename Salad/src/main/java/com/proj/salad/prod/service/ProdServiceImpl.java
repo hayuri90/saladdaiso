@@ -11,17 +11,16 @@ import org.springframework.stereotype.Service;
 import com.proj.salad.prod.dao.ProdDAOImpl;
 import com.proj.salad.prod.vo.ProdVO;
 
-/* 김동혁 - Service 추가 */
+/* 김동혁 : Service 추가 */
 @Service
 public class ProdServiceImpl {
-//    @Autowired
-//    ProdVO prodVO;
-//    @Autowired
-//    NutrientVO nutrientVO;
+
     @Autowired
     SqlSession sqlSession;
+    
     @Autowired
     ProdDAOImpl prodDAOImpl;
+    
     public List<ProdVO> selectProdList() throws DataAccessException {
         List list = prodDAOImpl.selectProdList();
         return list;
@@ -33,4 +32,5 @@ public class ProdServiceImpl {
         NutrientVO nutrientVO = prodDAOImpl.selectProdNutrient(prodNum);
         return nutrientVO;
     }
+    
 }

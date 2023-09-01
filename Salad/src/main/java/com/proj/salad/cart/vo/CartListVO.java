@@ -20,7 +20,7 @@ public class CartListVO {
     private int prodDeliveryPrice;
     private int cartCount;
 
-	// 이미지 테이블 Join 용 추가 - 김동혁
+	//김동혁: 이미지 테이블 Join용 추가
 	private String prodImageUrl;
 	private String prodImageName;
 	private Date prodImageDate;

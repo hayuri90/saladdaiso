@@ -24,19 +24,19 @@ public class UserServiceImpl  implements UserService{
 	@Autowired //의존성주입
 	private UserDAO userDAO;
 
-	 //로그인
+	//로그인
 	@Override
 	public UserVO login(Map loginMap) throws Exception { 
 		return userDAO.login(loginMap);
 	}
 
-	 //회원가입
+	//회원가입
 	@Override
 	public void addUser(UserVO userVO) throws Exception { 
 		userDAO.insertNewUser(userVO);
 	}
 
-	 //ID 중복검사
+	//ID 중복검사
 	@Override
 	public String overlapped(String userId) throws Exception { 
 		return userDAO.selectOverlappedID(userId);

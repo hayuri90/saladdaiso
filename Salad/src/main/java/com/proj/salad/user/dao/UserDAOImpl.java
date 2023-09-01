@@ -16,7 +16,7 @@ public class UserDAOImpl  implements UserDAO{
 	@Autowired   //의존성주입
 	private SqlSession sql;	
 
-	 //로그인
+	//로그인
 	@Override
 	public UserVO login(Map loginMap) throws DataAccessException { 
 		UserVO user=(UserVO)sql.selectOne("mapper.user.login",loginMap);

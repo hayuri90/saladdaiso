@@ -11,13 +11,8 @@ import javax.servlet.http.HttpSession;
 import com.proj.salad.mypage.service.MyPageOrderServiceImpl;
 import com.proj.salad.mypage.vo.OrderInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,7 +31,6 @@ import com.proj.salad.review.vo.SearchCriteria;
 import com.proj.salad.review.vo.ajaxCommentVO;
 import com.proj.salad.user.vo.UserVO;
 
-
 @Controller
 @RequestMapping("/review")
 public class ReviewController extends HttpServlet {
@@ -53,7 +47,7 @@ public class ReviewController extends HttpServlet {
 	@Autowired
 	private ajaxCommentVO ajaxCommentVO;
 
-	//하유리: 1. 리뷰게시판 전체리스트 보기(23.07.16.)
+	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String selectAllReviewList(Model model, HttpServletRequest request, HttpServletResponse response, Criteria criteria) throws Exception {
 		List<ReviewVO> list = reviewService.selectAllReviewList(criteria);
@@ -61,16 +55,16 @@ public class ReviewController extends HttpServlet {
 		
 		PageVO paging = new PageVO();
 		paging.setCriteria(criteria);
+		//게시물 총 개수(23.07.16.)
 		paging.setTotalPost(reviewService.getTotal());
 		model.addAttribute("pageMaker", paging);
 		model.addAttribute("select", criteria.getCurPage());
 		return "/review/list";
 	}
 	
-	//하유리: 2-1. 리뷰게시판 글쓰기(23.07.16.)
+	//하유리: 2-2. 글쓰기(23.07.16.)
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public ModelAndView insertFormWithON(@RequestParam("orderNum") int orderNum,
-								   HttpServletRequest request) throws Exception {
+	public ModelAndView insertFormWithON(@RequestParam("orderNum") int orderNum, HttpServletRequest request) throws Exception {
 		String userName = null;
 
 		Integer checkNull = orderNum;
@@ -90,28 +84,29 @@ public class ReviewController extends HttpServlet {
 		return mav;
 	}
 	
-	//하유리: 2-2. 리뷰게시판 글쓰기(23.07.16.)
+	//하유리: 2-2. 글쓰기(23.07.16.)
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ModelAndView insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
 
-        // 세션 반환(23.07.18.)
+        //세션 반환(23.07.18.)
         HttpSession session = request.getSession();
 
-        // 파일 업로드(23.07.20.)
+        //파일 업로드(23.07.20.)
     	reviewService.insertReview(reviewVO, request, mRequest);    		//글 작성
-		reviewService.updateReviewStatus(reviewVO);
+		//김동혁: order 테이블 reviewStatus → 1로 수정(23.08.02.)
+    	reviewService.updateReviewStatus(reviewVO);
     	ModelAndView mav = new ModelAndView("redirect:/review/list");		//페이지 이동
     	return mav;
     }
 
 	//하유리: 3-1. 게시물 상세보기(23.07.16.)
 	@RequestMapping(value="/content", method=RequestMethod.GET)
-	public String detailReview(@RequestParam("re_articleNO") Integer re_articleNO, 
-				SearchCriteria scri, Model model, HttpSession session) {
+	public String detailReview(@RequestParam("re_articleNO") Integer re_articleNO, SearchCriteria scri, Model model, HttpSession session) {
+		
 		//조회수
 		reviewService.updateCnt(re_articleNO, session);
 		
-		// 이미지 관련 정보 가져오기(23.07.23.)
+		//이미지 관련 정보 가져오기(23.07.23.)
 		List<Review_imageVO> imageVO = reviewService.detailImg(re_articleNO);
 		System.out.println("이미지 관련 정보 :" + imageVO);
 				
@@ -182,7 +177,7 @@ public class ReviewController extends HttpServlet {
 		return "redirect:/review/list";
 	}
 	
-	//하유리: 글 목록 + 페이징 + 검색
+	//하유리: 7. 글 목록 + 페이징 + 검색
 	@RequestMapping(value="/searchList", method=RequestMethod.GET)
 	public String searchList(SearchCriteria scri, Model model, String searchType, String keyword) throws Exception {
 		List<ReviewVO> list = reviewService.searchList(scri);
@@ -192,6 +187,7 @@ public class ReviewController extends HttpServlet {
 		
 		PageVO paging = new PageVO();
 		paging.setCriteria(scri);
+		//검색 결과 개수
 		paging.setTotalPost(reviewService.searchCount(scri));
 		model.addAttribute("pageMaker", paging);
 		System.out.println("@@@검색기능 실행");
@@ -199,7 +195,7 @@ public class ReviewController extends HttpServlet {
 		return "/review/searchList";
 	}
 
-	// 김동혁: getViewName 추가
+	//김동혁: getViewName 추가
 	private String getViewName(HttpServletRequest request) throws Exception {
 		String contextPath = request.getContextPath();
 		String uri = (String) request.getAttribute("javax.servlet.include.request_uri");
@@ -231,7 +227,7 @@ public class ReviewController extends HttpServlet {
 		return viewName;
 	}
 	
-	//조상현: 대댓글 추가(23.08.01)
+	//조상현: 댓글, 대댓글(23.08.01.)
 	@RequestMapping(value="/addComment" , method=RequestMethod.POST, produces ="application/text; charset=UTF-8")
 	@ResponseBody
 	public String addComment(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -252,7 +248,7 @@ public class ReviewController extends HttpServlet {
             jsonString = objectMapper.writeValueAsString(ac);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            jsonString = "[]"; // 에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
+            jsonString = "[]"; 	// 에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
         }
         System.out.println(jsonString);
         return jsonString;
@@ -286,7 +282,7 @@ public class ReviewController extends HttpServlet {
             jsonString = objectMapper.writeValueAsString(ac);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            jsonString = "[]"; //에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
+            jsonString = "[]"; 	//에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
         }
         System.out.println(jsonString);
         return jsonString;
@@ -307,7 +303,7 @@ public class ReviewController extends HttpServlet {
             jsonString = objectMapper.writeValueAsString(ac);
         } catch (JsonProcessingException e) {
             e.printStackTrace();
-            jsonString = "[]"; // 에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
+            jsonString = "[]"; 	//에러 발생 시 빈 배열을 반환하거나 다른 처리를 수행할 수 있습니다.
         }
         System.out.println(jsonString);
         return jsonString;

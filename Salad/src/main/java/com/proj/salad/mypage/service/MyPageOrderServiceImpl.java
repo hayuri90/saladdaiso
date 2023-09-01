@@ -12,8 +12,10 @@ import java.util.List;
 
 @Service
 public class MyPageOrderServiceImpl implements MyPageOrderService {
+	
     @Autowired
     MyPageOrderDAOImpl myPageOrderDAO;
+    
     @Override
     public List<OrderListVO> selectOrderList(String userName) throws DataAccessException {
         return myPageOrderDAO.selectOrderList(userName);
@@ -38,4 +40,5 @@ public class MyPageOrderServiceImpl implements MyPageOrderService {
     public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException {
         return myPageOrderDAO.selectCanceledList(userName);
     }
+
 }

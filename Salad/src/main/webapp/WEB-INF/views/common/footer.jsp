@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"   isELIgnored="false"  %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%  request.setCharacterEncoding("UTF-8"); %>    
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 
@@ -9,9 +9,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>하단 부분</title>
-	<!-- css 적용 -->
-	 <link href="resources/css/style.css" rel="stylesheet" type="text/css" >
-	 <link href="resources/css/footer.css" rel="stylesheet" type="text/css" >
+	<!-- CSS -->
+	<link href="resources/css/style.css" rel="stylesheet" type="text/css" >
+	<link href="resources/css/footer.css" rel="stylesheet" type="text/css" >
 </head>
 
 <body>

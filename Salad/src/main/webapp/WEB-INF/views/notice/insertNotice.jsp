@@ -123,70 +123,47 @@
 			outline: none;							/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 		}
 	</style>
-
-	<script>
-		/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
-		var cnt=1;	//파일업로드 name값을 다르게 하는 변수
-		function fn_addFile(){	//파일추가를 클릭하면 동적으로 파일업로드 추가(name의 속성값으로 'file'+cnt를 설정하여 값을 다르게 해줌')
-			$("#d_file").append("<br>"+"<input style='padding: 8px;' type='file' name='file"+cnt +"' />");
-			cnt++;
-		}
-	</script>
-
 </head>
 
 <body>
 
 	<div class="container mt-3">
-		<!-- 제목: 변경(23.07.21.) -->
-		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
-		<div class="notice_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
-			<p class="notice_text">NOTICE</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
+		<div class="notice_sub">
+			<p class="notice_text">NOTICE</p>
 		</div>
 	
 		<!-- 게시판 -->
 		<div class="insert_table">
 			<form action="<c:url value='/notice/insert'/>" method="POST"  enctype="multipart/form-data">
-				<table>
-				<!-- 하유리: 필요 없는 부분  주석(23.07.30.) -->
- 					<!-- <tr>
-						<th>주문상품</th>
-						<td>	<input class="insert_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-					</tr> -->
-				
+				<table>				
  					<tr>
 						<th>작성자</th>
 						<td>	
 							<!-- 하유리: 세션에 저장된 id값 가져오기(23.07.18.) -->
-							<input class="insert_input" name="userId"  type="text" value="${user.userId}" required autocomplete="off" readonly="readonly">
+							<input type="text" class="insert_input" name="userId" value="${user.userId}" required autocomplete="off" readonly="readonly">
 						</td>
 					</tr>
-		
 					<tr>
 						<th>제목</th>
 						<td>	
-							<input class="insert_input" name="title" type="text" placeholder="제목을 입력해 주세요." 
-							required autocomplete="off"></td>
+							<input type="text" class="insert_input" name="title" placeholder="제목을 입력해 주세요." required autocomplete="off">
+						</td>
 					</tr>
-					
 					<tr>
 						<th>내용</th>
 						<td>
 							<textarea class="insert_input" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
-							required autocomplete="off"></textarea>
+									  required autocomplete="off"></textarea>
 						</td>
 					</tr>
-					
 					<tr>
 						<th class="inputArea">이미지 업로드</th>
 						<td>	
-								<input type="button" name="file"value="파일 추가" onClick="fn_addFile()">	<!-- 파일추가 클릭 시 동적으로 파일업로드 추가 -->
-								<div id="d_file">	<!-- 자바스크립트를 이용해 <div> 안에 파일 업로드 추가 -->
-								</div>
+							<input type="button" name="file"value="파일 추가" onClick="fn_addFile()">	<!-- 파일추가 클릭 시 동적으로 파일업로드 추가 -->
+							<div id="d_file"></div>	<!-- 자바스크립트를 이용해 <div> 안에 파일 업로드 추가 -->
 						</td>
 					</tr>			
 				</table>
-				
 				<div class="insert_btn">
 					<button class="writeBtn" type="submit">글등록</button>
 					<button class="writeBtn" type="reset" >초기화</button>
@@ -195,6 +172,13 @@
 			</form>
 		</div>
 	</div>
-	
+	<script>
+		/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
+		var cnt=1;	//파일업로드 name값을 다르게 하는 변수
+		function fn_addFile(){	//파일추가를 클릭하면 동적으로 파일업로드 추가(name의 속성값으로 'file'+cnt를 설정하여 값을 다르게 해줌')
+			$("#d_file").append("<br>"+"<input style='padding: 8px;' type='file' name='file"+cnt +"' />");
+			cnt++;
+		}
+	</script>
 </body>
 </html>

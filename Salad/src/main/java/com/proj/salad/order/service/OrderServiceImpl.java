@@ -22,32 +22,31 @@ public class OrderServiceImpl implements OrderService{
 		List<CartListVO> orderlist = orderDAO.selectOrderList(userId);
 		return orderlist;
 	}
-		@Override
-		public void newOrder(OrderVO orderVO) throws DataAccessException {
-			orderDAO.newOrder(orderVO);
-		}
+	
+	@Override
+	public void newOrder(OrderVO orderVO) throws DataAccessException {
+		orderDAO.newOrder(orderVO);
+	}
 
-		@Override
-		public void newOrderMenu(OrderMenuVO orderMenuVO) throws DataAccessException {
-			orderDAO.newOrderMenu(orderMenuVO);
-		}
+	@Override
+	public void newOrderMenu(OrderMenuVO orderMenuVO) throws DataAccessException {
+		orderDAO.newOrderMenu(orderMenuVO);
+	}
 
-		@Override
-		public void deleteCartList(String userId) throws DataAccessException {
-			orderDAO.deleteCartList(userId);
+	@Override
+	public void deleteCartList(String userId) throws DataAccessException {
+		orderDAO.deleteCartList(userId);
+	}
+	
+	@Override
+	public void newAccount(AccountVO accountVO) throws DataAccessException{
+		orderDAO.newAccount(accountVO);
+		
+	}
+	@Override
+	public List<OrderVO> orderTime() throws DataAccessException{
+		List<OrderVO> orderTime = orderDAO.orderTime();
+		return orderTime;
 	}
 		
-		@Override
-		public void newAccount(AccountVO accountVO) throws DataAccessException{
-			orderDAO.newAccount(accountVO);
-			
-		}
-		@Override
-		public List<OrderVO> orderTime() throws DataAccessException{
-			List<OrderVO> orderTime = orderDAO.orderTime();
-			return orderTime;
-		}
-
-
-
 }

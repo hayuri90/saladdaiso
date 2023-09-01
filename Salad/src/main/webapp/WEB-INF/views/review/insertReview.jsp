@@ -7,9 +7,10 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- 부트스트랩 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css 적용 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS -->
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
 	<style>
@@ -129,15 +130,12 @@
 			cnt++;
 		}
 	</script>
-
 </head>
 
 <body>		
 	<div class="container mt-3">
-		<!-- 제목: 변경(23.07.21.)(23.07.30.) -->
-		<!-- 하유리: 필요없는 부분 삭제(23.07.30.) -->
-		<div class="review_sub">								<!-- 하유리: 클래스명 변경(23.07.30.) -->
-			<p class="review_text1">REVIEW</p>		<!-- 하유리: 클래스명 변경(23.07.30.) -->
+		<div class="review_sub">
+			<p class="review_text1">REVIEW</p>	
 		</div>
 	
 		<!-- 게시판 -->
@@ -147,40 +145,36 @@
 					<tr>
 						<%-- fakeOrderNum, orderNum 저장 - 김동혁 수정(23.08.01) --%>
 						<th>주문번호</th>
-						<td>	<input class="insert_input" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" disabled/></td>
-						<input type="text" name="re_orderNum" value="${orderInfo.orderNum}" hidden/>
-						<input type="text" name="re_fakeOrderNum" value="${orderInfo.fakeOrderNum}" hidden/>
-					</tr>
-				
+						<td>
+							<input class="insert_input" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" disabled/>
+							<input type="hidden" name="re_orderNum" value="${orderInfo.orderNum}" />
+							<input type="hidden" name="re_fakeOrderNum" value="${orderInfo.fakeOrderNum}" />
+						</td>
+					</tr>				
  					<tr>
 						<th>작성자</th>
 						<td>	
 							<!-- 하유리: 세션에 저장된 id값 가져오기(23.07.18.) -->
-							<input class="insert_input" name="userId"  type="text" value="${user.userId}" required autocomplete="off" readonly="readonly">
+							<input type="text" class="insert_input" name="userId" value="${user.userId}" autocomplete="off" readonly required>
 						</td>
-					</tr>
-		
+					</tr>		
 					<tr>
 						<th>제목</th>
 						<td>	
-							<input class="insert_input" name="re_title" type="text" placeholder="제목을 입력해 주세요." 
-							required autocomplete="off"></td>
+							<input type="text" class="insert_input" name="re_title" placeholder="제목을 입력해 주세요." autocomplete="off" required>
+						</td>
 					</tr>
-					
 					<tr>
 						<th>내용</th>
 						<td>
-							<textarea class="insert_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
-							required autocomplete="off"></textarea>
+							<textarea class="insert_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." autocomplete="off" required></textarea>
 						</td>
 					</tr>
-					
 					<tr>
 						<th class="inputArea">이미지 업로드</th>
 						<td>
 							<input type="button" name="file" value="파일 추가" onClick="fn_addFile()">	<!-- 파일추가 클릭 시 동적으로 파일업로드 추가 -->
-							<div id="d_file">	<!-- 자바스크립트를 이용해 <div> 안에 파일 업로드 추가 -->
-							</div>
+							<div id="d_file"></div>	<!-- 자바스크립트를 이용해 <div> 안에 파일 업로드 추가 -->
 						</td>
 					</tr>			
 				</table>

@@ -11,28 +11,20 @@
 	border: 0px solid #bcbcbc;
 }
 
-/* 주석: 하유리 */
 #header {
-	/* padding: 5px; */
-	/* margin-bottom: 5px; */
-	/* border: 0px solid #bcbcbc; */
 	border: 0px solid #bcbcbc;
 	font-family: Pretendard-Regular;
-	/* background-color: lightgreen; */
 }
-			
-/* 	body */
+	
 #content {
-      width: 100%;
-      /* padding: 5px; */
-      /* margin-right: 5px; */	/* 주석: 하유리 */
-      float: left;
-      border: 0px solid #bcbcbc;
+	width: 100%;
+	float: left;
+	border: 0px solid #bcbcbc;
 }
 
 #footer {
-      clear: both;
-      border: 0px solid #bcbcbc;
-      background-color: #128853;
-      width: 100%;
+	clear: both;
+	border: 0px solid #bcbcbc;
+	background-color: #128853;
+	width: 100%;
 }

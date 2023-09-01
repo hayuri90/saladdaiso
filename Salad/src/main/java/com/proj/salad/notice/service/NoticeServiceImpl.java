@@ -31,24 +31,25 @@ public class NoticeServiceImpl implements NoticeService {
 	@Autowired
 	private FileUtils fileUtils;
 	
-	//하유리: 1.
+	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@Override
 	public List<NoticeVO> selectAllNoticeList(Criteria criteria){
 		return noticeDao.selectAllNoticeList(criteria);
 	}
-
+	
+	//하유리: 1-1-1. 게시물 총 개수(23.07.16.)
 	@Override
 	public int getTotal() {
 		return noticeDao.getTotal();
 	}
 
-	//하유리: 2-1. 글쓰기(23.07.16.)
+	//하유리: 2-2. 글쓰기(23.07.16.)
 	@Override
 	public void insertNotice(NoticeVO noticeVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception {
-		// 게시글 작성
+		//게시글 작성
 		noticeDao.insertNotice(noticeVO);
 		
-		//게시물 번호 가져오기
+		//게시물 번호 가져오기(23.07.20.)
 		String NoticeSeq = noticeDao.selectNotice(noticeVO);
 		System.out.println("NoticeSeq :" + NoticeSeq);
 		
@@ -59,13 +60,13 @@ public class NoticeServiceImpl implements NoticeService {
 		}
 	}
 
-	//하유리: 3-1. 게시물 상세보기(23.07.16.)
+	//하유리: 3-1. 게시물 상세조회(23.07.16.)
 	@Override
 	public NoticeVO detailNotice(int articleNO) {
 		return noticeDao.detailNotice(articleNO);
 	}
 
-	//하유리: 3-2. 조회수(23.07.16.)
+	//하유리: 3-1-1. 조회수(23.07.16.)
 	@Override
 	public void updateCnt(int articleNO, HttpSession session) {
 		long updateTime=0;	
@@ -85,16 +86,16 @@ public class NoticeServiceImpl implements NoticeService {
 		}	
 	}
 	
-	//하유리: 이미지 정보 가져오기(23.07.23.)
+	//하유리: 3-1-2. 이미지 정보 가져오기(23.07.23.)
 	@Override
 	public List<Notice_imageVO> detailImg(int articleNO) {
 		return noticeDao.detailImg(articleNO);
 	}
 	
-	//하유리: 3-3. 업로드 이미지 출력(23.07.23.)
+	//하유리: 3-2. 업로드 이미지 출력(23.07.23.)
 	@Override
 	public void imgDown(String storedFileName,  HttpServletResponse response) {
-		// 직접 파일 정보를 변수에 저장해 놨지만, 이 부분이 db에서 읽어왔다고 가정한다.
+		//직접 파일 정보를 변수에 저장해 놨지만, 이 부분이 db에서 읽어왔다고 가정한다.
 		String fileName = storedFileName;
 		String saveFileName = filePath + fileName;
 		String contentType = "image/jpg";
@@ -111,18 +112,18 @@ public class NoticeServiceImpl implements NoticeService {
         response.setHeader("Expires", "-1;");
 
         try(
-        		//파일 읽을 준비
-                FileInputStream fis = new FileInputStream(saveFileName);
-                OutputStream out = response.getOutputStream();
+    		//파일 읽을 준비
+            FileInputStream fis = new FileInputStream(saveFileName);
+            OutputStream out = response.getOutputStream();
         ){
-        		//실제로 파일 읽는 부분
-                int readCount = 0;
-                byte[] buffer = new byte[1024];
-                while((readCount = fis.read(buffer)) != -1){
-                    out.write(buffer,0,readCount);
+    		//실제로 파일 읽는 부분
+            int readCount = 0;
+            byte[] buffer = new byte[1024];
+            while((readCount = fis.read(buffer)) != -1){
+                out.write(buffer,0,readCount);
             }
-        }catch(Exception ex){
-            throw new RuntimeException("file Save Error");
+        } catch(Exception ex){
+        	throw new RuntimeException("file Save Error");
         }
 	}
 
@@ -143,7 +144,5 @@ public class NoticeServiceImpl implements NoticeService {
 	public void replyNotice(NoticeVO noticeVO) {
 		noticeDao.replyNotice(noticeVO);
 	}
-
-
 
 }

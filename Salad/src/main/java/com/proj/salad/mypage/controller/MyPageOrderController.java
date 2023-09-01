@@ -1,6 +1,5 @@
 package com.proj.salad.mypage.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proj.salad.mypage.service.MyPageOrderServiceImpl;
 import com.proj.salad.mypage.vo.OrderInfoVO;
 import com.proj.salad.mypage.vo.OrderListVO;
@@ -24,23 +23,24 @@ import java.util.List;
 public class MyPageOrderController {
     @Autowired
     UserVO userVO;
+    
     @Autowired
     MyPageOrderServiceImpl myPageOrderService;
 
-    // 주문 내역, 배송 조회
+    //주문 내역, 배송 조회
     @RequestMapping(value = "/mypage/orderList", method = RequestMethod.GET)
     public ModelAndView orderList(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
 
-        // 사이드 메뉴 세션 설정
+        //사이드 메뉴 세션 설정
         session.setAttribute("side_menu", "my_page"); //마이페이지 사이드 메뉴로 설정한다.
 
         String userName = null;
         List<OrderListVO> orderList = new ArrayList<>();
 
-        // 로그인 상태일 경우
+        //로그인 상태일 경우
         if((Boolean)session.getAttribute("isLogOn") == true) {
-            // 유저 아이디 가져오기
+            //유저 아이디 가져오기
             System.out.println("로그인 상태");
             
             userVO = (UserVO) session.getAttribute("user");
@@ -48,18 +48,17 @@ public class MyPageOrderController {
             userName = userVO.getUserName();
             System.out.println("userName : " + userName);
 
-            // 주문 목록 리스트 서비스 실행
+            //주문 목록 리스트 서비스 실행
             orderList = myPageOrderService.selectOrderList(userName);
             System.out.println("orderList : " + orderList);
         } else {
-            // 비로그인 상태시 로그인 폼 이동
+            //비로그인 상태시 로그인 폼 이동
             System.out.println("비로그인 상태");
             response.sendRedirect("/user/loginForm.do");
             return null;
         }
 
         System.out.println("테스트 테스트");
-//        System.out.println("orderList : " + orderList);
 
         String viewName = getViewName(request);
         ModelAndView mav = new ModelAndView(viewName);
@@ -76,7 +75,7 @@ public class MyPageOrderController {
         List<OrderListVO> canceledList = new ArrayList<>();
 
         if((Boolean)session.getAttribute("isLogOn") == true) {
-            // 유저 아이디 가져오기
+            //유저 아이디 가져오기
             System.out.println("로그인 상태");
 
             userVO = (UserVO) session.getAttribute("user");
@@ -84,11 +83,11 @@ public class MyPageOrderController {
             userName = userVO.getUserName();
             System.out.println("userName : " + userName);
 
-            // 주문 목록 리스트 서비스 실행
+            //주문 목록 리스트 서비스 실행
             canceledList = myPageOrderService.selectCanceledList(userName);
             System.out.println("취소 List : " + canceledList);
         } else {
-            // 비로그인 상태시 로그인 폼 이동
+            //비로그인 상태시 로그인 폼 이동
             System.out.println("비로그인 상태");
             response.sendRedirect("/user/loginForm.do");
             return null;
@@ -111,12 +110,11 @@ public class MyPageOrderController {
 
         List<OrderMenuVO> infoMenuList = new ArrayList<>();
 
-        // 주문 상세 페이지 VO 서비스 실행
+        //주문 상세 페이지 VO 서비스 실행
         orderInfoVO = myPageOrderService.selectOrderOne(orderNum);
 
-        // 상세 페이지의 주문 메뉴 목록 서비스 실행
+        //상세 페이지의 주문 메뉴 목록 서비스 실행
         infoMenuList = myPageOrderService.selectOrderMenu(orderNum);
-
 
         String viewName = getViewName(request);
         ModelAndView mav = new ModelAndView(viewName);

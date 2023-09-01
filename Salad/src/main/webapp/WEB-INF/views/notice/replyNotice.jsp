@@ -8,7 +8,7 @@
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css 적용 -->
+    <!-- CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
@@ -118,50 +118,37 @@
 			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 		}
 	</style>
-
 </head>
 
 <body>
 	<div class="container mt-3">
-		<!-- 제목: 변경(23.07.21.) -->
 		<div class="notice_sub">
 			<p class="notice_text">NOTICE</p>
 		</div>
-	
 		<!-- 게시판 -->
 		<div class="reply_table">
 			<form action="<c:url value='/review/reply'/>" method="POST">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
-				<table>
-				<!-- 하유리: 필요 없는 부분  주석(23.07.30.) -->
-				<!-- <tr>
-					<th>주문상품</th>
-					<td>	<input class="reply_input" name="orderList" required autocomplete="off" width="440px" disabled/></td>
-				</tr> -->
-				
+				<table>				
  					<tr>
 						<th>작성자</th>
 						<td>	
-							<input class="reply_input" name="userId" type="text" value="${user.userId }" required autocomplete="off" readonly>
+							<input type="text" class="reply_input" name="userId" value="${user.userId }" autocomplete="off" required readonly/>
 						</td>
 					</tr>
-		
 					<tr>
 						<th>제목</th>
 						<td>	
-							<input class="reply_input" name="re_title" type="text" placeholder="제목을 입력해 주세요." 
-							required autocomplete="off"></td>
+							<input type="text" class="reply_input" name="re_title" placeholder="제목을 입력해 주세요." autocomplete="off" required/>
+						</td>
 					</tr>
-					
 					<tr>
 						<th>내용</th>
 						<td>
-							<textarea class="reply_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
-							required autocomplete="off"></textarea>
+							<textarea class="reply_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." autocomplete="off" required></textarea>
 						</td>
 					</tr>		
 				</table>
-				
 				<div class="reply_btn">
 					<button class="contentBtn" type="submit">답변 등록</button>
 					<button class="contentBtn" type="reset" >초기화</button>

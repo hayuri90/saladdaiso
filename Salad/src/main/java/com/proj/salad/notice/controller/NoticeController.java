@@ -32,7 +32,7 @@ public class NoticeController extends HttpServlet {
 	@Autowired
 	private HttpSession session;
 
-	//하유리: 1. 공지게시판 전체리스트 보기(23.07.24.)
+	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String selectAllNoticeList(Model model, HttpServletRequest request, HttpServletResponse response, Criteria criteria) throws Exception {
 		List<NoticeVO> list = noticeService.selectAllNoticeList(criteria);
@@ -40,13 +40,14 @@ public class NoticeController extends HttpServlet {
 		
 		PageVO paging = new PageVO();
 		paging.setCriteria(criteria);
+		//게시물 총 개수(23.07.16.)
 		paging.setTotalPost(noticeService.getTotal());
 		model.addAttribute("pageMaker", paging);
 		model.addAttribute("select", criteria.getCurPage());
 		return "/notice/list";
 	}
 	
-	//하유리: 2-1. 공지게시판 글쓰기(23.07.16.)
+	//하유리: 2-1. 글쓰기(23.07.16.)
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
 	public String insertForm() {
 		return "/notice/insertNotice";
@@ -56,22 +57,22 @@ public class NoticeController extends HttpServlet {
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ModelAndView insertNotice(NoticeVO noticeVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
 
-        // 세션 반환(23.07.18.)
+        //세션 반환(23.07.18.)
         HttpSession session = request.getSession();
         
-        // 파일 업로드(23.07.20.)
+        //파일 업로드(23.07.20.)
         ModelAndView mav = new ModelAndView("redirect:/notice/list");
     	noticeService.insertNotice(noticeVO, request, mRequest);
     	return mav;
     }
 
-	//하유리: 3-1. 게시물 상세보기(23.07.16.)
+	//하유리: 3-1. 게시물 상세조회(23.07.16.)
 	@RequestMapping(value="/content", method=RequestMethod.GET)
 	public String detailNotice(int articleNO, Model model, HttpSession session) {
-		//조회수
+		//조회수 증가(23.07.16.)
 		noticeService.updateCnt(articleNO, session);
 		
-		// 이미지 관련 정보 가져오기(23.07.23.)
+		//이미지 정보 가져오기(23.07.23.)
 		List<Notice_imageVO> imageVO = noticeService.detailImg(articleNO);
 		System.out.println("이미지 관련 정보 :" + imageVO);
 				
@@ -82,12 +83,12 @@ public class NoticeController extends HttpServlet {
 		return "/notice/noticeContent";
 	}
 	
-	//하유리: 3-3. 업로드 이미지 출력(23.07.23.)
-		@RequestMapping(value="/imgDown" , method=RequestMethod.GET)
-		public void ImgDown(@RequestParam("storedFileName") String storedFileName, HttpServletResponse response) {
-			//System.out.println("파일 이름: " + storedFileName);
-			noticeService.imgDown(storedFileName, response);
-		}
+	//하유리: 3-2. 업로드 이미지 출력(23.07.23.)
+	@RequestMapping(value="/imgDown" , method=RequestMethod.GET)
+	public void ImgDown(@RequestParam("storedFileName") String storedFileName, HttpServletResponse response) {
+		//System.out.println("파일 이름: " + storedFileName);
+		noticeService.imgDown(storedFileName, response);
+	}
 	
 	//하유리: 4-1. 게시물 수정하기(23.07.18.)
 	@RequestMapping(value="/update", method=RequestMethod.GET)
@@ -124,7 +125,7 @@ public class NoticeController extends HttpServlet {
 	@RequestMapping(value="/reply", method=RequestMethod.POST)
 	public String replyNotice(NoticeVO noticeVO, HttpServletRequest request) {
 		
-		// 세션 반환(23.07.18.)
+		//세션 반환(23.07.18.)
         HttpSession session = request.getSession();
         noticeService.replyNotice(noticeVO);
         

@@ -3,12 +3,12 @@ package com.proj.salad.notice.vo;
 import java.util.Date;
 
 public class Notice_imageVO {
-	private int nt_imgNO;					//이미지파일 번호(기본키)
-	private int articleNO;					//공지게시판 게시물 번호(참조키)
-	private String userId;					//작성자(참조키)
+	private int nt_imgNO;				//이미지파일 번호(기본키)
+	private int articleNO;				//공지게시판 게시물 번호(참조키)
+	private String userId;				//작성자(참조키)
 	private String storedFileName;		//저장된 이미지파일 이름
 	private String originalFileName;	//원래 이미지파일 이름
-	private int fileSize;						//이미지파일 크기
+	private int fileSize;				//이미지파일 크기
 	private Date imageDate;				//이미지파일 등록일자
 	
 	//getter, setter

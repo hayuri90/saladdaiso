@@ -5,16 +5,15 @@
 
 /* 하유리: 전체<div> (23.07.29.) */
 .content1 {
-	width: 1260px;							/* 하유리: 창 크기 줄여도 요소가 밀리지 않게 너비 지정 */
 	margin: 0 auto;
-	margin-bottom: 100px;				/* 하유리: 페이지 하단 여백 지정 */
+	margin-bottom: 100px;	/* 하유리: 페이지 하단 여백 지정 */
 }
 
 /* 하유리: 제목(23.07.29.) */
 .content1 .menu_content {
-	padding: 178px 0 24px 0;			/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-													/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
-	margin: 50px 0;							/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	padding: 178px 0 24px 0;	/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
+								/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
+	margin: 50px 0;				/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
 }
 
 .menu-h1 {
@@ -26,54 +25,33 @@
     letter-spacing: -1px;
 }
 
-/* 김동혁 - css 임시 추가(23.07.13.) */
-/* 김동혁 css 수정 (23.07.18) */
-
 .listBox {
     display: inline-block;
 }
 
-/* 메뉴담기 텍스트 */
-/* 하유리: 주석 처리(23.07.29.) */
-/* .menu-h1 {
-    font-size: 40px;
-    margin-bottom: 20px;
-} */
-
 /* 채소, 육류 텍스트 */
 .menu-h2, .menu-h3 {
-	/* 하유리: 기존 코드 주석처리(23.07.27.) */
-/*     font-size: 32px;
-    margin-top: 40px; */
-    
-/*     display: inline;
-    margin: 0 520px;
-    padding: 7px 15px;
-    line-height: 26px; */
-/*     border-radius: 16px;
-    font-size: 18px;
-    background-color: #333A44;
-    color: #fff; */
-    
     background-color: #333;
-    font-family: 'Noto Sans KR', sans-serif;		/* 하유리: 폰트 굵기 변경(23.08.01.) */
+    font-family: 'Noto Sans KR', sans-serif;	/* 하유리: 폰트 굵기 변경(23.08.01.) */
     color: #fff;
-    font-size: 18px;											/* 하유리: 폰트 크기 변경(23.08.01.) */
-    font-weight: 700;										/* 하유리: 폰트 굵기 변경(23.08.01.) */
-    padding: 1px 0 3px 0;								/* 하유리: 폰트 여백 수정(23.08.01.) */
-	margin: 0 600px;    
+    font-size: 18px;		/* 하유리: 폰트 크기 변경(23.08.01.) */
+    font-weight: 700;		/* 하유리: 폰트 굵기 변경(23.08.01.) */
+    padding: 1px 0 3px 0;	/* 하유리: 폰트 여백 수정(23.08.01.) */
+	/* margin: 0 600px; */
+	margin: 0 auto;
+	width: 60px;    
     border-radius: 10px;
 }
 
 /* 하유리: #채소 텍스트(23.07.29.) */
 .menu-h2 {
-	margin-top: -40px;					/* 제목-채소 사이 여백 지정 */
+	margin-top: -40px;		/* 제목-채소 사이 여백 지정 */
 	margin-bottom: -2px;
 }
 
 /* 하유리: #육류 텍스트(23.07.29.) */
 .menu-h3 {
- 	margin-top: 395px;					/* 육류 위치 및 높이 지정 */
+ 	margin-top: 395px;		/* 육류 위치 및 높이 지정 */
     margin-bottom: -3px;
 }
 
@@ -81,11 +59,11 @@
     display: flex;
     float: left;
     height: 100px;
-    width: 380px;
+    width: 320px;
     background-color: white;
     border: 1px solid gray;
     border-radius: 5px;
-    margin: 20px;
+    margin: 15px;
     justify-content: left;
     align-items: center;
 }
@@ -135,8 +113,8 @@
 }
 
 .prodPText {
-    margin-top: 9px;							/* 하유리: 재료-가격 간격 수정(23.08.01.) */
-    margin-bottom: 9px;						/* 하유리: 재료-가격 간격 수정(23.08.01.) */
+    margin-top: 9px;	/* 하유리: 재료-가격 간격 수정(23.08.01.) */
+    margin-bottom: 9px;	/* 하유리: 재료-가격 간격 수정(23.08.01.) */
 }
 
 .prodP:hover {
@@ -153,7 +131,7 @@
 /* 하유리: 모달창 내 header(23.07.27.) */
 .modal-header {
 	border-bottom: none;
-	display: block;					/* 가운데 정렬 */
+	display: block;	/* 가운데 정렬 */
     padding-top: 35px;
 }
 
@@ -169,7 +147,7 @@
 	color: #212529;
 	border-top: 1px solid #e2e2e2;
 	border-collapse: collapse;
-	margin-bottom: 0;					/* 테이블 하단 여백 제거 */
+	margin-bottom: 0;	/* 테이블 하단 여백 제거 */
 }        
     
 /* 하유리: 테이블 선(23.07.27.) */
@@ -177,7 +155,6 @@
   	border-bottom: 1px solid #e2e2e2;
   	border-left: 1px solid #e2e2e2;
   	padding: 10px;
-  	/* width: 50%; */		/* 열 너비 동일하게 지정 */
 }
 
 .table th:first-child, td:first-child {
@@ -207,15 +184,12 @@
 
 /* 하유리: modal-body(23.07.27.) */
 .modal-body {
-	padding: 0 20px;		/* 테이블 주변 여백 */
+	padding: 0 20px;	/* 테이블 주변 여백 */
 }    
     
 /* 하유리: 모달창 하단 footer(23.07.27.) */
 .modal-footer {
-/* 	display: flex;
-	align-items: center;
-	border-radius: 5px; */
-	border-top: none;		/* 테이블 하단 선 삭제 */
+	border-top: none;	/* 테이블 하단 선 삭제 */
 	padding-bottom: 30px;
 }
 
@@ -223,5 +197,45 @@
 .modal-footer select {
   	border-radius: 5px;
 	padding: 3px;
-   	width: 122px;			/* 하유리: 셀렉트박스 길이가 약간 잘려있어서 너비 지정(23.07.27.) */
+   	width: 122px;	/* 셀렉트박스 길이가 약간 잘려있어서 너비 지정(23.07.27.) */
+}
+
+/******** 광고(23.08.11.) ********/
+.ad {
+    position: fixed;
+    width: 95px;
+    top: 237px;
+    right: 51.5px;
+}
+
+@media screen and (max-width: 1360px) {		/* 특정 창크기에서 특정요소 숨기기(23.08.12.) */
+  .ad {
+    display: none;
+  }
+} 
+
+.ad .ad_img, .ad .ad_div {
+	width: 95px;
+}
+
+.ad .ad_div {
+	border: 1px solid #e2e2e2;
+	margin-top: 10px;
+    background-color: #fff;
+}
+
+.ad .ad_div a {
+	text-decoration: none;		
+}
+
+.ad .ad_div p {
+	padding: 3px;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 13px;
+	font-weight: 300;
+	color: #333;
+}
+
+.ad_div p:hover {
+    cursor: pointer;
 }

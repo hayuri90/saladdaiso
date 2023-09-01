@@ -3,7 +3,7 @@
 
 <mapper namespace="notice">
 	
-	<!-- 1-1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.24.) -->
+	<!-- 하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징 + 최다조회수 게시글 상단고정(23.07.16.) -->
 	<select id="selectAllNoticeList" parameterType="com.proj.salad.notice.vo.Criteria" resultType="com.proj.salad.notice.vo.NoticeVO">
 		<![CDATA[			
 			SELECT * FROM (
@@ -13,17 +13,17 @@
 			    START WITH parentNO=0
 			    CONNECT BY PRIOR articleNO=parentNO
 			    ORDER SIBLINGS BY ARTICLENO DESC
-			    )
+			)
 			WHERE RNO BETWEEN #{rowStart} and #{rowEnd}
 		]]>
 	</select>
 	
-	<!-- 1-2. 게시물 총 개수(23.07.16.) -->
+	<!-- 하유리: 1-1-1. 게시물 총 개수(23.07.16.) -->
 	<select id="getTotal" resultType="int">
 		SELECT COUNT(ARTICLENO) FROM SHOP_BOARD
 	</select>
 	
-	<!-- 2-1. 리뷰게시판 글쓰기(23.07.24.) -->
+	<!-- 하유리: 2-2. 글쓰기(23.07.16.) -->
 	<insert id="insertNotice" parameterType="com.proj.salad.notice.vo.NoticeVO">
 		<![CDATA[
 			INSERT INTO SHOP_BOARD(ARTICLENO, PARENTNO, USERID, TITLE, CONTENT, WRITEDATE, VIEWCNT)
@@ -32,14 +32,14 @@
 		]]>
 	</insert>
 
-	<!-- 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.24.) -->
-	<select id="selectNotice"  parameterType="com.proj.salad.notice.vo.NoticeVO"  resultType="String">
+	<!-- 하유리: 2-2-1. 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.24.) -->
+	<select id="selectNotice" parameterType="com.proj.salad.notice.vo.NoticeVO"  resultType="String">
 		SELECT ARTICLENO 
 		FROM SHOP_BOARD
 		WHERE USERID=#{userId} and  TITLE=#{title}
 	</select>
 	
-	<!-- 2-2. 파일 업로드(23.07.20.) -->
+	<!-- 하유리: 2-2-2. 파일 업로드(23.07.20.) -->
 	<insert id="insertNoticeImg" parameterType="java.util.Map">
 		<![CDATA[
 			INSERT INTO BOARD_IMAGE(NT_IMGNO, USERID, ARTICLENO, ORIGINALFILENAME, STOREDFILENAME, FILESIZE)
@@ -47,7 +47,7 @@
 		]]>
 	</insert>
 	
-	<!-- 3-1. 게시물 상세조회(23.07.16.) -->
+	<!-- 하유리: 3-1. 게시물 상세조회(23.07.16.) -->
 	<select id="detailNotice" resultType="com.proj.salad.notice.vo.NoticeVO">
 		<![CDATA[
 			SELECT articleNO, title, content, userId, writeDate, viewCnt			
@@ -56,7 +56,7 @@
 		]]>
 	</select>
 	
-	<!-- 3-2. 조회수 증가(23.07.16.) -->
+	<!-- 하유리: 3-1-1. 조회수 증가(23.07.16.) -->
 	<update id="updateCnt" parameterType="int">
 		<![CDATA[
 			UPDATE SHOP_BOARD
@@ -65,12 +65,12 @@
 		]]>
 	</update>
 	
-	<!-- 이미지 정보 가져오기 -->
+	<!-- 하유리: 3-1-2. 이미지 정보 가져오기(23.07.23.) -->
 	<select id="detailImg" parameterType="String" resultType="com.proj.salad.notice.vo.Notice_imageVO">
 		<![CDATA[
-				SELECT *
-	            FROM BOARD_IMAGE
-			    WHERE ARTICLENO = #{ARTICLENO}
+			SELECT *
+            FROM BOARD_IMAGE
+		    WHERE ARTICLENO = #{ARTICLENO}
 		]]>
 	</select>
 	

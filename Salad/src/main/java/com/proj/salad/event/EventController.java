@@ -12,5 +12,4 @@ public class EventController {
 	public String eventPage() {
 		return "/event/eventPage";
 	}
-	
 }

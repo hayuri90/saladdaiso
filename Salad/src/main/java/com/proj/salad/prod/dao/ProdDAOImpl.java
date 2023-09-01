@@ -13,6 +13,7 @@ import com.proj.salad.prod.vo.ProdVO;
 /* 김동혁 - DAO 추가 */
 @Repository("prodDAO")
 public class ProdDAOImpl implements ProdDAO {
+	
     @Autowired
     private SqlSession sqlSession;
 
@@ -27,6 +28,5 @@ public class ProdDAOImpl implements ProdDAO {
         NutrientVO nutrientVO = sqlSession.selectOne("mapper.prod.selectProdNutrient", prodNum);
         return nutrientVO;
     }
-
-
+    
 }

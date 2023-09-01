@@ -7,16 +7,16 @@
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <!-- 부트스트랩 -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- css 적용 -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- CSS -->
     <link href="resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
     <link href="resources/css/common/policy.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>	
-	<div>	
 	<div class="terms_sub">
 		<p class="terms_text">개인정보처리방침</p>
 		<select>

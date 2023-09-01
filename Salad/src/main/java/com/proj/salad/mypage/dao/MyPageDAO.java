@@ -6,7 +6,6 @@ import java.util.Map;
 import org.springframework.dao.DataAccessException;
 
 import com.proj.salad.mypage.vo.MyPageVO;
-import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.user.vo.UserVO;
 
 public interface MyPageDAO {

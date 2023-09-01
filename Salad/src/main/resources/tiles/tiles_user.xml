@@ -11,17 +11,10 @@
       	<put-attribute name="body" value="" />
       	<put-attribute name="footer" value="/WEB-INF/views/common/footer.jsp" />
 	</definition>
-
-	<!-- 하유리: 주석 처리(23.07.26.) -->
-	<!-- /user/loginForm 컨트롤러에서 반환되는 뷰이름을 지정, 기본적인 레이아웃은 baseLayoutUser을 상속 받음  -->
-	<!-- <definition name="/user/loginForm" extends="baseLayoutUser">
-      	<put-attribute name="title" value="로그인 페이지" />
-      	<put-attribute name="body" value="/WEB-INF/views/user/loginForm.jsp" />
-	</definition>   -->
       
 	<definition name="/user/userForm" extends="baseLayoutUser">
-         <put-attribute name="title" value="회원 가입 페이지" />
-         <put-attribute name="body" value="/WEB-INF/views/user/userForm.jsp" />
+		<put-attribute name="title" value="회원 가입 페이지" />
+        <put-attribute name="body" value="/WEB-INF/views/user/userForm.jsp" />
 	</definition>
   
 </tiles-definitions>

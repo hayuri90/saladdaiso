@@ -2,19 +2,19 @@
 
 /* 하유리: 헤더(배너 포함)(23.07.12.) */
 .header_outside {
-	width: 1519.2px									/* 하유리: 창 축소 시 요소 안 밀리게 너비 지정(23.07.29.) */
+	width: 1519.2px;					/* 하유리: 창 축소 시 요소 안 밀리게 너비 지정(23.07.29.) */
 	left: 0;
 	top: 0;
-	margin: 0 auto;									/* auto: 가로 중앙 정렬 */
-	border-bottom: 2px solid #f7f7f7;		/* 하유리: header 구분선 추가(23.07.25.) */
-	background-color: #fff;						/* 하유리: 배경색 추가(23.07.25.) */
+	margin: 0 auto;						/* auto: 가로 중앙 정렬 */
+	border-bottom: 2px solid #f7f7f7;	/* 하유리: header 구분선 추가(23.07.25.) */
+	background-color: #fff;				/* 하유리: 배경색 추가(23.07.25.) */
 
-	position: fixed;			/* 헤더: 상단고정 */						
+	position: fixed;					/* 헤더: 상단고정 */						
 	top: 0;
 	left: 0;
 	right: 0;
 
-	z-index:999;				/* 헤더를 맨 앞으로 정렬 */
+	z-index:999;						/* 헤더를 맨 앞으로 정렬 */
 }
 
 /* 하유리: 최상단 배너(23.07.14) */
@@ -70,13 +70,14 @@
 	align-items: center;	
 }
 
-/* 메뉴1, 2 공통사항 */
+/******** 메뉴1, 2 공통사항 ********/
 .list1, .list2 {
 	list-style: none;	/* <ul> 말머리기호 제거(23.07.12.) */
 }
 
+/* <li> 1줄로 배열(23.07.12.) */
 .list1 li, .list2 li {
-	display: inline-block;	/* <li> 1줄로 배열(23.07.12.) */
+	display: inline-block;
 }	
 
 .list1 li a, .list2 li a {
@@ -84,7 +85,8 @@
 	color: #000;
 }
 
-.list1 li a:hover, .list2 li a:hover {	/* 메뉴1+메뉴2 마우스오버 시 글자색 변경(23.07.14.) */
+/* 메뉴1+메뉴2 마우스오버 시 글자색 변경(23.07.14.) */
+.list1 li a:hover, .list2 li a:hover {
 	color: #128853;
 	transition: 0.3s;
 }
@@ -95,18 +97,8 @@
 }
 
 .list1 {
-	width: 127.35px;		/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
+	width: 127.35px;	/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
 }
-
-/* 하유리: 주석처리(23.07.30.) */
-/* .list1 li::before {	메뉴 사이에 구분선 넣기(23.07.12.)
-	padding-left: 5px;
-	content: " | ";
-}
-
-.list1 > li:first-child::before {	첫번째 구분선만 안보이게 처리 
-	content:" ";
-}	 */	
 
 /* 하유리: 메뉴2(23.07.12.) */
 .mainMenu {
@@ -120,13 +112,15 @@
 	display: inline-block;
 }
 
-.list2 {	/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
-	width: 780.74px;			/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
+/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
+.list2 {	
+	width: 780.74px;	/* 하유리: 창 크기 줄여도 요소가 아래로 내려오지 않게 너비 지정(23.07.30.) */
 	display: flex;
 	justify-content: space-between;
 }
 
-.list2 li{	/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
+/* 하유리: 메인메뉴 요소 간 간격조정(23.07.14.) */
+.list2 li{	
 	position: relative;
 	display: inline-block;
 	padding: 0px 60px;
@@ -139,13 +133,12 @@
 
 /* 하유리: 로그인ID, 로그아웃버튼(23.07.30.) */
 .userMenu {
-	display: flex;			/* 1줄로 배열 */
+	display: flex;	/* 1줄로 배열 */
 	margin-top: 5px;
 }
 
 /* 하유리: 로그아웃 버튼(23.07.30.) */
 .userMenu img {
-	/* width: 51px; */
 	width: 65px;
 	margin: 1px 0 0 3px;
 }

@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.proj.salad.mypage.dao.MyPageDAO;
 import com.proj.salad.mypage.vo.MyPageVO;
-import com.proj.salad.order.vo.OrderVO;
 import com.proj.salad.user.vo.UserVO;
 
 @Service("myPageService")
@@ -31,15 +30,15 @@ public class MyPageServiceImpl implements MyPageService {
 	//Controller에서 보내는 파라미터들을 modifyMyInfo(Map userMap) 로 받고
 	@Override
 	public UserVO modifyMyInfo(Map userMap) throws DataAccessException {
-		String userId=(String) userMap.get("userId");  //userMap에서 userId를 찾아
-		myPageDAO.updateMyInfo(userMap);  //modifyMyInfo(Map userMap) 받은 userMap을 DAO로 보내줌
-		return myPageDAO.selectMyDetailInfo(userId);  //찾은 userId의 정보를 반환
+		String userId=(String) userMap.get("userId");	//userMap에서 userId를 찾아
+		myPageDAO.updateMyInfo(userMap);  				//modifyMyInfo(Map userMap) 받은 userMap을 DAO로 보내줌
+		return myPageDAO.selectMyDetailInfo(userId);  	//찾은 userId의 정보를 반환
 	}
 
 	//회원정보탈퇴
 	@Override
 	public int removeUser(String userId) throws DataAccessException {
-		int result=myPageDAO.deleteUser(userId);  //찾은 userId를 삭제
+		int result=myPageDAO.deleteUser(userId);  		//찾은 userId를 삭제
 		return  result;
 	}
 
@@ -55,5 +54,4 @@ public class MyPageServiceImpl implements MyPageService {
 		myPageDAO.updateMyOrderCancel(orderNum);
 	}
 
-	
 }

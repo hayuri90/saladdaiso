@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- 김동혁 - prod 매퍼 -->
+<!-- 김동혁: prod 매퍼 -->
 <mapper namespace="mapper.prod">
     <resultMap id="prodResult" type="prodVO">
         <result property="prodNum" column="prodNum" />
@@ -30,12 +28,6 @@
         <result property="natrium" column="natrium" />
     </resultMap>
 
-    <!-- 상품 select -->
-    <!--<select id="selectProdList" resultMap="prodResult">
-            select *
-            from shop_product
-            order by shop_product.prodNum
-    </select>-->
     <select id="selectProdList" resultMap="prodResult">
         select  a.*,
                 b.prodImageName, b.prodImageUrl, b.prodImageDate

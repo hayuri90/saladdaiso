@@ -4,7 +4,6 @@ import lombok.Data;
 import org.springframework.stereotype.Component;
 
 /* 영양소 VO / 김동혁 추가 (23.07.18) */
-/* Lombok 미적용시 Getter Setter 생성해주세요!! */
 @Data
 @Component
 public class NutrientVO {
@@ -16,6 +15,7 @@ public class NutrientVO {
     private double fat;
     private double saturated_fat;
     private double natrium;
+    
 	public int getProdNum() {
 		return prodNum;
 	}
@@ -64,6 +64,7 @@ public class NutrientVO {
 	public void setNatrium(double natrium) {
 		this.natrium = natrium;
 	}
+	
 	@Override
 	public String toString() {
 		return "NutrientVO [prodNum=" + prodNum + ", kcal=" + kcal + ", carbohydrates=" + carbohydrates + ", sugar="

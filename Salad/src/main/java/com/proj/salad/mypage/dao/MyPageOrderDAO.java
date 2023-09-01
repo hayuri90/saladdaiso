@@ -8,6 +8,7 @@ import org.springframework.dao.DataAccessException;
 import java.util.List;
 
 public interface MyPageOrderDAO {
+	
     // 주문 목록 리스트
     public List<OrderListVO> selectOrderList(String userName) throws DataAccessException;
     // 주문 상세 페이지
@@ -18,4 +19,5 @@ public interface MyPageOrderDAO {
     public int updateOrderStatus(int orderNum) throws DataAccessException;
     // 주문 취소 목록 리스트
     public List<OrderListVO> selectCanceledList(String userName) throws DataAccessException;
+    
 }
