@@ -93,7 +93,7 @@
             FROM review_image
 		    WHERE re_articleNO = #{RE_ARTICLENO}
 	]]>
-	</select>	
+	</select>
 	
 	<!-- 하유리: 4-2. 게시물 수정하기(23.07.18.) -->
 	<update id="updateReview" parameterType="com.proj.salad.review.vo.ReviewVO">

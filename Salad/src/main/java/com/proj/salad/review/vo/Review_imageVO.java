@@ -74,6 +74,5 @@ public class Review_imageVO {
 		return "Review_imageVO [re_imgNO=" + re_imgNO + ", re_articleNO=" + re_articleNO + ", userId=" + userId
 				+ ", re_storedFileName=" + re_storedFileName + ", re_originalFileName=" + re_originalFileName
 				+ ", re_fileSize=" + re_fileSize + ", re_imageDate=" + re_imageDate + "]";
-	}	
-	
+	}
 }

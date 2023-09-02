@@ -87,15 +87,14 @@ public class ReviewController extends HttpServlet {
 	//하유리: 2-2. 글쓰기(23.07.16.)
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ModelAndView insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
-
         //세션 반환(23.07.18.)
         HttpSession session = request.getSession();
 
         //파일 업로드(23.07.20.)
-    	reviewService.insertReview(reviewVO, request, mRequest);    		//글 작성
+    	reviewService.insertReview(reviewVO, request, mRequest);		//글 작성
 		//김동혁: order 테이블 reviewStatus → 1로 수정(23.08.02.)
     	reviewService.updateReviewStatus(reviewVO);
-    	ModelAndView mav = new ModelAndView("redirect:/review/list");		//페이지 이동
+    	ModelAndView mav = new ModelAndView("redirect:/review/list");	//페이지 이동
     	return mav;
     }
 
@@ -136,9 +135,16 @@ public class ReviewController extends HttpServlet {
 	//하유리: 4-1. 게시물 수정하기(23.07.18.)
 	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String updateForm(Model model, int re_articleNO) {
+		
+		//이미지 관련 정보 가져오기(23.07.23.)
+		List<Review_imageVO> imageVO = reviewService.detailImg(re_articleNO);
+		System.out.println("이미지 관련 정보 :" + imageVO);
+		
 		ReviewVO review = reviewService.detailReview(re_articleNO);
 		System.out.println(re_articleNO);
-		model.addAttribute("review", review);
+		review.setRe_imageFileList(imageVO);
+		model.addAttribute("review", review);		
+		
 		return "/review/updateReview";
 	}
 	
@@ -146,8 +152,8 @@ public class ReviewController extends HttpServlet {
 	@RequestMapping(value="/update", method=RequestMethod.POST)
 	public String updateReview(ReviewVO reviewVO) {
 		reviewService.updateReview(reviewVO);
-		return "redirect:/review/list";
-	}
+		return "redirect:/review/content?re_articleNO="+reviewVO.getRe_articleNO();	//수정한 게시물로 이동(23.09.01.)
+	}	
 	
 	//하유리: 5. 게시물 삭제하기(23.07.18.)
 	@RequestMapping(value="/delete", method=RequestMethod.GET)

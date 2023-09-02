@@ -28,13 +28,17 @@
 }
 
 /* 중앙정렬 */
-.content_table {
+.insert_table, .content_table, .reply_table {
 	width: 100%;
 	justify-content: center;
 }
 
+.insert_table, .reply_table {
+	display: flex;
+}
+
 /* 하유리: 행 간격 띄우기(23.07.17.) */
-.content_table table {
+.insert_table table, .content_table table, .reply_table table {
 	text-align: left;   /* th 왼쪽정렬 */
 	border-collapse: separate;
 	border-spacing: 10px 20px;
@@ -43,13 +47,13 @@
 }
 
 /* 하유리: 글자-input박스 간 간격(23.07.17.) */
-.content_table th {
+.insert_table th, .content_table th, .reply_table th {
 	font-weight: normal;
 	flex: left;
 	padding-right: 100px;
 }
 
-.content_table input, textarea, .review_preview {
+.insert_input, .content_table input, textarea, .review_preview {
 	padding: 5px 5px;
 }
 
@@ -65,7 +69,7 @@
 	height: 44px;
 }
 
-.content_table .content_text {
+.content_table .content_text, .reply_table textarea {
 	border: 1px solid #e3e3e3;
 	border-radius: 5px;
 	width: 640px;
@@ -79,11 +83,11 @@
 }
 
 /* input, textarea 클릭 시 생기는 테두리 스타일 지정(23.07.17.)  */
-.content_text:focus{
+.content_text:focus, input:focus{
 	outline: 1px solid #000;
 }
 
-.content_input_file:focus {
+.content_input_file:focus, textarea:focus {
 	outline: 1px solid #000;
 }
 
@@ -100,17 +104,23 @@
 	margin: 0 139px;	/* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
 }
 
+.reply_btn_wrap {
+	display: flex;		/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+	justify-content: space-between;	/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+	margin: 0 11px;	/* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
+}
+
 /* 좌측 버튼 2개<div> */
-.content_btn1 {
+.content_btn1, .reply_btn1 {
 	float: left;	/* 하유리: 버튼 왼쪽 정렬 */
 }
 
 /* 우측 버튼 3개<div> */
-.content_btn2 {
+.insert_btn, .content_btn2, .reply_btn2 {
 	float: right;	/* 하유리: 버튼 우측 정렬 */
 }
 
-.contentBtn{
+.writeBtn, .contentBtn, .replyBtn {
 	margin: 0px 0px 60px 0px;
 	padding: 5px 10px;
 	border-radius: 5px;
@@ -119,7 +129,7 @@
 	color: #fff;
 }
 
-.contentBtn:focus {
+.writeBtn:focus, .contentBtn:focus, .replyBtn:focus {
 	outline: none;	/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
 }
 
@@ -260,3 +270,76 @@ button:focus {
 	border-radius: 15px;      	/* 하유리: 모서리 둥글게 지정(23.08.02.) */
 	padding: 0 20px 30px 20px;	/* 하유리: 안쪽 여백 지정(23.08.02.) */
 }
+
+/******** updateReview ********/
+/* input, textarea 스타일 지정 */
+.insert_input, .insert_input_file, #insert_file, .insert_table textarea, .insert_table label {
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	width: 640px;
+	padding: 5px 5px;
+}
+
+#insert_file {
+	min-height: 0px;
+	padding: 0 5px;
+	margin-bottom: 10px;
+}
+
+.insert_input, .insert_table label {	/* 하유리: 수정(23.09.01.) */
+	height: 44px;
+}
+
+.insert_table textarea {	/* 하유리: 수정(23.09.01.) */
+	height: 250px;
+}
+
+/*** 첨부파일 ***/
+/* 파일 추가 리스트 <div>  */
+.insert_input_file {
+	margin-bottom: 10px;
+	min-height: 44px;
+}
+
+/* 첨부파일 내역 세로 가운데 정렬(23.09.01.) */
+.imgFile {
+	display: flex;
+  	align-items: center;
+  	padding-top: 2px;
+}
+
+/* 첨부파일 삭제 버튼(23.09.01.) */
+.fileDelete, .review_imgName {
+	border-style: none;
+  	background: none;
+}
+
+.fileDelete img {			
+	width: 14px;		/* 크기 지정 */
+ 	padding-top: 7px;	/* 세로 중앙 맞추기 */
+}
+
+/* input, textarea 클릭 시 생기는 테두리 스타일 지정(23.07.17.)  */
+input:focus{
+	outline: 1px solid #000;
+}
+
+textarea:focus {
+	outline: 1px solid #000;
+}
+/*** 첨부파일 END ***/
+
+
+/* updateReview 버튼 전체<div> */
+.insert_btn {
+	padding-right: 10px;
+}
+
+/* updateReview, replyReview 글쓰기 버튼 */
+.writeBtn {
+	float: right;
+	float: center;
+	margin-left: 20px;
+	margin-left: 4px;	/* 하유리: 버튼 사이 간격 수정(23.07.30.) */
+}
+

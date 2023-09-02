@@ -23,11 +23,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.proj.salad" />
-		<!-- 타일즈 실습 설정 -->
 
-
-	<beans:bean id="tilesConfigurer"
-		class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<!-- 타일즈 실습 설정 -->
+	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>classpath:tiles/*.xml</beans:value>
@@ -37,15 +35,13 @@
 			value="org.springframework.web.servlet.view.tiles2.SpringBeanPreparerFactory" />
 	</beans:bean>
 
-	<beans:bean id="viewResolver"
-		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 		<beans:property name="viewClass"
 			value="org.springframework.web.servlet.view.tiles2.TilesView" />
 		<beans:property name="order" value="1"></beans:property>
 	</beans:bean>
 
-	
-		<!-- 멀티파트 리졸버 -->
+	<!-- 멀티파트 리졸버 -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="52428800" />

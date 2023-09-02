@@ -44,9 +44,9 @@ public class FileUtils {
         		re_originalFileName = multipartFile.getOriginalFilename();	//파일 원본이름 가져옴
         		re_originalFileExtension = re_originalFileName.substring(re_originalFileName.lastIndexOf("."));	//해당 파일의 확장자 알아냄
         		re_storedFileName = CommonUtils.getRandomString() + re_originalFileExtension;	//getRandomString()메소드를 이용해 랜덤으로 32자리 파일이름 생성
-        																															//원본파일의 확장자를 붙여줌
+        																						//원본파일의 확장자를 붙여줌
         		file = new File(filePath + re_storedFileName);	//서버에 실제파일 저장
-        		multipartFile.transferTo(file);							//지정된 경로에 파일 생성
+        		multipartFile.transferTo(file);	//지정된 경로에 파일 생성
         		
         		//위에서 만든 정보를 list에 추가
         		listMap = new HashMap<String,Object>();
@@ -60,5 +60,4 @@ public class FileUtils {
         }
 		return list;
 	}
-	
 }

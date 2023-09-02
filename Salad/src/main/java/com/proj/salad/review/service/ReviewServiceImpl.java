@@ -114,9 +114,9 @@ public class ReviewServiceImpl implements ReviewService {
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
         response.setHeader("Content-Transfer-Encoding", "binary");
         response.setHeader("Content-Type", contentType);
-        response.setHeader("Content-Length", "" + fileLength);		//파일크기
+        response.setHeader("Content-Length", "" + fileLength);	//파일크기
         response.setHeader("Pragma", "no-cache;");						
-        response.setHeader("Expires", "-1;");									//이미지 출력시간을 무한대로 지정
+        response.setHeader("Expires", "-1;");	//이미지 출력시간을 무한대로 지정
 
         try(
         		//파일 읽을 준비
