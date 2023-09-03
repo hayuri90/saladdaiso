@@ -57,7 +57,6 @@
 .ad_div p:hover {
     cursor: pointer;
 }
-
 /******** 광고 end ********/
 
 .container {
@@ -106,12 +105,204 @@
 }
 
 /* 글쓰기 버튼 */		
-.writeBtn {
+.writeBtn, .contentBtn {
 	margin: 0px 0px 60px 0px;
 	padding: 5px 10px;	/* 하유리: 버튼 안쪽 여백 수정(23.07.31.) */
 	border-radius: 5px;
 	border-style: none;
 	background-color:#128853;
 	color: #fff;
+}
+
+/******** insertNOtice.jsp ********/
+.insert_table {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+		
+/* 하유리: 행 간격 띄우기(23.07.17.) */
+.insert_table table {
+	text-align: left;	/* th 왼쪽정렬 */
+	border-collapse: separate;
+	border-spacing: 10px 20px;
+	margin-top: -21px;	/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
+}
+
+/* 하유리: 글자-input박스 간 간격(23.07.17.) */
+.insert_table th {
+	font-weight: normal;
+	flex: left;
+	padding-right: 100px;
+	font-size: 14px;
+}
+
+/* 하유리: input box, textarea */
+.insert_input, textarea {	/* 하유리: 클래스명 수정(23.07.31.) */
+	padding: 5px 5px;
+	font-size: 14px;		/* 하유리: 폰트 크기 추가(23.07.31.) */
+}
+
+/* input, textarea 스타일 지정 */
+.insert_input, #insert_file, .insert_input_file {
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	width: 640px;
+}
+
+.insert_input {
+	height: 44px;
+}
+
+.insert_table textarea {
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	width: 640px;
+	height: 250px;
+}
+
+/* input, textarea 클릭 시 생기는 테두리 스타일 지정(23.07.17.)  */
+input:focus{
+	outline: 1px solid #000;
+}
+
+textarea:focus {
+	outline: 1px solid #000;
+}
+
+/* 하유리: 파일업로드 부분(23.07.31.) */
+#insert_file, .insert_input_file {
+	min-height: 0px;
+	padding: 0 5px;
+	margin-bottom: 10px;
+}
+
+.insert_btn_wrap, .update_btn_wrap {
+	display: flex;	/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+	justify-content: space-between;	/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+	margin: 0 11px;	/* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
+}
+
+/* 좌측 버튼<div> */
+.insert_btn1, .content_btn1, .update_btn1 {
+	float: left;	/* 하유리: 버튼 왼쪽 정렬 */
+}
+
+/* 우측 버튼<div> */
+.insert_btn2, .content_btn2, .update_btn2 {
+	float: right;	/* 하유리: 버튼 우측 정렬 */
+}
+
+/* noticeList.jsp 글쓰기 버튼 */
+.write_Btn {
 	float: right;
+}
+
+.write_Btn{
+	margin: 0px 0px 60px 0px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border-style: none;
+	background-color:#128853;
+	color: #fff;
+}
+
+.write_Btn:focus, .contentBtn:focus {
+	outline: none;		/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
+}
+
+/******** noticeContent.jsp ********/
+/* 중앙정렬 */
+.content_table {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* 하유리: 행 간격 띄우기(23.07.17.) */
+.content_table table {
+	text-align: left;	/* th 왼쪽정렬 */
+	border-collapse: separate;
+	border-spacing: 10px 20px;
+	margin-top: -21px;	/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
+}
+
+/* 하유리: 글자-input박스 간 간격(23.07.17.) */
+.content_table th {
+	font-weight: normal;
+	flex: left;
+	padding-right: 100px;
+}
+
+.content_table input, textarea, .notice_preview {
+	padding: 5px 5px;
+}
+
+.review_preview {
+	margin-top: -5px;
+}
+
+/* input, textarea 스타일 지정 */
+.content_table .content_input {
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	width: 640px;
+	height: 44px;
+}
+
+.content_table .content_text {
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	width: 640px;
+	height: 250px;
+}
+
+.content_table .content_input_file {
+	border: 1px solid #e3e3e3;
+	border-radius: 5px;
+	width: 640px;	
+}
+
+/* input, textarea 클릭 시 생기는 테두리 스타일 지정(23.07.17.)  */
+.content_text:focus{
+	outline: 1px solid #000;
+}
+
+.content_input_file:focus {
+	outline: 1px solid #000;
+}
+
+/* 업로드 이미지 파일이름 뜨는 input박스 */
+.notice_imgName {
+	border: none;	/* 테두리 없애기 */
+}
+
+/* 버튼 */
+.content_btn1 {
+	float: left;
+	margin-left: 10px;
+}
+
+.content_btn2 {
+	float: right;
+	margin-right: 10px;
+}
+
+.contentBtn{
+	margin: 0px 0px 60px 0px;
+	padding: 5px 10px;
+	border-radius: 5px;
+	border-style: none;
+	background-color:#128853;
+	color: #fff;
+}
+
+/******** insertNotice.jsp, noticeContent.jsp, updateNotice.jsp ********/
+.container1 {
+	width: 100%;
+	text-align: center;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-size: 14px;
+	margin: 0 auto;
+	padding-bottom: 10px;	/* 하유리: 수정/삭제 버튼-footer 사이 여백 추가(23.07.30.) */
 }

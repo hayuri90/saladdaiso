@@ -68,24 +68,12 @@
 						<c:forEach items="${reviewList }" var="review" varStatus="reviewStatus">
 				    		<tr>
 				    			<!-- 글 번호 -->
-				    			<th scope="row">	
-				    				<c:choose>
-				    					<c:when test="${reviewStatus.count<=3}">	<!-- 최다조회수 게시글 3개 상위노출 및 이미지 출력  -->
-				    						<span><img width="20px" src="${contextPath}/resources/image/review/bestCnt.png"/></span>
-				    					</c:when>
-				    					<c:otherwise>	<!-- 일반글 -->
-				    						<span>${review.re_articleNO }</span>
-				    					</c:otherwise>
-				    				</c:choose>
+				    			<th scope="row">
+									<span>${review.re_articleNO }</span>
 				    			</th>
 				    			<!-- 글 제목 -->
 				    			<td class="re_title" align="left">
-					    			<c:choose>
-					    				<c:when test="${reviewStatus.count<=3}"><!-- 베스트글 표시 -->
-					    					<span style="font-size:15px; color:#128853"> [베스트]</span>
-					    					<a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO }z"><c:out value="${review.re_title }"/></a>
-					    				</c:when>
-					    				
+					    			<c:choose>					    				
 					    				<c:when test="${review.level>1 }"> <!-- 답변 표시 -->
 					    					<c:forEach begin="1" end="${review.level }" step="2">
 					    						<span style="padding-left: 25px"></span>

@@ -104,19 +104,19 @@
 	margin: 0 139px;	/* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
 }
 
-.reply_btn_wrap {
-	display: flex;		/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
+.insert_btn_wrap, .update_btn_wrap, .reply_btn_wrap {
+	display: flex;	/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
 	justify-content: space-between;	/* 하유리: 버튼 테이블 아래쪽에 배치(23.08.01.) */
 	margin: 0 11px;	/* 하유리: 버튼 좌우 여백 지정(23.08.01.) */
 }
 
-/* 좌측 버튼 2개<div> */
-.content_btn1, .reply_btn1 {
+/* 좌측 버튼<div> */
+.insert_btn1, .content_btn1, .update_btn1, .reply_btn1 {
 	float: left;	/* 하유리: 버튼 왼쪽 정렬 */
 }
 
-/* 우측 버튼 3개<div> */
-.insert_btn, .content_btn2, .reply_btn2 {
+/* 우측 버튼<div> */
+.insert_btn2, .content_btn2, .update_btn2, .reply_btn2 {
 	float: right;	/* 하유리: 버튼 우측 정렬 */
 }
 
@@ -329,17 +329,7 @@ textarea:focus {
 }
 /*** 첨부파일 END ***/
 
-
 /* updateReview 버튼 전체<div> */
 .insert_btn {
 	padding-right: 10px;
 }
-
-/* updateReview, replyReview 글쓰기 버튼 */
-.writeBtn {
-	float: right;
-	float: center;
-	margin-left: 20px;
-	margin-left: 4px;	/* 하유리: 버튼 사이 간격 수정(23.07.30.) */
-}
-

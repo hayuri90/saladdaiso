@@ -30,7 +30,7 @@
 						<%-- fakeOrderNum, orderNum 저장 - 김동혁 수정(23.08.01) --%>
 						<th>주문번호</th>
 						<td>
-							<input class="insert_input" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" disabled/>
+							<input class="insert_input" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" readOnly />
 							<input type="hidden" name="re_orderNum" value="${orderInfo.orderNum}" />
 							<input type="hidden" name="re_fakeOrderNum" value="${orderInfo.fakeOrderNum}" />
 						</td>
@@ -39,7 +39,7 @@
 						<th>작성자</th>
 						<td>	
 							<!-- 하유리: 세션에 저장된 id값 가져오기(23.07.18.) -->
-							<input type="text" class="insert_input" name="userId" value="${user.userId}" autocomplete="off" readonly required disabled>
+							<input type="text" class="insert_input" name="userId" value="${user.userId}" autocomplete="off" readonly required />
 						</td>
 					</tr>		
 					<tr>
@@ -63,10 +63,14 @@
 					</tr>			
 				</table>
 				
-				<div class="insert_btn">
-					<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
-					<button class="writeBtn" type="reset" >초기화</button>
-					<button class="writeBtn" type="submit">글등록</button>
+				<div class="insert_btn_wrap">
+					<div class="insert_btn1">
+						<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
+					</div>
+					<div class="insert_btn2">
+						<button class="writeBtn" type="submit">글등록</button>
+						<button class="writeBtn" type="reset" >초기화</button>
+					</div>
 				</div>
 			</form>
 		</div>

@@ -122,7 +122,7 @@
 		<!-- 하유리: id가 admin(관리자)인 사람만 글쓰기 버튼 활성화(23.07.24.) -->	
 		<c:if test="${user.userId == 'admin' }">
 			<div class="noticeBtn">
-				<button class="writeBtn" type="button" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
+				<button class="write_Btn" type="button" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
 			</div>
 		</c:if>
 	</div>

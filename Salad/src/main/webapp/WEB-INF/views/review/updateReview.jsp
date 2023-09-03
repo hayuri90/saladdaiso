@@ -33,7 +33,7 @@
 							<th>주문상품</th>
 							<td>
 								<input class="insert_input" name="orderList" value="${review.re_fakeOrderNum}" width="440px" 
-								 	   required disabled autocomplete="off" />
+								 	   required readOnly autocomplete="off" />
 							</td>
 						</tr>
 					</c:if>
@@ -41,7 +41,7 @@
 						<th>작성자</th>
 						<td>	
 							<input type="text" class="insert_input" name="userId" value="${review.userId }" 
-								   placeholder="이름을 입력해 주세요." required disabled autocomplete="off">
+								   placeholder="이름을 입력해 주세요." required readOnly autocomplete="off">
 						</td>
 					</tr>
 					<tr>
@@ -84,10 +84,14 @@
 					</tr>			
 				</table>
 				
-				<div class="insert_btn">
-					<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
-					<button class="writeBtn" type="reset" >초기화</button>
-					<button class="writeBtn" type="submit">글등록</button>
+				<div class="update_btn_wrap">
+					<div class="update_btn1">
+						<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
+					</div>
+					<div class="update_btn2">
+						<button class="writeBtn" type="submit">글등록</button>
+						<button class="writeBtn" type="reset" >초기화</button>
+					</div>
 				</div>
 			</form>
 		</div>

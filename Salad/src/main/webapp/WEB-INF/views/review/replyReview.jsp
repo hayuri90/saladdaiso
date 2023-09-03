@@ -59,8 +59,8 @@
 						<button class="replyBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
 					</div>	
 					<div class="reply_btn2">
-						<button class="replyBtn" type="reset" >초기화</button>
 						<button class="replyBtn" type="submit">답변 등록</button>
+						<button class="replyBtn" type="reset" >초기화</button>
 					</div>
 				</div>
 			</form>

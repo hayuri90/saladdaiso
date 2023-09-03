@@ -13,130 +13,11 @@
     <!-- CSS -->
     <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
     <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
-	<style>
-		/* 폰트 */
- 		@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
- 		
-		/* 하유리: 공지페이지 제목 수정(23.07.29.) */
-		.notice_sub {
-			margin: 50px 0;
-			padding: 178px 0 24px 0;		/* 하유리: 헤더 영역만큼 아래로 내림(23.07.25.) */
-		}												/* 하유리: 제목 주변 여백 수정(23.07.29.)  */
-		
-		/* 하유리: 공지페이지 제목 수정(23.07.29.)  */
-		.notice_text {
-		 	font-family: 'Noto Sans KR', sans-serif;
-			font-size: 32px;						/* 하유리: 폰트 크기 수정(23.07.29.) */
-			font-weight: 700;
-			line-height: 1.2;
-		  	letter-spacing: -1px;				/* 하유리: 제목 자간 수정(23.07.29.) */
-		}
-	
-		.container {
-			width: 100%;
-/*			display: flex;
-			justify-content: center; */
-			text-align: center;
-			font-family: 'Noto Sans KR', sans-serif;
- 			font-size: 14px;
-			margin: 0 auto;
-			padding-bottom: 10px;			/* 하유리: 수정/삭제 버튼-footer 사이 여백 추가(23.07.30.) */
-		}
-
-		/* 중앙정렬 */
-		.content_table {
-			width: 100%;
-			display: flex;
-			justify-content: center;
-		}
-		
-		/* 하유리: 행 간격 띄우기(23.07.17.) */
-		.content_table table {
-			text-align: left;	/* th 왼쪽정렬 */
-			border-collapse: separate;
-			border-spacing: 10px 20px;
-			margin-top: -21px;			/* 하유리: 테이블 위쪽 여백 줄이기(23.07.30.) */
-		}
-	
-		/* 하유리: 글자-input박스 간 간격(23.07.17.) */
-		.content_table th {
-			font-weight: normal;
-			flex: left;
-			padding-right: 100px;
-		}
-		
-		.content_table input, textarea, .notice_preview {
-			padding: 5px 5px;
-		}
-		
-		.review_preview {
-			margin-top: -5px;
-		}
-	
-		/* input, textarea 스타일 지정 */
-		.content_table .content_input {
-			border: 1px solid #e3e3e3;
-			border-radius: 5px;
-			width: 640px;
-			height: 44px;
-		}
-		
-		.content_table .content_text {
-			border: 1px solid #e3e3e3;
-			border-radius: 5px;
-			width: 640px;
-			height: 250px;
-		}
-		
-		.content_table .content_input_file {
-			border: 1px solid #e3e3e3;
-			border-radius: 5px;
-			width: 640px;	
-		}
-		
-		/* input, textarea 클릭 시 생기는 테두리 스타일 지정(23.07.17.)  */
-		.content_text:focus{
-			outline: 1px solid #000;
-		}
-		
-		.content_input_file:focus {
-			outline: 1px solid #000;
-		}
-		
-		/* 업로드 이미지 파일이름 뜨는 input박스 */
-		.notice_imgName {
-			border: none;	/* 테두리 없애기 */
-		}
-		
-		/* 버튼 */
-		.content_btn1 {
-			float: left;
-			margin-left: 10px;
-		}
-		
-		.content_btn2 {
-			float: right;
-			margin-right: 10px;
-		}
-	
-		.contentBtn{
-			margin: 0px 0px 60px 0px;
-			padding: 5px 10px;
-			border-radius: 5px;
-			border-style: none;
-			background-color:#128853;
-			color: #fff;
-		}
-		
-		.contentBtn:focus {
-			outline: none;						/* 하유리: 버튼 클릭 시 생기는 테두리 없애기(23..07.31.) */
-		}
-		
-	</style>
+    <link href="../resources/css/notice.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>		
-	<div class="container mt-3">
+	<div class="container1 mt-3">
 		<div class="notice_sub">
 			<p class="notice_text">NOTICE</p>
 		</div>
@@ -188,22 +69,13 @@
 				</table>
 				
 				<!-- 버튼 -->
-				<div> 
-					<c:if test="${user.userId == 'admin' }">
-						<div class="content_btn1">
-							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
-							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">목록</button>
-						</div>
-					</c:if>
-					<c:if test="${user.userId != 'admin' }">
-						<div class="content_btn2">
-							<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">목록</button>
-						</div>
-					</c:if>
+				<div class="content_btn1">
+					<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">글목록</button>
 				</div>
 				<div class="content_btn2">
 					<!-- 하유리: 작성자(admin)만 게시글만 수정, 삭제할 수 있도록 처리(23.07.18.) -->
 					<c:if test="${user.userId == notice.userId }">
+						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/insert'">글쓰기</button>
 						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/update?articleNO=${notice.articleNO }'">수정</button>
 						<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/delete?articleNO=${notice.articleNO }'">삭제</button>
 					</c:if>
