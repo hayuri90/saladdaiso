@@ -22,7 +22,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReviewDAOImpl implements ReviewDAO {
 
-	//DB에 접속하기 위해 의존관계 주입
+	//DB에 접속하기 위해 의존성 주입
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 

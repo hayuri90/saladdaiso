@@ -31,11 +31,11 @@ import com.proj.salad.review.vo.SearchCriteria;
 import com.proj.salad.review.vo.ajaxCommentVO;
 import com.proj.salad.user.vo.UserVO;
 
-@Controller
-@RequestMapping("/review")
+@Controller	//springframework에 이 클래스가 controller임을 알려줌
+@RequestMapping("/review")	//공통적인 url 설정
 public class ReviewController extends HttpServlet {
 		
-	@Autowired
+	@Autowired	//의존성 주입
 	private ReviewService reviewService;
 
 	@Autowired
@@ -50,15 +50,18 @@ public class ReviewController extends HttpServlet {
 	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String selectAllReviewList(Model model, HttpServletRequest request, HttpServletResponse response, Criteria criteria) throws Exception {
-		List<ReviewVO> list = reviewService.selectAllReviewList(criteria);
-		model.addAttribute("reviewList", list);
+		//List형식으로 데이터를 가져와 Model에 담음
+		List<ReviewVO> list = reviewService.selectAllReviewList(criteria);	//서비스에서 selectAllReviewList를 가져오면 이 데이터를
+																			//list라는 이름의 ReviewVO 데이터를 보관할 수 있는 List
+		model.addAttribute("reviewList", list);	//Model에 reviewList라는 이름으로 list의 값을 넣어서 jsp(view)로 전달
 		
-		PageVO paging = new PageVO();
+		//페이징
+		PageVO paging = new PageVO();	//페이징 객체 생성
 		paging.setCriteria(criteria);
-		//게시물 총 개수(23.07.16.)
-		paging.setTotalPost(reviewService.getTotal());
+		paging.setTotalPost(reviewService.getTotal());	//게시물 총 개수(23.07.16.)
 		model.addAttribute("pageMaker", paging);
-		model.addAttribute("select", criteria.getCurPage());
+		model.addAttribute("select", criteria.getCurPage());	//현재페이지
+		
 		return "/review/list";
 	}
 	

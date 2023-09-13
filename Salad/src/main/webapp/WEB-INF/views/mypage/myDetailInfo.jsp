@@ -29,7 +29,7 @@
 			<div class="top_line">		
 				<span class="basic">정보입력</span>	
 				<span class="essential">*</span>
-				<span>필수입력사항</span>
+				<span class="essential_input">필수입력사항</span>
 			</div>
 			<div class="userForm">
 				<form name="frm_mod_user" >
@@ -52,7 +52,7 @@
 								</td>
 								<td class="btn_modify">
 									<button class="btn-cursor-pointer" type="button" onClick="fn_modify_user_info('userPwd')">
-										<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userPwd" width="27px;" height="27px;">
+										<img src="${contextPath}/resources/image/mypage/modify.png" alt="userPwd" class="userPwd_img">
 									</button>
 								</td>
 							</tr>
@@ -78,7 +78,7 @@
 								</td>			
 								<td class="btn_modify">
 									<button type="button" class="btn-cursor-pointer" onClick="fn_modify_user_info('userName')">
-										<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userName" width="27px;" height="27px;">
+										<img src="${contextPath}/resources/image/mypage/modify.png" alt="userName" class="userName_img">
 									</button>
 								</td>
 							</tr>
@@ -89,9 +89,8 @@
 								<td class="userGender" align="left">
 									<c:choose>
 					  					<c:when test="${user.userGender=='남' }">
-						 					<input type="radio" name="userGender" value="여" />여성
-												<span class="genderTxt"></span>							
-						 					<input type="radio" name="userGender" value="남" style="margin-left:40px" checked />남성
+						 					<input type="radio" class="radio_woman" name="userGender" value="여" />여성
+						 					<input type="radio" class="radio_man" name="userGender" value="남" style="margin-left:10px" checked />남성
 										</c:when>
 							 			<c:otherwise>
 							 				<input type="radio" name="userGender" value="여" checked  />여성
@@ -102,7 +101,7 @@
 								</td>
 								<td class="btn_modify">
 									<button class="btn-cursor-pointer" type="button" onClick="fn_modify_user_info('userGender')">
-										<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userGender" width="27px;" height="27px;">
+										<img src="${contextPath}/resources/image/mypage/modify.png" alt="userGender">
 									</button>
 								</td>
 							</tr>
@@ -126,7 +125,7 @@
 								</td>
 								<td  class="btn_modify">
 									<button type="button" class="btn_modify_email btn-cursor-pointer" onClick="fn_modify_user_info('email')">
-										<img src="${contextPath}/resources/image/mypage/modify1.png" alt="email" width="27px;" height="27px;">
+										<img src="${contextPath}/resources/image/mypage/modify.png" alt="email">
 									</button>
 								</td> 
 							</tr>
@@ -139,7 +138,7 @@
 								</td>
 								<td class="btn_modify">
 									<button type="button" class="btn-cursor-pointer" onClick="fn_modify_user_info('userBirth')">
-										<img src="${contextPath}/resources/image/mypage/modify1.png" alt="userBirth" width="27px;" height="27px;">
+										<img src="${contextPath}/resources/image/mypage/modify.png" alt="userBirth" class="userBirth_img">
 									</button>
 								</td>
 							</tr>
@@ -161,7 +160,7 @@
 					 			</td>
 								<td class="btn_modify">
 									<button type="button" class="btn_modify_phone btn-cursor-pointer" onClick="fn_modify_user_info('phone')">
-										<img src="${contextPath}/resources/image/mypage/modify1.png" alt="phone" width="27px;" height="27px;">
+										<img src="${contextPath}/resources/image/mypage/modify.png" alt="phone">
 									</button>
 								</td>
 							</tr>
@@ -185,7 +184,7 @@
 								  	</td>
 									<td  class="btn_modify">
 										<button type="button" class="btn_modify_address btn-cursor-pointer" onClick="fn_modify_user_info('address')">
-											<img src="${contextPath}/resources/image/mypage/modify1.png" alt="address" width="27px;" height="27px;">
+											<img src="${contextPath}/resources/image/mypage/modify.png" alt="address" class="userAddress_img">
 										</button>
 									</td>
 								</tr>
@@ -316,7 +315,7 @@
 		var passwordConfirm = document.getElementById('userPwdConfirm');	//비밀번호 확인 값
 		var confirmMsg = document.getElementById('confirmMsg');				//확인 메세지
 		var correctColor = "#32cd32";	//맞았을 때 출력되는 색깔.
-		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+		var wrongColor ="#ff0000";		//틀렸을 때 출력되는 색깔
 		
 		if(password.value == passwordConfirm.value){//password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
 			confirmMsg.style.color = correctColor;/* span 태그의 ID(confirmMsg) 사용  */

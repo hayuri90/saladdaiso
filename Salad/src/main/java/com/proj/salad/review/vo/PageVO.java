@@ -6,6 +6,7 @@ import java.net.URLEncoder;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+//화면에서 버튼 생성을 도와주는 계산 클래스
 public class PageVO {	
 	
 	private int totalPost;			//총 게시물 수 	
