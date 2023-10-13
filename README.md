@@ -64,10 +64,10 @@
     <summary>회원가입/로그인</summary>
     <div markdown="1">
       <br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp회원가입(문자메시지 인증)&nbsp</p>
+      <img src="https://img.shields.io/badge/회원가입(문자메시지 인증)-FFFF00?style=flat" /><br/>
       <img src="https://blog.kakaocdn.net/dn/bKQBXk/btsyqxXPs6a/FtnVL8zrdgKldOxYCjv0WK/img.gif" width="850">
       <br/><br/><br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp로그인&nbsp</p>
+      <img src="https://img.shields.io/badge/로그인-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/0cfdefb9-6e43-4739-a088-274c8b58800a" width="850">
     </div>
     <br/><br/>
@@ -76,13 +76,13 @@
     <summary>장바구니/주문</summary>
     <div markdown="1">
       <br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp세트상품 담기&nbsp</p>
+      <img src="https://img.shields.io/badge/세트상품 담기-FFFF00?style=flat" /><br/>
       <img src="https://blog.kakaocdn.net/dn/PR8Cx/btsyrzBNNX9/f61uTxkNRgU6zlEvWFL4Jk/img.gif" width="850">
       <br/><br/><br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp개별재료 담기/장바구니&nbsp</p>
+      <img src="https://img.shields.io/badge/개별재료 담기/장바구니-FFFF00?style=flat" /><br/>
       <img src="https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1" width="850">
       <br/><br/><br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp주문/주문내역 확인&nbsp</p>
+      <img src="https://img.shields.io/badge/주문/주문내역 확인-FFFF00?style=flat" /><br/>
       <img src="https://github.com/startDev01/Salad/assets/97159362/6a70a94b-f8df-4129-a41c-25f44ac82ac7" width="850"><br/>
     </div>
     <br/><br/>
@@ -91,16 +91,16 @@
     <summary>리뷰게시판</summary>
     <div markdown="1">
       <br/>
-      <span style='background-color: #fff5b1'>&nbsp게시물 작성(첨부파일 업로드)&nbsp</span><br/>
+      <img src="https://img.shields.io/badge/게시물 작성(첨부파일 업로드)-FFFF00?style=flat" /><br/>
       <img src="" width="850">
       <br/><br/><br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp답글 작성/계층형게시판&nbsp</p>
+      <img src="https://img.shields.io/badge/답글 작성/계층형게시판-FFFF00?style=flat" /><br/>
       <img src="" width="850">
       <br/><br/><br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 수정/삭제&nbsp</p>
+      <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
       <img src="" width="850">
       <br/><br/><br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp검색기능&nbsp</p>
+      <img src="https://img.shields.io/badge/검색 기능-FFFF00?style=flat" /><br/>
       <img src="https://blog.kakaocdn.net/dn/OCXyT/btsykmKaIY2/GI9uK6h2i4gDV8PgFlAjb0/img.gif" width="850">
     </div>
     <br/><br/>
@@ -109,11 +109,11 @@
     <summary>공지게시판</summary>
     <div markdown="1">
       <br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 작성(첨부파일 업로드)&nbsp</p>
+      <img src="https://img.shields.io/badge/게시물 작성(첨부파일 업로드)-FFFF00?style=flat" /><br/>
       <img src="" width="850">
       <br/>
       <br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 수정/삭제&nbsp</p>
+      <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
       <img src="" width="850">
     </div>
     <br/><br/>
