@@ -98,7 +98,8 @@
       <img src="" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
-      <img src="" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/32cf2f45-4c3c-4b56-8a9e-c2260d2338e2" width="850"><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b5513245-edc5-4d22-9e61-6a6c8952d14f" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/검색 기능-FFFF00?style=flat" /><br/>
       <img src="https://blog.kakaocdn.net/dn/OCXyT/btsykmKaIY2/GI9uK6h2i4gDV8PgFlAjb0/img.gif" width="850">
