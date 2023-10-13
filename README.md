@@ -91,7 +91,7 @@
     <summary>리뷰게시판</summary>
     <div markdown="1">
       <br/>
-      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 작성(첨부파일 업로드)&nbsp</p>
+      <span style='background-color: #fff5b1'>&nbsp게시물 작성(첨부파일 업로드)&nbsp</span><br/>
       <img src="" width="850">
       <br/><br/><br/>
       <p style="background-color: #FFFF66; display:inline-block;">&nbsp답글 작성/계층형게시판&nbsp</p>
