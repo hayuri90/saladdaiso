@@ -77,7 +77,7 @@
     <div markdown="1">
       <br/>
       <img src="https://img.shields.io/badge/세트상품 담기-FFFF00?style=flat" /><br/>
-      <img src="https://blog.kakaocdn.net/dn/PR8Cx/btsyrzBNNX9/f61uTxkNRgU6zlEvWFL4Jk/img.gif" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/89b6eb0c-f030-4881-aa15-897f437446b7" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/개별재료 담기/장바구니-FFFF00?style=flat" /><br/>
       <img src="https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1" width="850">
