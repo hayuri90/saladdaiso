@@ -20,15 +20,15 @@
     <div>
       <div align="center">
       	<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Conda-Forge&logoColor=white" />
-      	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
-      	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+        <img src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=Spring&logoColor=white" />
       	<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=JavaScript&logoColor=white" />
       	<img src="https://img.shields.io/badge/jQuery-0769AD?style=flat&logo=jQuery&logoColor=white" />
-      	<br>
-      	<img src="https://img.shields.io/badge/Spring-6DB33F?style=flat&logo=Spring&logoColor=white" />
-      	<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white" />
-      	<img src="https://img.shields.io/badge/Mybatis-000000?style=flat&logo=Fluentd&logoColor=white" />
+        <img src="https://img.shields.io/badge/Mybatis-000000?style=flat&logo=Fluentd&logoColor=white" />
       	<img src="https://img.shields.io/badge/Oracle-F80000?style=flat&logo=Oracle&logoColor=white" />
+      	<br>
+        <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+      	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+      	<img src="https://img.shields.io/badge/Bootstrap-7952B3?style=flat&logo=Bootstrap&logoColor=white" />
       </div>
       <br/>
       <div align='center'>
@@ -60,16 +60,63 @@
 <div align='center'>
   <hr/><h3>3️⃣주요 기능</h3><hr/>
   <br/>
-  <h4>🛒 장바구니 🛒</h4>
-  <br/>
-  <img src="https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1" width="850">
+  <details>
+    <summary>회원가입/로그인</summary>
+    <div markdown="1">
+      <br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp회원가입(문자메시지 인증)&nbsp</p><br/>
+      <img src="https://blog.kakaocdn.net/dn/bKQBXk/btsyqxXPs6a/FtnVL8zrdgKldOxYCjv0WK/img.gif" width="850">
+      <br/><br/><br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp로그인&nbsp</p><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/0cfdefb9-6e43-4739-a088-274c8b58800a" width="850">
+    </div>
+    <br/><br/>
+  </details>
+  <details>
+    <summary>장바구니/주문</summary>
+    <div markdown="1">
+      <br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp세트상품 담기&nbsp</p><br/>
+      <img src="https://blog.kakaocdn.net/dn/PR8Cx/btsyrzBNNX9/f61uTxkNRgU6zlEvWFL4Jk/img.gif" width="850">
+      <br/><br/><br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp개별재료 담기/장바구니&nbsp</p><br/>
+      <img src="https://github.com/startDev01/Salad/assets/97159362/c2f27482-c738-4ba2-8cb3-29364e74c0a1" width="850">
+      <br/><br/><br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp주문/주문내역 확인&nbsp</p><br/>
+      <img src="https://github.com/startDev01/Salad/assets/97159362/6a70a94b-f8df-4129-a41c-25f44ac82ac7" width="850"><br/>
+    </div>
+    <br/><br/>
+  </details>
+  <details>
+    <summary>리뷰게시판</summary>
+    <div markdown="1">
+      <br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 작성(첨부파일 업로드)&nbsp</p><br/>
+      <img src="" width="850">
+      <br/><br/><br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp답글 작성/계층형게시판&nbsp</p><br/>
+      <img src="" width="850">
+      <br/><br/><br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 수정/삭제&nbsp</p><br/>
+      <img src="" width="850">
+      <br/><br/><br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp검색기능&nbsp</p><br/>
+      <img src="https://blog.kakaocdn.net/dn/OCXyT/btsykmKaIY2/GI9uK6h2i4gDV8PgFlAjb0/img.gif" width="850">
+    </div>
+    <br/><br/>
+  </details>
+  <details>
+    <summary>공지게시판</summary>
+    <div markdown="1">
+      <br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 작성(첨부파일 업로드)&nbsp</p><br/>
+      <img src="" width="850">
+      <br/>
+      <br/>
+      <p style="background-color: #FFFF66; display:inline-block;">&nbsp게시물 수정/삭제&nbsp</p><br/>
+      <img src="" width="850">
+    </div>
+    <br/><br/>
+  </details>
   <br/><br/><br/>
-  <h4>📋 주문 📋</h4>
-  <br/>
-  <img src="https://github.com/startDev01/Salad/assets/97159362/6a70a94b-f8df-4129-a41c-25f44ac82ac7" width="850">
-  <br/><br/><br/>
-  <h4>🖋 리뷰, 비동기 Ajax 댓글 🖋</h4>
-  <br/>
-  <img src="https://github.com/startDev01/Salad/assets/97159362/cee53271-ea99-4603-a73e-d0f513f7b866" width="850">
-  <br/>
 </div>
