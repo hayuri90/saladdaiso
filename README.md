@@ -65,7 +65,7 @@
     <div markdown="1">
       <br/>
       <img src="https://img.shields.io/badge/회원가입(문자메시지 인증)-FFFF00?style=flat" /><br/>
-      <img src="https://blog.kakaocdn.net/dn/bKQBXk/btsyqxXPs6a/FtnVL8zrdgKldOxYCjv0WK/img.gif" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/47f2239e-2d4d-4e9c-a100-233ef65d9f97" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/로그인-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/0cfdefb9-6e43-4739-a088-274c8b58800a" width="850">
@@ -95,10 +95,10 @@
       <img src="" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/답글 작성/계층형게시판-FFFF00?style=flat" /><br/>
-      <img src="" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/cb522b72-ec7d-467e-94cd-48b9da4d95bc" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
-      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/32cf2f45-4c3c-4b56-8a9e-c2260d2338e2" width="850"><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/e80cb37e-39af-4f77-8a6e-82fa3965fc21" width="850"><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b5513245-edc5-4d22-9e61-6a6c8952d14f" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/검색 기능-FFFF00?style=flat" /><br/>
@@ -111,7 +111,7 @@
     <div markdown="1">
       <br/>
       <img src="https://img.shields.io/badge/게시물 작성(첨부파일 업로드)-FFFF00?style=flat" /><br/>
-      <img src="" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/a5044849-6eda-41f8-aaf3-41f156f298ac" width="850">
       <br/>
       <br/>
       <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
