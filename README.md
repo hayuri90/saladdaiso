@@ -103,6 +103,9 @@
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/검색 기능-FFFF00?style=flat" /><br/>
       <img src="https://blog.kakaocdn.net/dn/OCXyT/btsykmKaIY2/GI9uK6h2i4gDV8PgFlAjb0/img.gif" width="850">
+      <br/><br/><br/>
+      <img src="https://img.shields.io/badge/댓글 기능-FFFF00?style=flat" /><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/7a20cab6-e215-48f6-ad78-caced0a8a3c8" width="850">      
     </div>
     <br/><br/>
   </details>
