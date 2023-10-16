@@ -97,8 +97,10 @@
       <img src="https://img.shields.io/badge/답글 작성/계층형게시판-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/cb522b72-ec7d-467e-94cd-48b9da4d95bc" width="850">
       <br/><br/><br/>
-      <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
-      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/e80cb37e-39af-4f77-8a6e-82fa3965fc21" width="850"><br/>
+      <img src="https://img.shields.io/badge/게시물 수정-FFFF00?style=flat" /><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/e80cb37e-39af-4f77-8a6e-82fa3965fc21" width="850">
+      <br/><br/><br/>
+      <img src="https://img.shields.io/badge/게시물 삭제-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b5513245-edc5-4d22-9e61-6a6c8952d14f" width="850">
       <br/><br/><br/>
       <img src="https://img.shields.io/badge/검색 기능-FFFF00?style=flat" /><br/>
