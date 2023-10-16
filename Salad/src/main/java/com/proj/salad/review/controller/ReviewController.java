@@ -19,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.proj.salad.review.service.ReviewService;
+import com.proj.salad.review.util.CommonUtils;
 import com.proj.salad.review.vo.Criteria;
 import com.proj.salad.review.vo.PageVO;
 import com.proj.salad.review.vo.ReviewVO;
@@ -50,60 +52,59 @@ public class ReviewController extends HttpServlet {
 	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@RequestMapping(value="/list", method=RequestMethod.GET)
 	public String selectAllReviewList(Model model, HttpServletRequest request, HttpServletResponse response, Criteria criteria) throws Exception {
-		//List형식으로 데이터를 가져와 Model에 담음
-		List<ReviewVO> list = reviewService.selectAllReviewList(criteria);	//서비스에서 selectAllReviewList를 가져오면 이 데이터를
-																			//list라는 이름의 ReviewVO 데이터를 보관할 수 있는 List
-		model.addAttribute("reviewList", list);	//Model에 reviewList라는 이름으로 list의 값을 넣어서 jsp(view)로 전달
+		//Criteria(VO)로 받은 값을, 페이징을 원하는 select문에 매개변수로 넣어서 List데이터를 Model을 이용해 뷰로 보내준다.
+		List<ReviewVO> list = reviewService.selectAllReviewList(criteria);	//List형식으로 데이터를 가져와 Model에 담음
+		//System.out.println("@@@@@@@@"+list);
+		model.addAttribute("reviewList", list);	//Model에 reviewList라는 이름으로 list값을 넣어서 jsp(view)로 전달
 		
 		//페이징
-		PageVO paging = new PageVO();	//페이징 객체 생성
-		paging.setCriteria(criteria);
+		PageVO paging = new PageVO();
+		paging.setCriteria(criteria); //파라미터(criteria)를 넣어서 현재 페이지에 따라 페이징 버튼 변경
 		paging.setTotalPost(reviewService.getTotal());	//게시물 총 개수(23.07.16.)
 		model.addAttribute("pageMaker", paging);
-		model.addAttribute("select", criteria.getCurPage());	//현재페이지
+		model.addAttribute("select", criteria.getCurPage()); //현재페이지
 		
 		return "/review/list";
 	}
 	
-	//하유리: 2-2. 글쓰기(23.07.16.)
+	//하유리: 2-1. 글쓰기(23.07.16.)
 	@RequestMapping(value="/insert", method=RequestMethod.GET)
-	public ModelAndView insertFormWithON(@RequestParam("orderNum") int orderNum, HttpServletRequest request) throws Exception {
+	public String insertFormWithON(int orderNum, HttpServletRequest request, Model model) throws Exception {
 		String userName = null;
-
-		Integer checkNull = orderNum;
+		
+		Integer checkNull = orderNum; //Integer: int의 wrapper class
 		OrderInfoVO orderInfoVO = null;
 
 		//orderNum으로 주문 내역 조회
-		if(checkNull != null) {
-			orderInfoVO = myPageOrderService.selectOrderOne(orderNum);
+		if(checkNull != null) { //checkNull이 wrapper class이기 때문에 null값과 비교 가능
+			orderInfoVO = myPageOrderService.selectOrderOne(orderNum); //주문번호 가져오기
+			model.addAttribute("orderInfo", orderInfoVO); //model에 담아서 view로 전달
 			System.out.println("받은 orderNum : " + orderNum);
 			System.out.println("나온 orderInfo 결과값 : " + orderInfoVO.getFakeOrderNum());
 		}
-		String viewName = getViewName(request);
-		ModelAndView mav = new ModelAndView(viewName);
-		if(checkNull != null) {
-			mav.addObject("orderInfo", orderInfoVO);
-		}
-		return mav;
+		return "/review/insertReview";
 	}
 	
 	//하유리: 2-2. 글쓰기(23.07.16.)
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ModelAndView insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
-        //세션 반환(23.07.18.)
+    public String insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
+        //세션 값 가져오기(23.07.18.)
         HttpSession session = request.getSession();
 
-        //파일 업로드(23.07.20.)
-    	reviewService.insertReview(reviewVO, request, mRequest);		//글 작성
-		//김동혁: order 테이블 reviewStatus → 1로 수정(23.08.02.)
+        //게시물 작성+파일 업로드(23.07.20.)
+    	reviewService.insertReview(reviewVO, request, mRequest);
+    	
+		//김동혁: order 테이블 reviewStatus=1로 수정(23.08.02.)
     	reviewService.updateReviewStatus(reviewVO);
-    	ModelAndView mav = new ModelAndView("redirect:/review/list");	//페이지 이동
-    	return mav;
+    	
+    	rttr.addFlashAttribute("result", "enroll success"); //스트링 데이터를 "result" 속성 값에 저장하는 addFlashAttribute() 메소드 호출
+    	
+    	return "redirect:/review/list"; //페이지 이동
     }
 
 	//하유리: 3-1. 게시물 상세보기(23.07.16.)
 	@RequestMapping(value="/content", method=RequestMethod.GET)
-	public String detailReview(@RequestParam("re_articleNO") Integer re_articleNO, SearchCriteria scri, Model model, HttpSession session) {
+	public String detailReview(int re_articleNO, SearchCriteria scri, Model model, HttpSession session) {
 		
 		//조회수
 		reviewService.updateCnt(re_articleNO, session);
@@ -153,15 +154,24 @@ public class ReviewController extends HttpServlet {
 	
 	//하유리: 4-2. 게시물 수정하기(23.07.18.)
 	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String updateReview(ReviewVO reviewVO) {
+	public String updateReview(ReviewVO reviewVO, RedirectAttributes rttr) {
+		//업로드된 파일 삭제
+		
+		//파일 추가 업로드
+		
 		reviewService.updateReview(reviewVO);
-		return "redirect:/review/content?re_articleNO="+reviewVO.getRe_articleNO();	//수정한 게시물로 이동(23.09.01.)
-	}	
+		
+		//수정 후 redirect로 페이지 이동 시, 경고창을 띄우기 위해
+		rttr.addFlashAttribute("result", "modify success"); //"result" 속성 값에 "modify success" 스트링 데이터를 저장
+		return "redirect:/review/content?re_articleNO="+reviewVO.getRe_articleNO(); //수정한 게시물로 이동(23.09.01.)
+	}
 	
 	//하유리: 5. 게시물 삭제하기(23.07.18.)
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String deleteReveiw(int re_articleNO) {
+	public String deleteReveiw(int re_articleNO, RedirectAttributes rttr) {
 		reviewService.deleteReview(re_articleNO);
+		rttr.addFlashAttribute("re_articleNO", re_articleNO); //게시물번호를 넘김
+		rttr.addFlashAttribute("result", "delete success"); //게시물 삭제 후 알림창 출력
 		return "redirect:/review/list";
 	}
 	
@@ -177,8 +187,9 @@ public class ReviewController extends HttpServlet {
 	@RequestMapping(value="/reply", method=RequestMethod.POST)
 	public String replyReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response) throws Exception {
 		
-		// 세션 반환(23.07.18.)
+		// 세션 값 가져오기(23.07.18.)
         HttpSession session = request.getSession();
+        System.out.println("@@@@@@Controller_userId: " + session.getId());
 
         // 글 작성
         reviewService.replyReview(reviewVO, request, mRequest);
@@ -189,11 +200,13 @@ public class ReviewController extends HttpServlet {
 	//하유리: 7. 글 목록 + 페이징 + 검색
 	@RequestMapping(value="/searchList", method=RequestMethod.GET)
 	public String searchList(SearchCriteria scri, Model model, String searchType, String keyword) throws Exception {
+		//검색목록 출력
 		List<ReviewVO> list = reviewService.searchList(scri);
 		model.addAttribute("reviewList", list);
-		model.addAttribute("searchType", list);
+		model.addAttribute("searchType", searchType);
 		model.addAttribute("keyword", keyword);
 		
+		//검색결과 페이징
 		PageVO paging = new PageVO();
 		paging.setCriteria(scri);
 		//검색 결과 개수

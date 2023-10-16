@@ -118,6 +118,21 @@
 	</div>
 
 	<script type="text/javascript">
+		/* 게시글 수정 후 알림창 출력(23.09.24.) */
+		$(document).ready(function(){
+			let result = '<c:out value="${result}"/>';
+			
+			checkAlert(result);
+			console.log(result);
+			
+			function checkAlert(result){
+				
+				if(result === "modify success"){
+					alert("게시물 수정이 완료되었습니다.");
+				}
+			}
+		});
+	
 		$(document).ready(function () {
 			$.ajax({
 				url: '${contextPath}/review/getCommentList', //실제 댓글을 추가하는 서버 URL로 대체해주세요

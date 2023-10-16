@@ -2,8 +2,8 @@ package com.proj.salad.review.vo;
 
 public class SearchCriteria extends Criteria {
 	
-	private String searchType = "";
-	private String keyword = "";
+	private String searchType = ""; //검색타입
+	private String keyword = ""; //검색어
 	
 	//getter, setter
 	public String getSearchType() {

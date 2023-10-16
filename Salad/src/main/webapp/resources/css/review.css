@@ -125,6 +125,12 @@
 }
 
 /* 하유리: 테이블 */
+.td_articleNO {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .table {
 	padding: 20px 0;
 	text-align: center;
@@ -135,6 +141,9 @@
 .re_title a {
 	text-decoration: none;
 	color: #000;
+	overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 }
 
 /* 하유리: 페이징 */

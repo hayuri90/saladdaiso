@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -24,7 +25,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	//DB에 접속하기 위해 의존성 주입
 	@Autowired
-	private SqlSessionTemplate sqlSession;
+	SqlSession sqlSession;
 
 	//하유리: 1. 전체목록조회 + 답변형 게시판 + 페이징(23.07.16.)
 	@Override
@@ -44,7 +45,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 		sqlSession.insert("review.insertReview", reviewVO);
 	}
 
-	//김동혁: 2-2-1. order 테이블 reviewStatus → 1로 수정(23.08.02.)
+	//김동혁: 2-2-1. order 테이블 reviewStatus=1로 수정(23.08.02.)
 	@Override
 	public void updateReviewStatus(ReviewVO reviewVO) {
 		sqlSession.update("review.updateOrderReviewStatus", reviewVO);
@@ -117,7 +118,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 
 	@Override
 	public void insertCommnet(ajaxCommentVO ajaxCommentVO) {
-		System.out.println("DAO VO 정보!!!!!!!!!!"+ajaxCommentVO);
+		System.out.println("DAO VO 정보: "+ajaxCommentVO);
 		sqlSession.insert("review.insertComment",ajaxCommentVO);
 	}
 	

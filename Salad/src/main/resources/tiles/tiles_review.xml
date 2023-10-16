@@ -25,7 +25,7 @@
    	</definition>
    
    	<!-- 하유리: 글쓰기 페이지 추가(23.07.31.) -->
-   	<definition name="/review/insert" extends="baseLayout">
+   	<definition name="/review/insertReview" extends="baseLayout">
       	<put-attribute name="title" value="샐러드다이소: 리뷰게시판" />
       	<put-attribute name="body" value="/WEB-INF/views/review/insertReview.jsp" />
    	</definition>

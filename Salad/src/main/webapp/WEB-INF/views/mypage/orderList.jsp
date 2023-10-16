@@ -48,13 +48,14 @@
 	                    </c:if>
 	                </td>
 	                <td class="odl-table-td">
-	                    <c:if test="${list.orderStatus == '결제완료'}">
-	                        <c:set var="orderNum" value="${list.orderNum}"/>
-	                        <c:if test="${list.reviewStatus == 0}">
+	                    <c:if test="${list.orderStatus == '결제완료'}"> <!-- 주문상태='결제완료'일 때 -->
+	                        <c:set var="orderNum" value="${list.orderNum}"/> <!-- orderNum 변수에 ${list.orderNum} 값 할당 -->
+	                        <c:if test="${list.reviewStatus == 0}"> <!-- 리뷰가 작성되어 있지 않으면 -->
 	                            <button class="odl-table-del" data-orderNum="${orderNum}" onclick="redirectToReviewPage()">리뷰작성</button>
+	                            <!-- 리뷰작성 버튼을 출력하고, 버튼 클릭 시 redirectToReviewPage()함수 실행 -->
 	                        </c:if>
-	                        <c:if test="${list.reviewStatus == 1}">
-	                            <button class="odl-table-review-done" data-orderNum="${orderNum}" onclick="redirectToReviewPage()" disabled>작성완료</button>
+	                        <c:if test="${list.reviewStatus == 1}"> <!-- 리뷰가 작성되어 있다면 -->
+	                            <button class="odl-table-review-done" disabled>작성완료</button> <!-- 작성완료 버튼을 비활성화 상태로 출력 -->
 	                        </c:if>
 	                    </c:if>
 	                </td>
@@ -96,12 +97,10 @@
 	    }
 	
 	    function redirectToReviewPage() {
-	        var orderNum = event.target.getAttribute('data-orderNum'); //orderNum 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
-	        const contextPath = '${contextPath}'; //contextPath 변수에 값을 할당 (서버에서 렌더링할 때 해당 값으로 대체됩니다.)
-	        const url = contextPath + '/review/insert?orderNum=' + orderNum; //URL에 orderNum 파라미터를 추가하여 완성
-	
+	        var orderNum = event.target.getAttribute('data-orderNum'); //data-orderNum속성의 값을 가져와 orderNum 변수에 할당
+	        														   //(서버에서 렌더링할 때 해당 값으로 대체됩니다.)
 	        //리뷰 작성 페이지로 이동
-	        window.location.href = url;
+	        window.location.href = "${contextPath}/review/insert?orderNum=" + orderNum; //URL에 orderNum 파라미터를 추가하여 완성
 	    }
 	</script>
 </body>

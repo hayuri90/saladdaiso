@@ -14,12 +14,12 @@
 
    	<!-- 김동혁: 타일즈 jsp 연결 수정(23.07.14.) -->
    	<definition name="/main" extends="baseLayout">
-      	<put-attribute name="title" value="메인페이지" />
+      	<put-attribute name="title" value="샐러드다이소" />
       	<put-attribute name="body" value="/WEB-INF/views/main.jsp" />
    	</definition>
    	
    	<definition name="/menu" extends="baseLayout">
-      	<put-attribute name="title" value="메뉴페이지" />
+      	<put-attribute name="title" value="샐러드다이소: 메뉴페이지" />
       	<put-attribute name="body" value="/WEB-INF/views/menu/menu.jsp" />
    	</definition>
    	

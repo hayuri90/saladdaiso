@@ -14,7 +14,7 @@
 
    <!-- 하유리: 이벤트페이지(23.07.19.)  -->
    <definition name="/event/*" extends="baseLayout">
-      <put-attribute name="title" value="이벤트페이지" />
+      <put-attribute name="title" value="샐러드다이소: 이벤트페이지" />
       <put-attribute name="body" value="/WEB-INF/views/event/eventPage.jsp" />
    </definition>
    

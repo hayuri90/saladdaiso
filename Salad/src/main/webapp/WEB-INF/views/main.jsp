@@ -62,8 +62,8 @@
 		<div class="mainProd_wrap">
 			<div class="margin">
 				<!-- 1번째 열 -->
-				<h3 class="prod_sub">판매량이 증명하는 추천상품🏆️</h3><br>
-				<div class="prodRow">		
+				<h3 class="prod_sub" style="padding-left: 99px;">판매량이 증명하는 추천상품🏆️</h3><br>
+				<div class="prodRow" style="padding-left: 97px;">		
 					<!-- 추천상품01 -->
 					<div class="prod" name="13">
 						<div class="prod_img">		<!-- 추천상품01 이미지 -->

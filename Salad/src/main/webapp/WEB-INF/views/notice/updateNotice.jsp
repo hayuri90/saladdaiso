@@ -23,7 +23,7 @@
 		<!-- 게시판 -->
 		<div class="insert_table">
 			<form action="<c:url value='/notice/update'/>" method="POST" enctype="multipart/form-data">
-				<input name="re_articleNO" type="hidden" value="${notice.articleNO }">
+				<input name="articleNO" type="hidden" value="${notice.articleNO }">
 				<table>
  					<tr>
 						<th>작성자</th>
@@ -36,14 +36,14 @@
 					<tr>
 						<th>제목</th>
 						<td>	
-							<input type="text" class="insert_input" name="re_title" value="${notice.title }" placeholder="제목을 입력해 주세요." 
+							<input type="text" class="insert_input" name="title" value="${notice.title }" placeholder="제목을 입력해 주세요." 
 								   autocomplete="off" required></td>
 					</tr>
 					
 					<tr>
 						<th>내용</th>
 						<td>
-							<textarea class="insert_input" name="re_content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
+							<textarea class="insert_input" name="content" cols="50" rows="10" placeholder="내용을 입력해 주세요." 
 									  autocomplete="off" required>${notice.content }</textarea>
 						</td>
 					</tr>
@@ -61,7 +61,7 @@
 									<div class="insert_input_file">
 										<c:forEach items="${notice.imageFileList}" var="imageFileList">
 											<div class="imgFile">
-												<input type="text" class="notice_imgName" id="notice_imgName" name="originalFileName" value="${imageFileList.originalFileName}" disabled/>
+												<input type="text" class="notice_imgName" name="originalFileName" value="${imageFileList.originalFileName}" disabled/>
 												<button class="fileDelete"><img src="${contextPath}/resources/image/review/delete_icon.png" /></button>
 											</div>
 										</c:forEach>
@@ -76,11 +76,11 @@
 				
 				<div class="update_btn_wrap">
 					<div class="update_btn1">
-						<button class="writeBtn" type="button" onClick="location.href='/notice/list'">글목록</button>
+						<button class="updateBtn" type="button" onClick="location.href='/notice/list'">글목록</button>
 					</div>
 					<div class="update_btn2">
-						<button class="writeBtn" type="submit">글등록</button>
-						<button class="writeBtn" type="reset" >초기화</button>
+						<button class="updateBtn" type="submit">수정완료</button>
+						<button class="updateBtn" type="reset" >초기화</button>
 					</div>
 				</div>
 			</form>
@@ -96,17 +96,47 @@
 		}
 		
 		/* 입력내용에 따라 input 너비 조절 */
-		var resizable = function(el, factor) {
-			var unit = Number(factor) || 7.7;
-			function resize() {
-				el.style.width = ((el.value.length+1) * unit) + 'px'
-			}
-			var e = 'keyup,keypress,focus,blur,change'.split(',');
-			for (var i in e)
-				el.addEventListener(e[i],resize,false);
-			resize();
+		function makeInputsResizable() {
+		    var unit = 7.7;
+		    var inputElements = document.querySelectorAll('.review_imgName');
+		    
+		    console.log("Found input elements:", inputElements);
+		
+		    function resizeInput(input) {
+		        var length = input.value.length;
+		        input.style.width = (length * unit) + 'px';
+		        console.log("Resized input:", input);
+		    }
+		
+		    inputElements.forEach(function (input) {
+		        input.addEventListener('input', function () {
+		            resizeInput(input);
+		        });
+		
+		        resizeInput(input);
+		    });
 		}
-		resizable(document.getElementById('notice_imgName'), 10);		
+		
+		document.addEventListener("DOMContentLoaded", function() {
+		    makeInputsResizable();
+		});
+		/* var resizable = function(el, factor) {
+		    var unit = Number(factor) || 7.7;
+		    function resize() {
+		        el.style.width = ((el.value.length + 1) * unit) + 'px';
+		    }
+		    var e = 'keyup,keypress,focus,blur,change'.split(',');
+		    for (var i in e) {
+		        el.addEventListener(e[i], resize, false);
+		    }
+		    resize();
+		}
+		
+		var elements = document.getElementsByClassName('notice_imgName');
+		
+		for (var i = 0; i < elements.length; i++) {
+		    resizable(elements[i], 10);
+		} */		
 	</script>
 	
 </body>

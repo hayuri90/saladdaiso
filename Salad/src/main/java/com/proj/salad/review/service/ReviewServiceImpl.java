@@ -48,7 +48,7 @@ public class ReviewServiceImpl implements ReviewService {
 	//하유리: 2-2. 글쓰기(23.07.16.)
 	@Override
 	public void insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception {
-		//하유리: 게시글 작성
+		//하유리: 게시물 작성
 		reviewDao.insertReview(reviewVO);
 		
 		//하유리: 게시물 번호 가져오기(23.07.20.)
@@ -56,12 +56,13 @@ public class ReviewServiceImpl implements ReviewService {
 		
 		//하유리: 파일 업로드(23.07.20.)
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(reviewVO, mRequest, ReviewSeq, filePath);	//DB에 넣을 정보만 list에 담음
+		System.out.println("@@@@@list.size(): " + list.size());
 		for(int i=0, size=list.size(); i<size; i++){
 			reviewDao.insertImage(list.get(i));
 		}
 	}
 
-	//김동혁: 2-2-1. order 테이블 reviewStatus → 1로 수정(23.08.02.)
+	//김동혁: 2-2-1. order 테이블 reviewStatus=1로 수정(23.08.02.)
 	@Override
 	public void updateReviewStatus(ReviewVO reviewVO) {
 		reviewDao.updateReviewStatus(reviewVO);
@@ -76,21 +77,23 @@ public class ReviewServiceImpl implements ReviewService {
 	//하유리: 3-1-1. 조회수(23.07.16.)
 	@Override
 	public void updateCnt(int re_articleNO, HttpSession session) {
-		long updateTime=0;	
+		long updateTime=0; //게시물 조회시간 변수선언+초기화
 		
+		//조회시간과 현재시간의 차이가 하루 미만일 때(=24시간 내에 처음 조회한 게 아닐 때)
 		if(session.getAttribute("updateTime"+re_articleNO)!=null) {
-			updateTime = (Long) session.getAttribute("updateTime" + re_articleNO);
-			System.out.println("re_articleNO: " + re_articleNO);
-			System.out.println("updateTime: " + updateTime);
+			updateTime = (Long) session.getAttribute("updateTime" + re_articleNO); //세션에 저장된 값을 name으로 가져옴
+			System.out.println("re_articleNO: " + re_articleNO); //게시물번호 출력
+			System.out.println("updateTime: " + updateTime); //updateTime+게시물번호가 long타입으로 형변환되어 출력
 		}
 		
+		//현재시간 구하기
 		long currentTime = System.currentTimeMillis();
-		
-		if(currentTime - updateTime > 24*60*60*1000) {	
-			reviewDao.updateCnt(re_articleNO);
-			session.setAttribute("updateTime" + re_articleNO, currentTime);
-			System.out.println("updateTime: " + updateTime);
-		}	
+		//조회한 지 하루가 넘은 게시물 클릭 시(=해당 게시물을 24시간 내에 처음 조회했을 때)
+		if(currentTime - updateTime > 24*60*60*1000) { //조회시간과 현재시간의 차이가 하루 이상일 때
+			reviewDao.updateCnt(re_articleNO); //조회수 +1 증가시켜주는 쿼리로 연결
+			session.setAttribute("updateTime" + re_articleNO, currentTime); //세션에 값 저장
+			System.out.println("updateTime: " + updateTime); //0 출력
+		}			
 	}
 	
 	//하유리: 3-1-2. 이미지 정보 가져오기(23.07.23.)
@@ -150,6 +153,8 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public void replyReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception {
 		reviewDao.replyReview(reviewVO);
+		
+		System.out.println("@@@@@@@userId: " + reviewVO.getUserId());
 		
 		//하유리: 게시물 번호 가져오기(23.07.31.)
 		String ReviewSeq = reviewDao.selectReview(reviewVO);

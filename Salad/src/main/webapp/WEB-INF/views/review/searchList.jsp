@@ -43,12 +43,12 @@
 		<div class="search">
 			<div class="search-form">
 				<select class="searchType" name="searchType">
-					<option value="t"<c:out value="${scri.searchType eq 't' ? 'selected' : ''}"/>>제목</option>
-					<option value="c"<c:out value="${scri.searchType eq 'c' ? 'selected' : ''}"/>>내용</option>
-					<option value="w"<c:out value="${scri.searchType eq 'w' ? 'selected' : ''}"/>>작성자</option>
-					<option value="tc"<c:out value="${scri.searchType eq 'tc' ? 'selected' : ''}"/>>제목+내용</option>
+					<option value="t" <c:if test="${searchType eq 't'}">selected</c:if>>제목</option>
+					<option value="c" <c:if test="${searchType eq 'c'}">selected</c:if>>내용</option>
+					<option value="w" <c:if test="${searchType eq 'w'}">selected</c:if>>작성자</option>
+					<option value="tc" <c:if test="${searchType eq 'tc'}">selected</c:if>>제목+내용</option>
 				</select>
-				<input type="text" class="search-bar" id="keywordInput" name="keyword" placeholder="검색" autocomplete="off" value="${scri.keyword}"/>	
+				<input type="text" class="search-bar" id="keywordInput" name="keyword" placeholder="검색" autocomplete="off" value="${keyword}"/>	
 				<button type="submit" class="search-btn" value=""><img src="${contextPath}/resources/image/common/footer/magnifier.png"/></button>	<!-- button태그로 변경, value값 제거, 이미지 추가(23.08.11.) -->			
 			</div>
 		</div>
@@ -174,13 +174,13 @@
 					alert('검색어를 입력하세요.');	//경고창 출력
 					return false;				//또는 e.priventDefault(); 입력하여 이벤트 중단
 				} else {
-					self.location = "searchList"
+					location.href = "searchList"
 						+ '${pageMaker.makeQuery(1)}'
 						+ "&searchType="
 						+ $("select option:selected").val()
 						+ "&keyword="
 						+ encodeURIComponent($('#keywordInput').val());
-					}
+				}
 			});
 		}); 
 	</script>

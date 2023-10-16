@@ -27,7 +27,7 @@
 			<form action="<c:url value='/review/update'/>" method="POST" enctype="multipart/form-data">
 				<input name="re_articleNO" type="hidden" value="${review.re_articleNO }">
 				<table>
-					<%-- 김동혁: 답글형은 주문번호 숨김 처리 --%>
+					<!-- 김동혁: 답글형은 주문번호 숨김 처리 -->
 					<c:if test="${review.re_fakeOrderNum != null}">
 						<tr>
 							<th>주문상품</th>
@@ -60,7 +60,6 @@
 					<tr>
 						<th>이미지 업로드</th>
 						<td>
-							<!-- <input type="file" class="insert_file" multiple="multiple"> -->
 							<c:choose>
 								<c:when test="${empty review.re_imageFileList}">
 									<div class="insert_input_file">
@@ -71,7 +70,7 @@
 									<div class="insert_input_file">
 										<c:forEach items="${review.re_imageFileList}" var="re_imageFileList">
 											<div class="imgFile">
-												<input type="text" class="review_imgName" id="review_imgName" name="review_image" value="${re_imageFileList.re_originalFileName}" disabled/>
+												<input type="text" class="review_imgName" name="review_image" value="${re_imageFileList.re_originalFileName}" disabled/>
 												<button class="fileDelete"><img src="${contextPath}/resources/image/review/delete_icon.png" /></button>
 											</div>
 										</c:forEach>
@@ -89,7 +88,7 @@
 						<button class="writeBtn" type="button" onClick="location.href='${contextPath}/review/list'">글목록</button>
 					</div>
 					<div class="update_btn2">
-						<button class="writeBtn" type="submit">글등록</button>
+						<button class="writeBtn" type="submit">수정완료</button>
 						<button class="writeBtn" type="reset" >초기화</button>
 					</div>
 				</div>
@@ -106,17 +105,30 @@
 		}
 		
 		/* 입력내용에 따라 input 너비 조절 */
-		var resizable = function(el, factor) {
-			var unit = Number(factor) || 7.7;
-			function resize() {
-				el.style.width = ((el.value.length+1) * unit) + 'px'
-			}
-			var e = 'keyup,keypress,focus,blur,change'.split(',');
-			for (var i in e)
-				el.addEventListener(e[i],resize,false);
-			resize();
+		function makeInputsResizable() {
+		    var unit = 7.7;
+		    var inputElements = document.querySelectorAll('.review_imgName');
+		    
+		    console.log("Found input elements:", inputElements);
+		
+		    function resizeInput(input) {
+		        var length = input.value.length;
+		        input.style.width = (length * unit) + 'px';
+		        console.log("Resized input:", input);
+		    }
+		
+		    inputElements.forEach(function (input) {
+		        input.addEventListener('input', function () {
+		            resizeInput(input);
+		        });
+		
+		        resizeInput(input);
+		    });
 		}
-		resizable(document.getElementById('review_imgName'), 10);		
+		
+		document.addEventListener("DOMContentLoaded", function() {
+		    makeInputsResizable();
+		});
 	</script>
 	
 </body>

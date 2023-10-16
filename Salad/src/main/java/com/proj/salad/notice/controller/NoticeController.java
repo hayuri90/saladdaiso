@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.proj.salad.notice.service.NoticeService;
 import com.proj.salad.notice.vo.Criteria;
@@ -68,7 +69,7 @@ public class NoticeController extends HttpServlet {
 
 	//하유리: 3-1. 게시물 상세조회(23.07.16.)
 	@RequestMapping(value="/content", method=RequestMethod.GET)
-	public String detailNotice(int articleNO, Model model, HttpSession session) {
+	public String detailNotice(int articleNO, Model model, HttpSession session) throws Exception {
 		//조회수 증가(23.07.16.)
 		noticeService.updateCnt(articleNO, session);
 		
@@ -78,6 +79,7 @@ public class NoticeController extends HttpServlet {
 				
 		NoticeVO noticeVO = noticeService.detailNotice(articleNO);
 		noticeVO.setImageFileList(imageVO);
+		System.out.println("imageFileList: "+noticeVO.getImageFileList());
 		model.addAttribute("notice", noticeVO);
 		
 		return "/notice/noticeContent";
@@ -93,23 +95,35 @@ public class NoticeController extends HttpServlet {
 	//하유리: 4-1. 게시물 수정하기(23.07.18.)
 	@RequestMapping(value="/update", method=RequestMethod.GET)
 	public String updateForm(Model model, int articleNO) {
-		NoticeVO noticeVO = noticeService.detailNotice(articleNO);
-		System.out.println(articleNO);
-		model.addAttribute("notice", noticeVO);
+		
+		//이미지 정보 가져오기
+		List<Notice_imageVO> notice_imgVO = noticeService.detailImg(articleNO);
+		System.out.println("이미지 정보: " + notice_imgVO);
+		
+		NoticeVO notice = noticeService.detailNotice(articleNO);
+		System.out.println("게시글 번호: "+articleNO);
+		notice.setImageFileList(notice_imgVO);
+		model.addAttribute("notice", notice);
 		return "/notice/updateNotice";
 	}
 	
 	//하유리: 4-2. 게시물 수정하기(23.07.18.)
 	@RequestMapping(value="/update", method=RequestMethod.POST)
-	public String updateNotice(NoticeVO noticeVO) {
+	public String updateNotice(NoticeVO noticeVO, RedirectAttributes rttr) {
 		noticeService.updateNotice(noticeVO);
-		return "redirect:/notice/list";
+		System.out.println("수정내용: "+noticeService.updateNotice(noticeVO));
+		
+		//수정 후 redirect로 페이지 이동 시, 경고창 띄우기 위해
+		rttr.addFlashAttribute("result", "modify success"); //"result" 속성 값에 "modify success" 스트링 데이터를 저장
+		return "redirect:/notice/content?articleNO="+noticeVO.getArticleNO(); //수정한 게시물로 이동(23.09.01.)
 	}
 	
 	//하유리: 5. 게시물 삭제하기(23.07.18.)
 	@RequestMapping(value="/delete", method=RequestMethod.GET)
-	public String deleteNotice(int articleNO) {
+	public String deleteNotice(int articleNO, RedirectAttributes rttr) {
 		noticeService.deleteNotice(articleNO);
+		rttr.addFlashAttribute("articleNO", articleNO); //게시물번호를 넘김
+		rttr.addFlashAttribute("result", "delete success"); //게시물 삭제 후 알림창 출력
 		return "redirect:/notice/list";
 	}
 	

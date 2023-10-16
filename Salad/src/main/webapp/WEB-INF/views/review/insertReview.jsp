@@ -4,6 +4,7 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<!DOCTYPE html PUBLIC "-//W3C/DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/XHTML1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
     <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -11,9 +12,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- CSS -->
-    <link href="../resources/css/header.css" rel="stylesheet" type="text/css">
-    <link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
-    <link href="../resources/css/review/reviewContent.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/header.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/footer.css" rel="stylesheet" type="text/css">
+	<link href="../resources/css/review/reviewContent.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>		
@@ -30,7 +31,8 @@
 						<%-- fakeOrderNum, orderNum 저장 - 김동혁 수정(23.08.01) --%>
 						<th>주문번호</th>
 						<td>
-							<input class="insert_input" required autocomplete="off" width="440px" value="${orderInfo.fakeOrderNum}" readOnly />
+							<!-- ReviewController에서 model을 통해 주문번호를 가져와 출력 -->
+							<input class="insert_input" value="${orderInfo.fakeOrderNum}" name="fakeOrderNum" width="440px" readOnly required autocomplete="off" />
 							<input type="hidden" name="re_orderNum" value="${orderInfo.orderNum}" />
 							<input type="hidden" name="re_fakeOrderNum" value="${orderInfo.fakeOrderNum}" />
 						</td>
@@ -78,9 +80,9 @@
 	
 	<script>
 		/* 하유리: 파일 업로드 input 가운데 배열(23.07.31.) */
-		var cnt=1;	//파일업로드 name값을 다르게 하는 변수
-		function fn_addFile(){	//파일추가를 클릭하면 동적으로 파일업로드 추가(name의 속성값으로 'file'+cnt를 설정하여 값을 다르게 해줌')
-			$("#insert_file").append("<input style='padding: 5px 0; display:flex;' type='file' name='file"+cnt +"' />");
+		var cnt=1;	//업로드파일의 name값을 다르게 하는 변수
+		function fn_addFile(){	//파일추가를 클릭하면 동적으로 파일업로드 추가
+			$("#insert_file").append("<input style='padding: 5px 0; display:flex;' type='file' name='file"+cnt +"' />"); //name의 속성값으로 'file'+cnt를 설정하여 값을 다르게 해줌
 			cnt++;
 		}
 	</script>	

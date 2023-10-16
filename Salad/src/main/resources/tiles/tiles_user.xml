@@ -13,7 +13,7 @@
 	</definition>
       
 	<definition name="/user/userForm" extends="baseLayoutUser">
-		<put-attribute name="title" value="회원 가입 페이지" />
+		<put-attribute name="title" value="샐러드다이소: 가입페이지" />
         <put-attribute name="body" value="/WEB-INF/views/user/userForm.jsp" />
 	</definition>
   

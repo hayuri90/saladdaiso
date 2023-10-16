@@ -24,7 +24,7 @@
 			    WHERE re_articleNO>=0
 			    START WITH re_parentNO=0
 			    CONNECT BY PRIOR re_articleNO=re_parentNO
-			    ORDER SIBLINGS BY DECODE(re_viewCnt,'max(re_noti)',1), re_articleNO DESC
+			    ORDER SIBLINGS BY re_articleNO DESC
 			    )
 			WHERE rno BETWEEN #{rowStart} and #{rowEnd}
 		]]>
@@ -45,21 +45,21 @@
 		]]>
 	</insert>
 
-	<!-- 2-1-1. 김동혁: 글쓰기 시, order 테이블 reviewStatus → 1로 수정(23.08.02.) -->
+	<!-- 2-2-1. 김동혁: 글쓰기 시, order 테이블 reviewStatus=1로 수정(23.08.02.) -->
 	<update id="updateOrderReviewStatus" parameterType="com.proj.salad.review.vo.ReviewVO">
 		UPDATE shop_order
 		SET reviewStatus = 1
 		WHERE ORDERNUM = #{re_orderNum}
 	</update>
 	
-	<!-- 2-2-1. 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.20.) -->
-	<select id="selectReview"  parameterType="com.proj.salad.review.vo.ReviewVO"  resultType="String">
+	<!-- 2-2-2. 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.20.) -->
+	<select id="selectReview"  parameterType="com.proj.salad.review.vo.ReviewVO" resultType="String">
 		SELECT re_articleNO 
 		from shop_review 
-		WHERE userId=#{userId} and  re_title=#{re_title}
+		WHERE userId=#{userId} and re_title=#{re_title}
 	</select>
 	
-   <!-- 하유리: 2-2-2. 파일 업로드(23.07.20.) -->
+   <!-- 하유리: 2-2-3. 파일 업로드(23.07.20.) -->
    <insert id="insertReviewImg" parameterType="java.util.Map">
       <![CDATA[
          INSERT INTO review_image(re_imgNo, userId, re_articleNO, re_originalFileName, re_storedFileName, re_fileSize)
@@ -100,7 +100,6 @@
 		<![CDATA[
 			UPDATE shop_review 
 			SET
-				userId=#{userId},
 				re_title = #{re_title},
 				re_content = #{re_content}
 			WHERE re_articleNO = #{re_articleNO}
@@ -124,7 +123,7 @@
 		]]>
 	</insert>
 	
-	<!-- 하유리: 7. 글 목록 + 페이징 + 검색 -->
+	<!-- 하유리: 7. 글 목록(페이징 + 검색) -->
 	<select id="searchList" resultType="com.proj.salad.review.vo.ReviewVO" parameterType="com.proj.salad.review.vo.SearchCriteria">
 		SELECT re_articleNO, re_title, re_content, userId, re_writeDate, re_viewCnt
 		FROM (

@@ -15,7 +15,6 @@ public class ReviewVO {
 	private String re_title;
 	private String re_content;
 	private Date re_writeDate;
-	private String re_noti;
 	private int re_viewCnt;
 	private List<Review_imageVO> re_imageFileList;
 	private String re_fakeOrderNum;
@@ -78,14 +77,6 @@ public class ReviewVO {
 		this.re_writeDate = re_writeDate;
 	}
 
-	public String getRe_noti() {
-		return re_noti;
-	}
-
-	public void setRe_noti(String re_noti) {
-		this.re_noti = re_noti;
-	}
-
 	public int getRe_viewCnt() {
 		return re_viewCnt;
 	}
@@ -129,7 +120,6 @@ public class ReviewVO {
 				", re_title='" + re_title + '\'' +
 				", re_content='" + re_content + '\'' +
 				", re_writeDate=" + re_writeDate +
-				", re_noti='" + re_noti + '\'' +
 				", re_viewCnt=" + re_viewCnt +
 				", re_imageFileList=" + re_imageFileList +
 				", re_fakeOrderNum=" + re_fakeOrderNum +

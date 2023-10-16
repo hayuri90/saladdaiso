@@ -25,11 +25,12 @@
 		<div class="reply_table">
 			<form action="<c:url value='/review/reply'/>" method="POST" enctype="multipart/form-data">
 				<input type="hidden" name="re_articleNO" value="${review.re_articleNO }">
+				<input type="hidden" name="re_articleNO" value="${review.re_articleNO }">
 				<table>				
  					<tr>
 						<th>작성자</th>
 						<td>	
-							<input type="text" class="insert_input" name="userId" value="${user.userId }" autocomplete="off" required readonly disabled>
+							<input type="text" class="insert_input" name="userId" value="${user.userId }" autocomplete="off" required readonly>
 						</td>
 					</tr>
 					<tr>

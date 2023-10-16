@@ -40,7 +40,7 @@
 								</td>	
 								<td align="left">
 									<input type="text" class="join_input" id="_user_id" name="_user_id" 
-										   style="width: 65%;" minlength="2" maxlength="10" required placeholder="ID(2-10자)" />
+										   style="width: 65%;" minlength="2" maxlength="10" autocomplete="off" required placeholder="ID(2-10자)" />
 									<!-- ID 중복검사 기능 구현(23.07.18) -->
 									<input type="hidden" id="userId" name="userId" />
 									<input type="button" class="btn btn-outline-success" id="btnOverlapped" value="중복체크"
@@ -53,13 +53,16 @@
 								</td>
 								<td>
 									<input type="password" class="join_input" id="userPwd" name="userPwd" 
-										   minlength="4" maxlength="12" required placeholder="비밀번호(4-12자)"/></td>
+										   minlength="4" maxlength="12" autocomplete="off" required placeholder="비밀번호(4-12자)"/></td>
 							</tr>
 							<tr class="dot_line">
 								<td class="fixed_join">
 									<p class="join_label">이름<span class="essential">*</span>
 								</td>
-								<td><input type="text" class="join_input" name="userName" minlength="2" maxlength="10" required placeholder="이름(2-10자)" /></td>
+								<td>
+									<input type="text" class="join_input" name="userName" minlength="2" maxlength="10" 
+										autocomplete="off" required placeholder="이름(2-10자)" />
+								</td>
 							</tr>
 							<tr class="dot_line">
 								<td class="fixed_join">
@@ -76,7 +79,7 @@
 								<td class="fixed_join"><p class="join_label" id="label_email">이메일<span class="essential">*</span></td>
 								<td>
 									<input type="email" class="join_input" id="userEmail" name="userEmail" placeholder="E-mail 입력"
-										   style="margin-bottom: 10px;"/>
+										   autocomplete="off" style="margin-bottom: 10px;"/>
 									<br>
 									<input type="checkbox" class="email_chk" id="emailsts_y" name="emailsts_yn" value="Y" 
 										   onclick="checkBoxValue();" checked/>
@@ -91,7 +94,7 @@
 								</td>
 								<td>
 									<input type="text" class="join_input" name="userBirth" required 
-										   maxlength="8" placeholder="생년월일 입력 8자리(숫자만 입력)" /></td>
+										   maxlength="8" autocomplete="off" placeholder="생년월일 입력 8자리(숫자만 입력)" /></td>
 							</tr>
 							<tr class="dot_line">
 								<td class="fixed_join">
@@ -121,8 +124,8 @@
 									<p class="addressTxt"> 
 									  	<input type="button" class="addBtn" value="주소 검색" onClick="location.href='javascript:execDaumPostcode()'"
 									  		   style="width:100%;"/><br><br>
-										<input type="text" class="join_input" id="userAddress1" name="userAddress1" size="30" placeholder="기본주소 입력" /><br><br>
-									  	<input type="text" class="join_input" id="userAddress2" name="userAddress2" size="30" placeholder="상세주소 입력" /><br><br>
+										<input type="text" class="join_input" id="userAddress1" name="userAddress1" size="30" placeholder="기본주소 입력" autocomplete="off" /><br><br>
+									  	<input type="text" class="join_input" id="userAddress2" name="userAddress2" size="30" placeholder="상세주소 입력" autocomplete="off" /><br><br>
 								   </p>
 								</td>
 							</tr>
@@ -232,7 +235,7 @@
 	    $(function(){
 		//var code2 = "";  //인증 코드를 저장하기 위해 code2 선언
 			$("#phoneChk").click(function(){
-				alert('인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호 확인을 해주십시오.');
+				alert('인증번호 발송이 완료되었습니다.\n휴대폰에서 인증번호를 확인해주세요.');
 	    	 	var phone=$("#userPhone").val();
     	
 		    	$.ajax({
@@ -243,8 +246,7 @@
 		        	success:function(data){
 		        		if(data === "error"){  //실패시 
 		        			alert("휴대폰 번호가 올바르지 않습니다.")
-		          	  	} else {  //성공시        
-		             	   	alert("인증번호가 전송 되었습니다.")
+		          	  	} else {  //성공시
 		             	   	code2 = data; //성공하면 데이터저장
 		            	}
 		        	}

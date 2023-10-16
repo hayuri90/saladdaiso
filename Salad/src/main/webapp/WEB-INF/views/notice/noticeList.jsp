@@ -126,5 +126,29 @@
 			</div>
 		</c:if>
 	</div>
+	
+	<script>
+		/* 게시글 등록/삭제 후 알림창 출력(23.09.24.) */
+		$(document).ready(function(){
+			
+			let result = '<c:out value="${result}"/>';
+			
+			checkAlert(result);
+			console.log(result);
+			
+			function checkAlert(result){
+				if(result === "enroll success"){ 
+					alert("게시물이 등록되었습니다.");
+				}
+				
+				if(result === "delete success"){
+					alert(${articleNO}+"번 게시물이 삭제되었습니다.");
+				}
+			}
+		}); 
+	</script>
+	
+	</script>
+	
 </body>
 </html>
