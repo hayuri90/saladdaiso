@@ -121,7 +121,8 @@
       <br/>
       <br/>
       <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
-      <img src="" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b7530a69-27a8-4505-a3ae-d6edce203a70" width="850">
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/64c5e02b-2ba2-47d1-8696-7015ca9bef9d" width="850">
     </div>
     <br/><br/>
   </details>
