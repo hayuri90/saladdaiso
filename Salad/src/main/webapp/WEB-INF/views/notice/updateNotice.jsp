@@ -96,7 +96,7 @@
 		}
 		
 		/* 입력내용에 따라 input 너비 조절 */
-		function makeInputsResizable() {
+		/* function makeInputsResizable() {
 		    var unit = 7.7;
 		    var inputElements = document.querySelectorAll('.review_imgName');
 		    
@@ -119,11 +119,11 @@
 		
 		document.addEventListener("DOMContentLoaded", function() {
 		    makeInputsResizable();
-		});
-		/* var resizable = function(el, factor) {
+		}); */
+		var resizable = function(el, factor) {
 		    var unit = Number(factor) || 7.7;
 		    function resize() {
-		        el.style.width = ((el.value.length + 1) * unit) + 'px';
+		        el.style.width = ((el.value.length + 2) * unit) + 'px';
 		    }
 		    var e = 'keyup,keypress,focus,blur,change'.split(',');
 		    for (var i in e) {
@@ -136,7 +136,7 @@
 		
 		for (var i = 0; i < elements.length; i++) {
 		    resizable(elements[i], 10);
-		} */		
+		}	
 	</script>
 	
 </body>

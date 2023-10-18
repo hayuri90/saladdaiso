@@ -276,6 +276,12 @@ textarea:focus {
 .insert_input_file {
 	margin-bottom: 10px;
 	min-height: 44px;
+	display: flex;
+	flex-direction: column;
+    justify-content: center;
+/* 	display:flex;
+	align-items: center;
+	padding-bottom: 5px; */
 }
 
 /* 첨부파일 내역 세로 가운데 정렬(23.09.01.) */
