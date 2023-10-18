@@ -47,7 +47,7 @@
 
 <div align='center'>
   <h4>📆 프로젝트 생성일 📆</h4>
-  <p>2023.07.10.</p>
+  <p>2023.07.10. ~ 2023.08.04.</p>
 </div>
 <br/><br/>
 
@@ -89,7 +89,7 @@
     <br/><br/>
   </details>
   <details>
-    <summary>리뷰게시판</summary>
+    <summary>리뷰게시판(담당부분)</summary>
     <div markdown="1">
       <br/>
       <img src="https://img.shields.io/badge/게시물 작성(첨부파일 업로드)-FFFF00?style=flat" /><br/>
@@ -113,7 +113,7 @@
     <br/><br/>
   </details>
   <details>
-    <summary>공지게시판</summary>
+    <summary>공지게시판(담당부분)</summary>
     <div markdown="1">
       <br/>
       <img src="https://img.shields.io/badge/게시물 작성(첨부파일 업로드)-FFFF00?style=flat" /><br/>
