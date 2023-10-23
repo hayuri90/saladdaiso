@@ -152,17 +152,16 @@
 	</div>
 
 	<script>
+		//자바스크립트를 이용하여 경고창 띄우고, 주문페이지로 이동
 		function handleButtonClick() {
-			// 경고창 띄우기
 			if (true) {
 				alert("주문하신 상품을 선택해주세요.")
-				// 사용자가 확인 버튼을 누른 경우 페이지 이동
-				const contextPath = '${contextPath}'; // 여기에 원하는 경로를 입력하세요
+				// 사용자가 확인 버튼을 누를 경우, 페이지 이동
+				const contextPath = '${contextPath}'; // 경로 입력
 				const insertUrl = contextPath + '/mypage/orderList';
 				window.location.href = insertUrl;
 			} else {
-				// 사용자가 취소 버튼을 누른 경우 아무 작업 없음
-				// 필요에 따라 취소 버튼을 눌렀을 때의 동작을 추가할 수 있습니다.
+				// 사용자가 취소 버튼을 누를 경우, 아무 작업 없음
 			}
 		}
 		
@@ -174,12 +173,16 @@
 					alert('검색어를 입력하세요.');	//경고창 출력
 					return false;				//또는 e.priventDefault(); 입력하여 이벤트 중단
 				} else {
+					//검색어가 입력되었을 경우, js를 통해, 입력된 파라미터들로 URL을 구성하여 검색결과 페이지로 리다이렉션
+					//검색 시 url 예시: http://localhost:9009/salad/review/searchList?curPage=1&perPageNum=10&searchType=t&keyword=배송
 					location.href = "searchList"
-						+ '${pageMaker.makeQuery(1)}'
+						+ '${pageMaker.makeQuery(1)}' //curPage=1&perPageNum=10
 						+ "&searchType="
-						+ $("select option:selected").val()
+						+ $("select option:selected").val() //t
 						+ "&keyword="
-						+ encodeURIComponent($('#keywordInput').val());
+						+ encodeURIComponent($('#keywordInput').val()); //검색어가 입력되는 input박스의 id값을 통해 입력값을 가져옴
+																		//js에서 파라미터를 넘길 때, 사용자가 입력한 키워드에 공백이나 특수문자가 들어갈 경우, URL 형식이 잘못되거나 브라우저에서 잘못 해석할 우려가 있음
+																		//encodeURIComponent함수를 사용해서 인코딩하고, url에서 문제가 발생하지 않도록 변환								
 				}
 			});
 		}); 

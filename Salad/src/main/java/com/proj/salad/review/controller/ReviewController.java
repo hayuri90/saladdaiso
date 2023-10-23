@@ -106,7 +106,7 @@ public class ReviewController extends HttpServlet {
 	@RequestMapping(value="/content", method=RequestMethod.GET)
 	public String detailReview(int re_articleNO, SearchCriteria scri, Model model, HttpSession session) {
 		
-		//조회수
+		//조회수 증가
 		reviewService.updateCnt(re_articleNO, session);
 		
 		//이미지 관련 정보 가져오기(23.07.23.)

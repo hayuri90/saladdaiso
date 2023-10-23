@@ -79,20 +79,21 @@ public class ReviewServiceImpl implements ReviewService {
 	public void updateCnt(int re_articleNO, HttpSession session) {
 		long updateTime=0; //게시물 조회시간 변수선언+초기화
 		
-		//조회시간과 현재시간의 차이가 하루 미만일 때(=24시간 내에 처음 조회한 게 아닐 때)
-		if(session.getAttribute("updateTime"+re_articleNO)!=null) {
-			updateTime = (Long) session.getAttribute("updateTime" + re_articleNO); //세션에 저장된 값을 name으로 가져옴
+		//현재시간과 조회시간의 차이가 하루 미만일 때(=24시간 내에 처음 조회한 게 아닐 때)
+		if(session.getAttribute("updateTime"+re_articleNO)!=null) { //세션에 값이 있을 때
+			updateTime = (Long) session.getAttribute("updateTime" + re_articleNO); //세션에 저장된 값(24시간 내 게시글 처음 조회시간)을 key로 가져옴
 			System.out.println("re_articleNO: " + re_articleNO); //게시물번호 출력
 			System.out.println("updateTime: " + updateTime); //updateTime+게시물번호가 long타입으로 형변환되어 출력
 		}
 		
 		//현재시간 구하기
 		long currentTime = System.currentTimeMillis();
+		System.out.println("currentTime: " + currentTime);
 		//조회한 지 하루가 넘은 게시물 클릭 시(=해당 게시물을 24시간 내에 처음 조회했을 때)
-		if(currentTime - updateTime > 24*60*60*1000) { //조회시간과 현재시간의 차이가 하루 이상일 때
+		if(currentTime - updateTime > 24*60*60*1000) { //현재시간-조회시간(0)의 차이가 하루 이상일 때
 			reviewDao.updateCnt(re_articleNO); //조회수 +1 증가시켜주는 쿼리로 연결
-			session.setAttribute("updateTime" + re_articleNO, currentTime); //세션에 값 저장
-			System.out.println("updateTime: " + updateTime); //0 출력
+			session.setAttribute("updateTime" + re_articleNO, currentTime); //세션에 게시글 조회시간을 값으로 저장(key: "updateTime" + re_articleNO, 값: currentTime)
+			//System.out.println("currentTime: " + session.getAttribute("updateTime"+re_articleNO)); //key로 세션값 출력하면 값(currentTime) 출력
 		}			
 	}
 	
