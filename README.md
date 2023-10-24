@@ -104,6 +104,9 @@
       <img src="https://img.shields.io/badge/게시물 삭제-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b5513245-edc5-4d22-9e61-6a6c8952d14f" width="850">
       <br/><br/><br/>
+      <img src="https://img.shields.io/badge/페이징-FFFF00?style=flat" /><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b9993f2d-744e-40ec-bcc7-e5c98797aa5c" width="850">
+      <br/><br/><br/>
       <img src="https://img.shields.io/badge/검색 기능-FFFF00?style=flat" /><br/>
       <img src="https://blog.kakaocdn.net/dn/OCXyT/btsykmKaIY2/GI9uK6h2i4gDV8PgFlAjb0/img.gif" width="850">
       <br/><br/><br/>
