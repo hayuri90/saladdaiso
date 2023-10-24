@@ -67,11 +67,11 @@
 									    <c:set var="timeDiff" value="${now.time - notice.writeDate.time}" /><!-- 현재시간과 게시글 작성일의 시간 차이 -->
 									
 									    <c:if test="${timeDiff <= oneDayMillis}"><!-- 하루동안 new 표시 -->
-									        <a href="${contextPath}/notice/content?articleNO=${notice.articleNO}">${notice.title}</a>
+									        <a href="${contextPath}/notice/content?curPage=${pageMaker.criteria.curPage}&articleNO=${notice.articleNO}">${notice.title}</a>
 									        <img src="${contextPath}/resources/image/notice/new.png" width="32px" alt="new" />
 									    </c:if>
 									    <c:if test="${timeDiff > oneDayMillis}">
-									        <a href="${contextPath}/notice/content?articleNO=${notice.articleNO}">${notice.title}</a>
+									        <a href="${contextPath}/notice/content?curPage=${pageMaker.criteria.curPage}&articleNO=${notice.articleNO}">${notice.title}</a>
 								    	</c:if>
 				    				</div>
 				    			</td>

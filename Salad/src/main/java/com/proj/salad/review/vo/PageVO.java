@@ -37,12 +37,12 @@ public class PageVO {
 	
 	private void calcData() {
 		endPage=(int)(Math.ceil(criteria.getCurPage() / (double)displayPage)*displayPage);	//Math.ceil(): 소수점 이하를 올림
-		startPage=(endPage-displayPage)+1;
 																							//(3/10)*10=10, (12/10)*10=20
+		startPage=(endPage-displayPage)+1;
 		realEnd=(int)(Math.ceil(totalPost*1.0 / criteria.getPostsPerPage()));	//(int)(Math.ceil(12/10)=2
 		
 		if(endPage>realEnd) {	//실제 마지막 페이지번호가 계산된 마지막 페이지번호보다 적을 경우,  
-			endPage=realEnd;	//마지막페이지번호를 endPage로 맞춤
+			endPage=realEnd;	//마지막페이지번호를 endPage로 맞춤=총 45페이지일 경우, 마지막에 45페이지를 출력
 		}
 		
 		prev=startPage==1?false:true;
@@ -105,7 +105,7 @@ public class PageVO {
 		this.criteria = criteria;
 	}
 	
-	//UriEncoding: uri를 만드는 메소드
+	//UriComponents: URI를 동적으로 생성해주는 클래스로, 파라미터값을 지정/변경하기 쉬운 장점
 	public String makeQuery(int curPage){
 	 UriComponents uriComponents =
 	   UriComponentsBuilder.newInstance()
@@ -116,7 +116,6 @@ public class PageVO {
 	 return uriComponents.toUriString();
 	}
 	
-	//검색기능 관련 메소드: URLEncoding
 	//뷰에서 keyword를 입력 받아와서 DB처리를 통해 검색 후, 그것으로 url을 조합해서 검색문을 페이징 처리해서 보내줌
 	//page=page&perPageNum=criteria.getPostsPerPage()&searchType=(SearchCriteria)criteria).getSearchType()&keyword=encoding(((SearchCriteria)criteria).getKeyword()))으로 url 조합
 	public String makeSearch(int curPage) {

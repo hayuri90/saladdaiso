@@ -25,6 +25,8 @@
 		<!-- 게시판 -->
 		<div class="content_table">
 			<input type="hidden" name="re_articleNO" value="${review.re_articleNO }" disabled />
+			<input type="hidden" name="curPage" value="${pageMaker.criteria.curPage }">
+			<input type="hidden" name="postsPerPage" value="${pageMaker.criteria.postsPerPage }">
 			<table>
 				<!-- 김동혁: 답글형은 주문번호 숨기기(23.08.01) -->
 				<c:if test="${review.re_fakeOrderNum != null}">
@@ -77,7 +79,7 @@
 			<!-- 버튼 -->
 			<div class="btn_wrap">	
 				<div class="content_btn1">
-					<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/list'">목록</button>
+					<button type="button" class="contentBtn" onClick="location.href='${contextPath}/review/list?curPage=${pageMaker.criteria.curPage}&perPageNum=${pageMaker.criteria.postsPerPage}'">목록</button>
 				</div>
 				<div class="content_btn2">
 					<!-- 김동혁: 답글 버튼 admin만 사용 가능 -->

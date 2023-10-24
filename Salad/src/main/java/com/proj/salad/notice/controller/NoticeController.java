@@ -69,7 +69,14 @@ public class NoticeController extends HttpServlet {
 
 	//하유리: 3-1. 게시물 상세조회(23.07.16.)
 	@RequestMapping(value="/content", method=RequestMethod.GET)
-	public String detailNotice(int articleNO, Model model, HttpSession session) throws Exception {
+	public String detailNotice(Criteria criteria, int articleNO, Model model, HttpSession session) throws Exception {
+		
+		//페이징 정보 가져오기
+		PageVO paging = new PageVO();
+		paging.setCriteria(criteria);
+		model.addAttribute("pageMaker", paging);
+		System.out.println("curPage: " + paging.getCriteria().getCurPage());
+		
 		//조회수 증가(23.07.16.)
 		noticeService.updateCnt(articleNO, session);
 		

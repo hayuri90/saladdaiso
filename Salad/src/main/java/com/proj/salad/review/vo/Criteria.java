@@ -1,11 +1,11 @@
 package com.proj.salad.review.vo;
 
-//현재페이지에 관한 데이터를 담고 있는 클래스로, 게시글 조회 쿼리에 데이터 전달
+//현재페이지에 관한 데이터를 담고 있는 클래스로, 목록조회 쿼리에 데이터 전달
 public class Criteria {
-	private int curPage;			//현재페이지
-	private int postsPerPage;		//페이지당 게시글 수
-	private int rowStart;			//현재페이지의 시작게시물 번호
-	private int rowEnd;				//현재페이지의 마지막게시물 번호
+	private int curPage;		//현재페이지
+	private int postsPerPage;	//페이지당 게시글 수
+	private int rowStart;		//현재페이지의 시작게시물 번호
+	private int rowEnd;			//현재페이지의 마지막게시물 번호
 	
 	public Criteria() { 		//Criteria 디폴트 생성자 
 		this.curPage=1;			//현재 페이지를 1페이지로 설정
@@ -18,7 +18,7 @@ public class Criteria {
 	}
 
 	public void setCurPage(int curPage) {
-		if(curPage<=0) {		//페이지 번호가 없을 때
+		if(curPage<=0) {		//페이지가 없을 때
 			this.curPage = 1;	//1로 맞춰줌
 			return;
 		}

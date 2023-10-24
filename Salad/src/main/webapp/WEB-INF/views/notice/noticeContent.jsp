@@ -70,7 +70,7 @@
 				
 				<!-- 버튼 -->
 				<div class="content_btn1">
-					<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list'">글목록</button>
+					<button type="button" class="contentBtn" onClick="location.href='${contextPath}/notice/list?curPage=${pageMaker.criteria.curPage}&perPageNum=${pageMaker.criteria.postsPerPage}'">글목록</button>
 				</div>
 				<div class="content_btn2">
 					<!-- 하유리: 작성자(admin)만 게시글만 수정, 삭제할 수 있도록 처리(23.07.18.) -->

@@ -87,7 +87,7 @@
 					    			<c:choose>
 					    				<c:when test="${reviewStatus.count<=3}"><!-- 베스트글 표시 -->
 					    					<p style="font-size:14px; color:#128853; display:inline-block;"> [베스트]</p>
-					    					<a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO }"><c:out value="${review.re_title }"/></a>
+					    					<a href="${contextPath}/review/content?curPage=${pageMaker.criteria.curPage}&re_articleNO=${review.re_articleNO }"><c:out value="${review.re_title }"/></a>
 					    				</c:when>
 					    				
 					    				<c:when test="${review.level>1 }"> <!-- 답변 표시 -->
@@ -102,12 +102,12 @@
 										
 										    <c:if test="${timeDiff <= oneDayMillis}"><!-- 하루동안 new 표시 -->
 										    	<p style="font-size:14px; color:#128853; display: inline-block;">➥</p>
-										        <a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO}">${review.re_title}</a>
+										        <a href="${contextPath}/review/content?curPage=${pageMaker.criteria.curPage}&re_articleNO=${review.re_articleNO}">${review.re_title}</a>
 										        <img src="${contextPath}/resources/image/review/new.png" width="13px" style="margin-bottom: -1px;" alt="new" />
 										    </c:if>
 										    <c:if test="${timeDiff > oneDayMillis}">
 										    	<p style="font-size:14px; color:#128853; display: inline-block;">➥</p>
-										        <a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO}">${review.re_title}</a>
+										        <a href="${contextPath}/review/content?curPage=${pageMaker.criteria.curPage}&re_articleNO=${review.re_articleNO}">${review.re_title}</a>
 										    </c:if>
 					    				</c:when>
 										<c:otherwise> <!-- 최신글 표시 -->
@@ -117,11 +117,11 @@
 										    <c:set var="timeDiff" value="${now.time - review.re_writeDate.time}" /><!-- 현재시간과 게시글 작성일의 시간 차이 -->
 										
 										    <c:if test="${timeDiff <= oneDayMillis}"><!-- 하루동안 new 표시 -->
-										        <a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO}">${review.re_title}</a>
+										        <a href="${contextPath}/review/content?curPage=${pageMaker.criteria.curPage}&re_articleNO=${review.re_articleNO}">${review.re_title}</a>
 										        <img src="${contextPath}/resources/image/review/new.png" width="13px" style="margin-bottom: -1px;" alt="new" />
 										    </c:if>
 										    <c:if test="${timeDiff > oneDayMillis}">
-										        <a href="${contextPath}/review/content?re_articleNO=${review.re_articleNO}">${review.re_title}</a>
+										        <a href="${contextPath}/review/content?curPage=${pageMaker.criteria.curPage}&re_articleNO=${review.re_articleNO}">${review.re_title}</a>
 										    </c:if>
 										</c:otherwise>
 					    			</c:choose>				    			

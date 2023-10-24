@@ -54,7 +54,6 @@ public class ReviewController extends HttpServlet {
 	public String selectAllReviewList(Model model, HttpServletRequest request, HttpServletResponse response, Criteria criteria) throws Exception {
 		//Criteria(VO)로 받은 값을, 페이징을 원하는 select문에 매개변수로 넣어서 List데이터를 Model을 이용해 뷰로 보내준다.
 		List<ReviewVO> list = reviewService.selectAllReviewList(criteria);	//List형식으로 데이터를 가져와 Model에 담음
-		//System.out.println("@@@@@@@@"+list);
 		model.addAttribute("reviewList", list);	//Model에 reviewList라는 이름으로 list값을 넣어서 jsp(view)로 전달
 		
 		//페이징
@@ -104,7 +103,13 @@ public class ReviewController extends HttpServlet {
 
 	//하유리: 3-1. 게시물 상세보기(23.07.16.)
 	@RequestMapping(value="/content", method=RequestMethod.GET)
-	public String detailReview(int re_articleNO, SearchCriteria scri, Model model, HttpSession session) {
+	public String detailReview(Criteria criteria, int re_articleNO, SearchCriteria scri, Model model, HttpSession session) {
+		
+		//페이징 정보 가져오기
+		PageVO paging = new PageVO();
+		paging.setCriteria(criteria);
+		model.addAttribute("pageMaker", paging);
+		System.out.println("curPage: " + paging.getCriteria().getCurPage());
 		
 		//조회수 증가
 		reviewService.updateCnt(re_articleNO, session);
