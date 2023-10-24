@@ -121,11 +121,13 @@
       <br/>
       <img src="https://img.shields.io/badge/게시물 작성(첨부파일 업로드)-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/a5044849-6eda-41f8-aaf3-41f156f298ac" width="850">
-      <br/>
-      <br/>
+      <br/><br/><br/>
       <img src="https://img.shields.io/badge/게시물 수정/삭제-FFFF00?style=flat" /><br/>
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/b7530a69-27a8-4505-a3ae-d6edce203a70" width="850">
       <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/64c5e02b-2ba2-47d1-8696-7015ca9bef9d" width="850">
+      <br/><br/><br/>
+      <img src="https://img.shields.io/badge/페이징-FFFF00?style=flat" /><br/>
+      <img src="https://github.com/hayuri90/saladdaiso/assets/121767145/10f52bc6-a8d9-4cba-90b0-4bf99c00763f" width="850">
     </div>
     <br/><br/>
   </details>
