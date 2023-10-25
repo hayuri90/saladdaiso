@@ -25,7 +25,8 @@
 	
 		<!-- 게시판 -->
 		<div class="insert_table">
-			<form action="<c:url value='/review/insert'/>" method="POST" enctype="multipart/form-data">
+			<form action="<c:url value='/review/insert'/>" method="POST" enctype="multipart/form-data"> <!-- <form>태그의 action속성은 실행할 controller의 메소드명과 일치 -->
+																										<!-- 파일 업로드 시, enctype="multipart/form-data" 필수 -->
 				<table>
 					<tr>
 						<%-- fakeOrderNum, orderNum 저장 - 김동혁 수정(23.08.01) --%>

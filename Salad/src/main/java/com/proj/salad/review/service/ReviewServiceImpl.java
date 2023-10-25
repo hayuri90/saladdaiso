@@ -50,9 +50,11 @@ public class ReviewServiceImpl implements ReviewService {
 	public void insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception {
 		//하유리: 게시물 작성
 		reviewDao.insertReview(reviewVO);
+		System.out.println("2. ReviewService_ReviewSeq: " + reviewVO);
 		
 		//하유리: 게시물 번호 가져오기(23.07.20.)
 		String ReviewSeq = reviewDao.selectReview(reviewVO);
+		System.out.println("4. ReviewService_reviewVO: " + reviewVO);
 		
 		//하유리: 파일 업로드(23.07.20.)
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(reviewVO, mRequest, ReviewSeq, filePath);	//DB에 넣을 정보만 list에 담음

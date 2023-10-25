@@ -42,6 +42,7 @@ public class ReviewDAOImpl implements ReviewDAO {
 	//하유리: 2-2. 글쓰기(23.07.16.)
 	@Override
 	public void insertReview(ReviewVO reviewVO) {
+		System.out.println("1. ReviewDAO_reviewVO: " + reviewVO);
 		sqlSession.insert("review.insertReview", reviewVO);
 	}
 
@@ -54,11 +55,13 @@ public class ReviewDAOImpl implements ReviewDAO {
 	//하유리: 2-2-1. 게시물 번호 가져오기(23.07.20.)
 	@Override
 	public String selectReview(ReviewVO reviewVO) {
+		System.out.println("3. ReviewDAO_reviewVO: " + reviewVO);
 		return sqlSession.selectOne("review.selectReview", reviewVO);
 	}
 	
 	//하유리: 2-2-2. 파일 업로드(23.07.20.)
 	public void insertImage(Map<String, Object>map) throws Exception{
+		System.out.println("5. ReviewDAO_reviewVO: " + map);
 		sqlSession.insert("review.insertReviewImg", map);
 	}
 	

@@ -92,6 +92,7 @@ public class ReviewController extends HttpServlet {
 
         //게시물 작성+파일 업로드(23.07.20.)
     	reviewService.insertReview(reviewVO, request, mRequest);
+    	System.out.println("7. mRequest: " + mRequest);
     	
 		//김동혁: order 테이블 reviewStatus=1로 수정(23.08.02.)
     	reviewService.updateReviewStatus(reviewVO);
