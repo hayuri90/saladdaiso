@@ -22,7 +22,7 @@ public class FileUtils {
     	//Iterator는 컬렉션을 순회하면서 정보를 얻어올 수 있는 인터페이스
 		//Map은 순서가 없는 컬렉션이기 때문에 인덱스가 없다
 		//while문을 통해 Map에 있는 데이터에 순차적으로 접근하기 위해 Iterator를 이용
-		Iterator<String> iterator = mRequest.getFileNames(); //MultipartHttpServletRequest 객체에 담긴 파일정보를 Iterator타입으로 저장
+		Iterator<String> iterator = mRequest.getFileNames(); //MultipartHttpServletRequest 객체에 담긴 파일 이름들을 Iterator타입으로 저장
     	
     	//파일 업로드에 필요한 파라미터들 선언 및 null값으로 초기화
     	MultipartFile multipartFile = null;
@@ -41,9 +41,10 @@ public class FileUtils {
         	file.mkdirs();	//mkdirs(): 생성할 디렉토리의 상위 디렉토리가 없을 경우, 상위 디렉토리까지 생성
         }
         
-        while(iterator.hasNext()){	//iterator는 인덱스가 없으므로 while반복문 이용해 list의 모든 데이터를 순회하면서 데이터를 가져옴
+        while(iterator.hasNext()){	//Map은 인덱스가 없기 때문에 while반복문 이용해 Map의 모든 데이터를 순회하면서 데이터를 가져옴
 			 						//hasNext(): 읽어올 요소가 남아있는지 확인하는 메소드
-        	multipartFile = mRequest.getFile(iterator.next());	//업로드된 파일의 이름목록에 읽어올 요소가 있다면 multipartFile 이라는 이름으로 다음 데이터를 반환
+        	//Iterator 형태로 추출된 파일들의 이름을 키값으로 하여, while문을 돌면서 넘어온 파일들의 정보를 추출해서 가공
+        	multipartFile = mRequest.getFile(iterator.next());
         	if(multipartFile.isEmpty() == false){	//파일이 있을 경우(이 코드가 없으면 파일 안 넣었을 때 오류 발생)
         		//다음 읽어올 요소의 데이터가 값이 있다면 업로드할때 필요한 데이터(테이블의 속성)값들을 가져온다. > 파일 정보를 새로운 이름으로 변경
         		re_originalFileName = multipartFile.getOriginalFilename();	//파일 원본이름 가져옴
@@ -61,9 +62,11 @@ public class FileUtils {
         		listMap.put("RE_ORGINALFILENAME", re_originalFileName);
         		listMap.put("RE_STOREDFILENAME", re_storedFileName);
         		listMap.put("RE_FILESIZE", multipartFile.getSize());
+        		System.out.println("***listMap: " + listMap);
         		list.add(listMap);
         	}
         }
+        System.out.println("***list: " + list);
 		return list;
 	}
 }
