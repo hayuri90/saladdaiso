@@ -106,33 +106,33 @@ public class ReviewServiceImpl implements ReviewService {
 	//하유리: 3-2. 파일 다운로드(23.07.23.)
 	@Override
 	public void imgDown(String re_storedFileName, HttpServletResponse response) {
-		//직접 파일 정보를 변수에 저장해 놨지만, 이 부분이 db에서 읽어왔다고 가정한다.
-		String fileName = re_storedFileName;
+		//1. 파일정보 가져오기: 여기에서는 파일정보를 변수에 저장했지만, DB에서 가져올 수도 있음
+		String fileName = re_storedFileName; //다운 받는 사용자에게 보여질 파일명
 		String saveFileName = filePath + fileName;
         File file = new File(saveFileName);
-        long fileLength = file.length();
-        //파일의 크기와 같지 않을 경우 프로그램이 멈추지 않고 계속 실행되거나, 잘못된 정보가 다운로드 될 수 있다.
+        long fileLength = file.length(); //파일크기(byte단위)를 long타입으로 리턴
+        								 //파일의 크기와 같지 않을 경우 프로그램이 멈추지 않고 계속 실행되거나, 잘못된 정보가 다운로드 될 수 있다.
 
-        //이미지파일을 가져오기 위한 규약
-        //response에 header 설정
-        response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
+        //2. response의 header에 세팅(응답 시, 부가정보 입력)
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";"); //Content가 어떻게 처리되어야 하는지를 나타냄, 첨부파일 다운로드
         response.setHeader("Content-Transfer-Encoding", "binary"); //전송되는 데이터의 인코딩 방식 지정
         response.setHeader("Content-Type", "image/gif"); //다운 받을 파일유형 지정
         response.setHeader("Content-Length", "" + fileLength);	//파일크기 지정
-        response.setHeader("Pragma", "no-cache;");						
-        response.setHeader("Expires", "-1;");	//만료일 지정: 이미지 출력시간을 무한대로 지정
+        response.setHeader("Pragma", "no-cache;"); //no-cache: 웹 브라우저는 응답결과를 캐시에 저장하지 않는다.				
+        response.setHeader("Expires", "-1;"); //응답결과의 만료일 지정: 이미지 출력시간을 무한대로 지정
 
         try(
         		//파일 읽을 준비
-                FileInputStream fis = new FileInputStream(saveFileName); //InputStream: 자바에서 외부데이터 입력 받을 때 사용
+                FileInputStream fis = new FileInputStream(saveFileName); //saveFileName으로 지정한 파일을 바이트 단위로 읽어들이는 스트림 객체 생성
                 OutputStream out = response.getOutputStream(); //파일을 outputStream으로 출력
         ){
         		//실제로 파일 읽는 부분
                 int readCount = 0;
-                byte[] buffer = new byte[1024]; //데이터를 옮길 단위 설정(1024byte=1KB)
-                while((readCount = fis.read(buffer)) != -1){ //읽어들일 스트림이 없을 때까지 반복
-                    out.write(buffer,0,readCount);
-            }
+                byte[] buffer = new byte[1024]; //파일을 한번에 읽을 만큼의 byte배열 생성(1024byte=1KB)
+                while((readCount = fis.read(buffer)) != -1){ //파일에서 버퍼크기만큼 데이터를 읽어와서 바이트 배열인 buffer에 저장
+                    out.write(buffer,0,readCount);  //바이트 배열의 0번째부터 읽어들인 바이트 수만큼 화면에 출력
+                    								//더이상 읽어들일 내용이 없으면 -1을 반환
+            }				
         }catch(Exception ex){
             throw new RuntimeException("file Download Error");
         }
