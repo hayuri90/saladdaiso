@@ -86,13 +86,13 @@ public class ReviewController extends HttpServlet {
 	
 	//하유리: 2-2. 글쓰기(23.07.16.)
 	@RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public String insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, HttpServletResponse response, RedirectAttributes rttr) throws Exception {
+    public String insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest, RedirectAttributes rttr) throws Exception {
         //세션 값 가져오기(23.07.18.)
         HttpSession session = request.getSession();
 
         //게시물 작성+파일 업로드(23.07.20.)
-    	reviewService.insertReview(reviewVO, request, mRequest);
-    	System.out.println("7. mRequest: " + mRequest);
+    	reviewService.insertReview(reviewVO, request, mRequest); //Controller에서 Request를 MultipartHttpServletRequest로 받음
+    															 //첨부파일을 인코딩해서 파라미터 값을 받아올 수 있게 하는 MultiparthttpServletRquest를 추가
     	
 		//김동혁: order 테이블 reviewStatus=1로 수정(23.08.02.)
     	reviewService.updateReviewStatus(reviewVO);
@@ -115,12 +115,12 @@ public class ReviewController extends HttpServlet {
 		//조회수 증가
 		reviewService.updateCnt(re_articleNO, session);
 		
-		//이미지 관련 정보 가져오기(23.07.23.)
-		List<Review_imageVO> imageVO = reviewService.detailImg(re_articleNO);
-		System.out.println("이미지 관련 정보 :" + imageVO);
+		//이미지 정보 가져오기(23.07.23.)
+		//List<Review_imageVO> imageVO = reviewService.detailImg(re_articleNO);
+		//System.out.println("이미지 관련 정보 :" + imageVO);
 				
-		ReviewVO review = reviewService.detailReview(re_articleNO);
-		review.setRe_imageFileList(imageVO);
+		ReviewVO review = reviewService.detailReview(re_articleNO); //게시물 데이터 가져오기
+		review.setRe_imageFileList(reviewService.detailImg(re_articleNO)); //이미지 정보 가져오기
 		model.addAttribute("review", review);
 		model.addAttribute("scri", scri);	//검색
 		
@@ -136,7 +136,7 @@ public class ReviewController extends HttpServlet {
 	}
 
 	//하유리: 3-2. 업로드 이미지 출력(23.07.23.)
-	@RequestMapping(value="/imgDown" , method=RequestMethod.GET)
+	@RequestMapping(value="/imgDown", method=RequestMethod.GET)
 	public void ImgDown(@RequestParam("re_storedFileName") String re_storedFileName, HttpServletResponse response) {
 		//System.out.println("파일 이름: " + re_storedFileName);
 		reviewService.imgDown(re_storedFileName, response);

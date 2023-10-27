@@ -50,15 +50,13 @@ public class ReviewServiceImpl implements ReviewService {
 	public void insertReview(ReviewVO reviewVO, HttpServletRequest request, MultipartHttpServletRequest mRequest) throws Exception {
 		//하유리: 게시물 작성
 		reviewDao.insertReview(reviewVO);
-		System.out.println("2. ReviewService_ReviewSeq: " + reviewVO);
 		
 		//하유리: 게시물 번호 가져오기(23.07.20.)
 		String ReviewSeq = reviewDao.selectReview(reviewVO);
-		System.out.println("4. ReviewService_reviewVO: " + reviewVO);
 		
 		//하유리: 파일 업로드(23.07.20.)
 		List<Map<String,Object>> list = fileUtils.parseInsertFileInfo(reviewVO, mRequest, ReviewSeq, filePath);	//DB에 넣을 정보만 list에 담음
-		System.out.println("@@@@@list.size(): " + list.size());
+		System.out.println("@@@@@list.size(): " + list.size()); //첨부파일 개수
 		for(int i=0, size=list.size(); i<size; i++){
 			reviewDao.insertImage(list.get(i));
 		}
@@ -105,34 +103,34 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDao.detailImg(re_articleNO);
 	}
 	
-	//하유리: 3-2. 업로드 이미지 출력(23.07.23.)
+	//하유리: 3-2. 파일 다운로드(23.07.23.)
 	@Override
 	public void imgDown(String re_storedFileName, HttpServletResponse response) {
 		//직접 파일 정보를 변수에 저장해 놨지만, 이 부분이 db에서 읽어왔다고 가정한다.
 		String fileName = re_storedFileName;
 		String saveFileName = filePath + fileName;
-		String contentType = "image/jpg";	//다운받을 파일 형식 지정
         File file = new File(saveFileName);
         long fileLength = file.length();
         //파일의 크기와 같지 않을 경우 프로그램이 멈추지 않고 계속 실행되거나, 잘못된 정보가 다운로드 될 수 있다.
 
         //이미지파일을 가져오기 위한 규약
+        //response에 header 설정
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName + "\";");
-        response.setHeader("Content-Transfer-Encoding", "binary");
-        response.setHeader("Content-Type", contentType);
-        response.setHeader("Content-Length", "" + fileLength);	//파일크기
+        response.setHeader("Content-Transfer-Encoding", "binary"); //전송되는 데이터의 인코딩 방식 지정
+        response.setHeader("Content-Type", "image/gif"); //다운 받을 파일유형 지정
+        response.setHeader("Content-Length", "" + fileLength);	//파일크기 지정
         response.setHeader("Pragma", "no-cache;");						
-        response.setHeader("Expires", "-1;");	//이미지 출력시간을 무한대로 지정
+        response.setHeader("Expires", "-1;");	//만료일 지정: 이미지 출력시간을 무한대로 지정
 
         try(
         		//파일 읽을 준비
-                FileInputStream fis = new FileInputStream(saveFileName);
-                OutputStream out = response.getOutputStream();
+                FileInputStream fis = new FileInputStream(saveFileName); //InputStream: 자바에서 외부데이터 입력 받을 때 사용
+                OutputStream out = response.getOutputStream(); //파일을 outputStream으로 출력
         ){
         		//실제로 파일 읽는 부분
                 int readCount = 0;
-                byte[] buffer = new byte[1024];
-                while((readCount = fis.read(buffer)) != -1){
+                byte[] buffer = new byte[1024]; //데이터를 옮길 단위 설정(1024byte=1KB)
+                while((readCount = fis.read(buffer)) != -1){ //읽어들일 스트림이 없을 때까지 반복
                     out.write(buffer,0,readCount);
             }
         }catch(Exception ex){

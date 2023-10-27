@@ -16,7 +16,7 @@ public class ReviewVO {
 	private String re_content;
 	private Date re_writeDate;
 	private int re_viewCnt;
-	private List<Review_imageVO> re_imageFileList;
+	private List re_imageFileList;
 	private String re_fakeOrderNum;
 	private int re_orderNum;
 	
@@ -85,11 +85,11 @@ public class ReviewVO {
 		this.re_viewCnt = re_viewCnt;
 	}
 
-	public List<Review_imageVO> getre_imageFileList() {
+	public List getre_imageFileList() {
 		return re_imageFileList;
 	}
 
-	public void setRe_imageFileList(List<Review_imageVO> imageFileList) {
+	public void setRe_imageFileList(List imageFileList) {
 		this.re_imageFileList = imageFileList;
 	}
 

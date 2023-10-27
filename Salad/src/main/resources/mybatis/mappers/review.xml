@@ -53,7 +53,7 @@
 	</update>
 	
 	<!-- 2-2-2. 파일업로드 DB 저장 시, 게시물 번호 가져오기(23.07.20.) -->
-	<select id="selectReview"  parameterType="com.proj.salad.review.vo.ReviewVO" resultType="String">
+	<select id="selectReview" parameterType="com.proj.salad.review.vo.ReviewVO" resultType="String">
 		SELECT re_articleNO 
 		from shop_review 
 		WHERE userId=#{userId} and re_title=#{re_title}
