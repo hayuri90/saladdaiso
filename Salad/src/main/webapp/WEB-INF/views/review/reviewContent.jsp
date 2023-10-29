@@ -57,8 +57,8 @@
 							<c:otherwise>
 								<div class="content_input_file">
 									<c:forEach items="${review.re_imageFileList}" var="re_imageFileList">
-										<input type="text" class="review_imgName" name="review_image" value="${re_imageFileList.re_originalFileName}" disabled/><br/>
-										<img class="review_preview" src="${contextPath}/review/imgDown?re_storedFileName=${re_imageFileList.re_storedFileName}" style="width:200px;"/><br/>
+										<input type="button" class="review_imgName" name="review_image" value="${re_imageFileList.re_originalFileName}" onClick="location.href='${contextPath}/review/imgDown?re_storedFileName=${re_imageFileList.re_storedFileName}'"/><br/>
+										<img class="review_preview" src="${contextPath}/review/imgDown?re_storedFileName=${re_imageFileList.re_storedFileName}" style="max-width:200px; max-height:130px;"/><br/>
 									</c:forEach>
 								</div>
 							</c:otherwise>
