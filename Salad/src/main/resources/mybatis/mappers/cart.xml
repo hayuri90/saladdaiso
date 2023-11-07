@@ -56,13 +56,13 @@
             SC.USERID,
             SC.CARTCOUNT
         FROM
-            SCOTT.SHOP_PRODUCT SP
+            SHOP_PRODUCT SP
                 LEFT JOIN
-            SCOTT.PROD_IMAGE PI
+            PROD_IMAGE PI
             ON
                 SP.PRODNUM = PI.PRODNUM
                 LEFT JOIN
-            SCOTT.SHOP_CART SC
+            SHOP_CART SC
             ON
                 SP.PRODNUM = SC.PRODNUM
         WHERE SC.USERID = #{userId}

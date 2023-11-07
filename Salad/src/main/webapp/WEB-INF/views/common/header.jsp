@@ -33,7 +33,7 @@
 				<!-- 로고 -->
 				<div class="header_logo">
 					<a href="${contextPath}/main.do">
-						<img style="height: 80px" src="${contextPath}/resources/image/main/logo.png" />
+						<img style="height: 80px" src="${contextPath}/resources/image/main/logo.png"/>
 					</a>
 				</div>	
 				

@@ -26,7 +26,7 @@
 		<!-- 광고(23.08.11.) -->
 		<div class="ad">
 			<a href="${contextPath}/event">
-				<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
+				<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png" alt="오늘의 이벤트 슬라이드 광고" />
 			</a>
 			<div class="ad_div">
 				<a href="${contextPath }/menu"><p>구매하기</p></a>

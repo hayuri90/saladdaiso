@@ -19,7 +19,7 @@
 	<div class="footer_wrapper">
 		<!-- 하유리: 로고 부분(23.07.29.) -->
 		<div class="footer_logo">
-			<img width="200px" src="${contextPath}/resources/image/common/footer/logo2.png"/>
+			<img width="200px" src="${contextPath}/resources/image/common/footer/logo2.png" alt="샐러드다이소 로고, 클릭 시 메인화면으로 연결" />
 		</div>
 		
 		<!-- 하유리: 회사 정보 부분(23.07.29.) -->
@@ -56,9 +56,9 @@
 		<!-- 하유리: SNS 로고 부분(23.07.29.) -->
 		<div class="footer_sns">
 			<ul>
-				<li><a href="#"><img width="18px" src="${contextPath}/resources/image/common/footer/instagram_logo.svg"/></a></li>
-				<li><a href="#"><img width="20px" src="${contextPath}/resources/image/common/footer/youtube_logo.svg"/></a></li>
-				<li><a href="#"><img width="12px" src="${contextPath}/resources/image/common/footer/facebook_logo.svg"/></a></li>
+				<li><a href="#"><img width="18px" src="${contextPath}/resources/image/common/footer/instagram_logo.svg"/ alt="샐러드다이소 인스타그램 링크" /></a></li>
+				<li><a href="#"><img width="20px" src="${contextPath}/resources/image/common/footer/youtube_logo.svg" alt="샐러드다이소 유튜브 링크" /></a></li>
+				<li><a href="#"><img width="12px" src="${contextPath}/resources/image/common/footer/facebook_logo.svg" alt="샐러드다이소 페이스북 링크" /></a></li>
 			</ul>
 		</div>
 	</div>

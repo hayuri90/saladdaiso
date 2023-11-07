@@ -198,13 +198,13 @@
 		</dependency>
 
 		<!-- ojdbc6 -->
-		<dependency>
+ 		<dependency>
 			<groupId>jdbc.oracle</groupId>
 			<artifactId>OracleDriver</artifactId>
 			<version>11.2.0.2.0</version>
 			<scope>system</scope>
 			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/ojdbc6.jar</systemPath>
-		</dependency>
+		</dependency>		
 
 		<!-- Lombok -->
 		<dependency>
@@ -220,7 +220,22 @@
 			<version>2.15.2</version> <!-- 적절한 Jackson 버전을 사용하셔야 합니다. -->
 		</dependency>
 
-
+		<!-- oracle cloud -->
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>oraclepki</artifactId>
+			<version>21.9.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_core</artifactId>
+			<version>21.9.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.oracle.database.security</groupId>
+			<artifactId>osdt_cert</artifactId>
+			<version>21.9.0.0</version>
+		</dependency>
 
 	</dependencies>
     <build>

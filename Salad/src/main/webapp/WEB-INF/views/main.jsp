@@ -26,9 +26,9 @@
 		<div class="slideWrap">
 			<ul class="slideBannerList">
 				<!-- 하유리: 이미지 간 간격을 없애기 위해 </li>사용하지 않음 -->
-				<li><img class="slideBanner" src="${contextPath}/resources/image/main/slideBanner1.png" />
-				<li><img class="slideBanner" src="${contextPath}/resources/image/main/slideBanner2.png" />
-				<li><img class="slideBanner" src="${contextPath}/resources/image/main/slideBanner3.png" />
+				<li><img class="slideBanner" src="${contextPath}/resources/image/main/slideBanner1.png" alt="메인배너1: 내입에 딱맞는 샐러드 조합 찾기"/>
+				<li><img class="slideBanner" src="${contextPath}/resources/image/main/slideBanner2.png" alt="메인배너2: 당일주문, 당일생산 원칙 준수"/>
+				<li><img class="slideBanner" src="${contextPath}/resources/image/main/slideBanner3.png" alt="메인배너3: 샐러드 체험단 모집 배너"/>
 			</ul>
 			<div class="slideControl">	<!-- 슬라이드배너 이동 -->
 				<div class="control1">	<!-- label for="input의 id값"으로 input-label 연결 > label 안의 이미지 클릭 시 input이 체크됨  -->
@@ -50,7 +50,7 @@
 		<!-- 광고(23.08.11.) -->
 		<div class="ad">
 			<a href="${contextPath}/event">
-				<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png"/>
+				<img class="ad_img" src="${contextPath}/resources/image/common/side/ad.png" alt="오늘의 이벤트 슬라이드 광고"/>
 			</a>
 			<div class="ad_div">
 				<a href="${contextPath }/menu"><p>구매하기</p></a>
@@ -67,7 +67,7 @@
 					<!-- 추천상품01 -->
 					<div class="prod" name="13">
 						<div class="prod_img">		<!-- 추천상품01 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod01.png" />
+							<img src="${contextPath}/resources/image/main/main_prod01.png" alt="닭가슴살, 옥수수"/>
 						</div>
 						<div class="prod_content">	<!-- 추천상품01 이름 -->
 							<p class="prod_content_sub">닭가슴살 옥수수 톡톡 샐러드</p>
@@ -80,7 +80,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -88,7 +88,7 @@
 					<!-- 추천상품02 -->
 					<div class="prod" name="14">
 						<div class="prod_img">		<!-- 추천상품02 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod04.png" />
+							<img src="${contextPath}/resources/image/main/main_prod04.png" alt="계란, 칠리빈" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품02 이름 -->
 							<p class="prod_content_sub">단백질+단백질 샐러드</p>
@@ -101,7 +101,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼"/>
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 					<!-- 추천상품03 -->
 					<div class="prod" name="15">
 						<div class="prod_img">		<!-- 추천상품03 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod06.png" />
+							<img src="${contextPath}/resources/image/main/main_prod06.png" alt="칠리빈, 두부" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품03 이름 -->
 							<p class="prod_content_sub">칠리빈 두부샐러드</p>
@@ -122,7 +122,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -134,7 +134,7 @@
 					<!-- 추천상품04 -->
 					<div class="prod" name="16">
 						<div class="prod_img">		<!-- 추천상품04 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod02.png" />
+							<img src="${contextPath}/resources/image/main/main_prod02.png" alt="닭가슴살, 토마토" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품04 이름 -->
 							<p class="prod_content_sub">훈제 닭가슴살 토마토 샐러드</p>
@@ -147,7 +147,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -155,7 +155,7 @@
 					<!-- 추천상품05 -->
 					<div class="prod" name="17">
 						<div class="prod_img">		<!-- 추천상품05 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod09.png" />
+							<img src="${contextPath}/resources/image/main/main_prod09.png" alt="닭가슴살, 계란" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품05 이름 -->
 							<p class="prod_content_sub">닭가슴살 에그 샐러드</p>
@@ -168,7 +168,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>				
@@ -176,7 +176,7 @@
 					<!-- 추천상품06 -->
 					<div class="prod" name="18">
 						<div class="prod_img">		<!-- 추천상품06 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod03.png" />
+							<img src="${contextPath}/resources/image/main/main_prod03.png" alt="닭가슴살, 두부" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품06 이름 -->
 							<p class="prod_content_sub">닭가슴살 두부 샐러드</p>
@@ -189,7 +189,7 @@
 							</div>		
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -201,7 +201,7 @@
 					<!-- 추천상품07 -->
 					<div class="prod" name="19">
 						<div class="prod_img">		<!-- 추천상품07 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod07.png" />
+							<img src="${contextPath}/resources/image/main/main_prod07.png" alt="계란, 베이컨" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품07 이름 -->
 							<p class="prod_content_sub">에그베이컨 샐러드</p>
@@ -214,7 +214,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -222,7 +222,7 @@
 					<!-- 추천상품08 -->
 					<div class="prod" name="20">
 						<div class="prod_img">		<!-- 추천상품08 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod08.png" />
+							<img src="${contextPath}/resources/image/main/main_prod08.png" alt="새우, 토마토" />
 						</div>
 						
 						<div class="prod_content">	<!-- 추천상품08 이름 -->
@@ -236,7 +236,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
@@ -244,7 +244,7 @@
 					<!-- 추천상품09 -->
 					<div class="prod" name="21">
 						<div class="prod_img">		<!-- 추천상품09 이미지 -->
-							<img src="${contextPath}/resources/image/main/main_prod05.png" />
+							<img src="${contextPath}/resources/image/main/main_prod05.png" alt="훈제연어, 오이, 올리브" />
 						</div>
 						<div class="prod_content">	<!-- 추천상품09 이름 -->
 							<p class="prod_content_sub">훈제연어 샐러드</p>
@@ -257,7 +257,7 @@
 							</div>
 						</div>
 						<div class="mainBtn">
-							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" />
+							<img class="wishBtn" src="${contextPath}/resources/image/main/cart.png" alt="장바구니 담기 버튼" />
 							<p class="addToCart">담기</p>
 						</div>
 					</div>
